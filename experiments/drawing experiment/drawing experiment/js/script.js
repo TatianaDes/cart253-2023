@@ -1,9 +1,9 @@
 /**
- * Title of Project
- * Author Name
- *
- * This is a template. You must fill in the title, author,
- * and this description to match your project!
+  Drawing Experiments
+  Tatiana Désormeaux
+ 
+  Experimenting with p5's drawing and colour functions.
+  Currently draws a face.
  */
 
 "use strict";
@@ -18,37 +18,32 @@ function preload() {
 
 /**
  * Description of setup
-*/
+ * 
+// Draws a face on the canvas.
 function setup() {
   createCanvas(500, 500);
 
+  // Set the background to mint
   background(191, 255, 199);
   
-  ellipseMode(CORNER);
+  // Draw a flesh-coloured head
+  fill(250, 200, 200);
+  ellipse(250, 250, 200, 200);
 
-  noStroke();
+  // Draw the eyes (black as the void of space)
+  fill(0, 0, 255);
+  ellipse(200, 250, 30, 30);
+  ellipse(300, 250, 30, 30);
 
-  fill(127, 0, 200, 100);
-  ellipse(250, 250, 100, 100);
-
-  fill(137, 0, 210, 100);
-  ellipse(250, 250, 80, 80);
-
-  fill(147, 0, 220, 100);
-  ellipse(250, 250, 60, 60);
-
-  fill(157, 0, 230, 100);
-  ellipse(250, 250, 40, 40);
-
-  fill(167, 0, 240, 100);
-  ellipse(250, 250, 20, 20);
-
+  // Draw the mouth
+  strokeWeight(10);
+  line(200, 300, 300, 300);
 
 }
 
 
 /**
- * Description of draw()
+ * Does nothing.
 */
 function draw() {
 
