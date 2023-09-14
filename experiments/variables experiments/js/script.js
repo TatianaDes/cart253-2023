@@ -9,13 +9,10 @@
 "use strict";
 
 let backgroundShade = 0;
-
-let circle = {
-    x: 0,
-    y: 250,
-    size: 200,
-    speed: 2
-};
+let circleX = 0;
+let circleY = 250;
+let circleSize = 200;
+let circleSpeed = 2;
 
 /**
  * Description of preload
@@ -39,7 +36,8 @@ function setup() {
 */
 function draw() {
     background(backgroundShade);
-    circle.x += circle.speed;
-    ellipse(circle.x, circle.y, circle.size);
+    circleX += circleSpeed;
+    ellipse(circleX, circleY, circleSize);
 
+    console.log(`circleX: ${circleX}, circleY: ${circleY}, circleSize: ${circleSize}, circleSpeed: ${circleSpeed}`);
 }
