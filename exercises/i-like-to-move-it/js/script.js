@@ -62,11 +62,16 @@ function draw() {
 background(bg.r, bg.g, bg.b);
 bg.b = bg.b + 1;
     
+    //Rectangle center
+    fill(166, 169, 229);
+    rectMode(CENTER);
+    rect(rect1.x, rect1.y, rect1.width, rect1.height);
+
     //Center circle
     circle3.fill = map(mouseX, 0, width, 0, 255);
     fill(circle3.fill);
     circle3.size = circle3.size + 2;
-    circle3.size = constrain(circle3.size, 0, 300);
+    circle3.size = constrain(circle3.size, 0, 285);
     ellipse(circle3.x, circle3.y, circle3.size);
 
     //Left circle
@@ -82,10 +87,5 @@ bg.b = bg.b + 1;
     circle2.x = constrain(circle2.x, 0, width);
     fill(237, 134, 248);
     ellipse(circle2.x, circle2.y, circle2.size);
-
-     //Rectangle center
-     rect1 = rectMode(CENTER);
-     rect1 = rect(rect1.x, rect1.y, rect1.width, rect1.height);
-     fill(166, 169, 229);
 
 }
