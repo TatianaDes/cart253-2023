@@ -30,6 +30,12 @@ let circle3 = {
     size: 100,
     fill: 255,
 };
+let rect1 = {
+    x: 255,
+    y: 255,
+    width: 300,
+    height: 300 
+};
 
 /**
  * Description of preload
@@ -55,7 +61,7 @@ function draw() {
     //Background
 background(bg.r, bg.g, bg.b);
 bg.b = bg.b + 1;
-
+    
     //Center circle
     circle3.fill = map(mouseX, 0, width, 0, 255);
     fill(circle3.fill);
@@ -76,5 +82,10 @@ bg.b = bg.b + 1;
     circle2.x = constrain(circle2.x, 0, width);
     fill(237, 134, 248);
     ellipse(circle2.x, circle2.y, circle2.size);
+
+     //Rectangle center
+     rect1 = rectMode(CENTER);
+     rect1 = rect(rect1.x, rect1.y, rect1.width, rect1.height);
+     fill(166, 169, 229);
 
 }
