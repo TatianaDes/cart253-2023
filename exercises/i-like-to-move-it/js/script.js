@@ -25,14 +25,14 @@ let circle2 = {
     fill: 255,
 };
 let circle3 = {
-    x: 255,
-    y: 255,
+    x: undefined,
+    y: undefined,
     size: 100,
     fill: 255,
 };
 let rect1 = {
-    x: 255,
-    y: 255,
+    x: 250,
+    y: 250,
     width: 300,
     height: 300 
 };
@@ -51,6 +51,8 @@ function preload() {
 function setup() {
 createCanvas(500, 500);
     noStroke();
+    circle3.x = width/2;
+    circle3.y = height/2;
 }
 
 
@@ -65,7 +67,7 @@ bg.b = bg.b + 1;
     //Rectangle center
     fill(166, 169, 229);
     rectMode(CENTER);
-    rect(rect1.x, rect1.y, rect1.width, rect1.height);
+    rect(width/2, height/2, rect1.width, rect1.height);
 
     //Center circle
     circle3.fill = map(mouseX, 0, width, 0, 255);
