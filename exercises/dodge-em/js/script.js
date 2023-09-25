@@ -11,18 +11,14 @@
 let covid19 = {
     x: 0,
     y: 250,
-    size: 100,
+    size: 50,
     vx: 0,
     vy: 0,
     ax: 0,
     ay: 0,
     acceleration: 0.5,
     maxSpeed: 10,
-    fill: {
-        r: 255,
-        g: 0,
-        b: 0
-    }
+    fill: 255
 
 };
 
@@ -55,7 +51,7 @@ function setup() {
  * Description of draw()
 */
 function draw() {
-    background(0);
+    background(255, 0, 0);
 
     // Covid 19 movement using  the mouse buttons to follow the cursor
     if (mouseX < covid19.x) {
@@ -88,8 +84,10 @@ function draw() {
         noLoop();
     }
 
-    // Display covid 19
-    fill(covid19.fill.r, covid19.fill.g, covid19.fill.b);
+    // Display covid 19 by making it change shades with the mouse and change size as program continues
+    covid19.fill = map(mouseX, 0, width, 0, 255);
+    fill(covid19.fill);
+    covid19.size = covid19.size + 1;
     ellipse(covid19.x, covid19.y, covid19.size);
 
     // Display user
@@ -97,7 +95,7 @@ function draw() {
     ellipse(user.x, user.y, user.size);
 }
 
-// User movement
+// User movement by pressing different places on the screen
 function mousePressed() {
     user.x = mouseX;
     user.y = mouseY;

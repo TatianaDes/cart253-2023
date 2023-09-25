@@ -71,7 +71,6 @@ bg.b = bg.b + 1;
 
     //Center circle
     circle3.fill = map(mouseX, 0, width, 0, 255);
-    fill(circle3.fill);
     circle3.size = circle3.size + 2;
     circle3.size = constrain(circle3.size, 0, 285);
     ellipse(circle3.x, circle3.y, circle3.size);
