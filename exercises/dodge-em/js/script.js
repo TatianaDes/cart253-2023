@@ -72,16 +72,15 @@ function draw() {
         covid19.ay = covid19.acceleration;
     }
 
-    // Velocity is being added onto the acceleration
+    // Velocity is being added onto the acceleration of covid 19
     covid19.vx = covid19.vx + covid19.ax;
     covid19.vx = constrain(covid19.vx, -covid19.maxSpeed, covid19.maxSpeed);
     covid19.vy = covid19.vy + covid19.ay;
     covid19.vy = constrain(covid19.vy, -covid19.maxSpeed, covid19.maxSpeed);
 
-    // Position is being added onto the velocity
+    // Position is being added onto the velocity of covid 19
     covid19.x = covid19.x + covid19.vx;
     covid19.y = covid19.y + covid19.vy;
-
 
     // Check for catching covid19
     let d = dist(user.x, user.y, covid19.x, covid19.y);
@@ -96,10 +95,10 @@ function draw() {
     // Display user
     fill(user.fill);
     ellipse(user.x, user.y, user.size);
-
-    // User movement
-    function mousePressed() {
-        user.x = mouseX;
-        user.y = mouseY;
-    }
 }
+
+// User movement
+function mousePressed() {
+    user.x = mouseX;
+    user.y = mouseY;
+    }
