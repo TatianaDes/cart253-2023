@@ -16,9 +16,9 @@ let covid19 = {
     vy: 0,
     ax: 0,
     ay: 0,
-    acceleration: 0.5,
-    maxSpeed: 10,
-    fill: 255
+    acceleration: 0.25,
+    maxSpeed: 5,
+    fill: 0
 
 };
 
@@ -88,11 +88,13 @@ function draw() {
     covid19.fill = map(mouseX, 0, width, 0, 255);
     fill(covid19.fill);
     covid19.size = covid19.size + 1;
-    ellipse(covid19.x, covid19.y, covid19.size);
+    rectMode(CENTER);
+    rect(covid19.x, covid19.y, covid19.size);
 
     // Display user
-    fill(user.fill);
+    fill(110,155,55);
     ellipse(user.x, user.y, user.size);
+
 }
 
 // User movement by pressing different places on the screen
