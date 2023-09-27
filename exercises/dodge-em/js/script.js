@@ -10,7 +10,7 @@
 let bookImage;
 
 
-let covid19 = {
+let school = {
     x: 0,
     y: 250,
     size: 50,
@@ -52,45 +52,46 @@ function setup() {
  * Description of draw()
 */
 function draw() {
+    // Made the background an image from "15 Beautifully Messy Bookshelves" by BookBub
     background(bookImage, 0, 0);
 
     // Covid 19 movement using  the mouse buttons to follow the cursor
-    if (mouseX < covid19.x) {
-        covid19.ax = -covid19.acceleration;
+    if (mouseX < school.x) {
+        school.ax = -school.acceleration;
     }
     else {
-        covid19.ax = covid19.acceleration;
+        school.ax = school.acceleration;
     }
 
-    if (mouseY < covid19.y) {
-        covid19.ay = -covid19.acceleration;
+    if (mouseY < school.y) {
+        school.ay = -school.acceleration;
     }
     else {
-        covid19.ay = covid19.acceleration;
+        school.ay = school.acceleration;
     }
 
     // Velocity is being added onto the acceleration of covid 19
-    covid19.vx = covid19.vx + covid19.ax;
-    covid19.vx = constrain(covid19.vx, -covid19.maxSpeed, covid19.maxSpeed);
-    covid19.vy = covid19.vy + covid19.ay;
-    covid19.vy = constrain(covid19.vy, -covid19.maxSpeed, covid19.maxSpeed);
+    school.vx = school.vx + school.ax;
+    school.vx = constrain(school.vx, -school.maxSpeed, school.maxSpeed);
+    school.vy = school.vy + school.ay;
+    school.vy = constrain(school.vy, -school.maxSpeed, school.maxSpeed);
 
     // Position is being added onto the velocity of covid 19
-    covid19.x = covid19.x + covid19.vx;
-    covid19.y = covid19.y + covid19.vy;
+    school.x = school.x + school.vx;
+    school.y = school.y + school.vy;
 
-    // Check for catching covid19
-    let d = dist(user.x, user.y, covid19.x, covid19.y);
-    if (d < covid19.size/2 + user.size/2) {
+    // Check for catching school
+    let d = dist(user.x, user.y, school.x, school.y);
+    if (d < school.size/2 + user.size/2) {
         noLoop();
     }
 
     // Display covid 19 by making it change shades with the mouse and change size as program continues
-    covid19.fill = map(mouseX, 0, width, 0, 255);
-    fill(covid19.fill);
-    covid19.size = covid19.size + 1;
+    school.fill = map(mouseX, 0, width, 0, 255);
+    fill(school.fill);
+    school.size = school.size + 1;
     rectMode(CENTER);
-    rect(covid19.x, covid19.y, covid19.size);
+    rect(school.x, school.y, school.size);
     
 
     // Display user while also changing colour from green to blue with mouse
