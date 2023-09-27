@@ -2,11 +2,13 @@
  * E2: Dodge Em
  * Tatiana Désoremaux
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * A simulation where the user is to avoid the book that is trying to catch up to them. It is about the struggle of work catching up to you when you are not always on the ball getting it done.
  */
 
 "use strict";
+
+let bookImage;
+
 
 let covid19 = {
     x: 0,
@@ -26,14 +28,13 @@ let user = {
     x: 250,
     y: 250,
     size: 100,
-    fill: 255
 };
 
 /**
  * Description of preload
 */
 function preload() {
-
+    bookImage = loadImage("assets/images/R.jpg");
 }
 
 
@@ -51,7 +52,7 @@ function setup() {
  * Description of draw()
 */
 function draw() {
-    background(255, 0, 0);
+    background(bookImage, 0, 0);
 
     // Covid 19 movement using  the mouse buttons to follow the cursor
     if (mouseX < covid19.x) {
@@ -90,9 +91,16 @@ function draw() {
     covid19.size = covid19.size + 1;
     rectMode(CENTER);
     rect(covid19.x, covid19.y, covid19.size);
+    
 
-    // Display user
-    fill(110,155,55);
+    // Display user while also changing colour from green to blue with mouse
+    if (mouseX < width/3) {
+        fill(100,147,47);
+    }
+    else {
+        fill(32,92,102);
+    }
+
     ellipse(user.x, user.y, user.size);
 
 }
