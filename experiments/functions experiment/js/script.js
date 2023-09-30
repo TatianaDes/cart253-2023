@@ -1,10 +1,3 @@
-let circle = {
-    x: 0,
-    y: 250,
-    size: 100,
-    vx: 1,
-    vy: 0 
-}
 
 function setup() {
     createCanvas(500, 500);
@@ -14,36 +7,19 @@ function setup() {
 function draw() {
     background(0);
 
-    move();
-    wrap();
-    display();
-
+   parallels(100, 100, 5, 1, 100, 1);
+   parallels(50, 50, 10, 2, 20, 10);
+   parallels(200, 200, 15, 7, 3, 20);
+   parallels(312, 257, 20, 0.5, 300, 2);
 }
 
-function move() {
-    circle.x = circle.x + circle.vx;
-    circle.y = circle.y + circle.vy;
-}
-
-function wrap() {
-    if (circle.x > width) {
-        reset();
+function parallels(x, y, numLines, lineWidth, lineHeight, lineSpacing) {
+    for (let i = 0; i < numLines; i++) {
+        noStroke();
+        fill(255);
+        rectMode(CENTER);
+        rect(x, y, lineWidth, lineHeight);
+        x = x + lineSpacing;
     }
 }
 
-function display() {
-    fill(255, 0, 0);
-    rectMode(CENTER);
-    rect(circle.x, circle.y, circle.size);
-}
-
-function reset() {
-     circle.x = 0
-    circle.vx = circle.vx +2;
-    circle.vy = circle.vy - 0.25;
-    circle.size = circle.size + 5;
-}
-
-function mousePressed() {
-    reset();
-}
