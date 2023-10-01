@@ -1,63 +1,47 @@
 let circle = {
-    x: 0,
+    x: 250,
     y: 250,
     size: 100,
     vx: 0,
     vy: 0,
-    speed: 2
+    speed: 5
 };
 
-let state = `title`; // Possible states are: title, animation, ending
 function setup() {
     createCanvas(500, 500);
-    circle.vx = circle.speed;
-    textSize(32);
-    textAlign(CENTER, CENTER);
 }
 
 function draw() {
     background(0);
 
-    if (state === `title`) {
-        title();
+    handleInput();
+    move();
+    display();
+}
+
+function handleInput() {
+    if (keyIsDown(LEFT_ARROW)) {
+        circle.vx = -circle.speed;
     }
-    else if (state === `animation`) {
-        animation();
+    else if (keyIsDown(RIGHT_ARROW)) {
+        circle.vx = circle.speed;
     }
-    else if (state === `ending`) {
-        ending();
+    else {
+        circle.vx = 0;
     }
-}
 
-function title() {
-    // Title
-    fill(255);
-    text(`Life.`, width/2, height/2);
-}
-
-function animation() {
-       // Animation
-       circle.x = circle.x + circle.vx;
-       circle.y = circle.y + circle.vy;
-   
-       if (circle.x > width) {
-           state = `ending`;
-       }
-   
-       ellipse(circle.x, circle.y, circle.size);
-}
-
-function ending() {
-        // Ending
-        fill(127);
-        text(`It's all over.`, width/2, height/2);
-}
-
-function keyPressed() {
-    if (state === `title`) {
-        state = `animation`;
+    if (keyIsDown(UP_ARROW)) {
+        circle.vy = -circle.speed;
+    }
+    else if (keyIsDown(DOWN_ARROW)) {
+        circle.vy = circle.speed;
+    }
+    else {
+        circle.vy = 0;
     }
 }
 
-
-
+function move() {
+    circle.x = circle.x + circle.vx;
+    circle.y = circle.y + circle.vy;
+}
