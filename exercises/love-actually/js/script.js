@@ -2,8 +2,7 @@
  * Love Actually
  * Tatiana Désormeaux
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * Making a simulation about the difficulties of finding love, like losing the opportunity of love, finding love, and just accepting that that person was not the right one.
  */
 
 "use strict";
