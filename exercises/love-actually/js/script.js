@@ -3,6 +3,7 @@
  * Tatiana Désormeaux
  * 
  * Making a simulation about the difficulties of finding love, like losing the opportunity of love, finding love, and just accepting that that person was not the right one.
+ * But in the end love must be mutual, both sides need to put equal effort.
  */
 
 "use strict";
