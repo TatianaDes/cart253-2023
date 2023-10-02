@@ -47,11 +47,7 @@ function setup() {
     circle2.x = 2 * width / 3;
     
 
-    // Start circles moving in a random direction
-    circle2.vx = random(-circle2.speed, circle2.speed);
-    circle2.vy = random(-circle2.speed, circle2.speed);
 }
-
 
 function draw() {
     background(0);
@@ -70,8 +66,6 @@ function draw() {
     }
 }
 
-
-
 function title() {
     push();
     textSize(64);
@@ -84,6 +78,7 @@ function title() {
 function simulation() {
     move();
     handleInput();
+    circleAvoid();
     checkOffscreen();
     checkOverlap();
     display();
@@ -117,6 +112,7 @@ function move() {
 }
 
 function handleInput() {
+    // Make circle1 move using the arrow keys
     if (keyIsDown(LEFT_ARROW)) {
         circle1.vx = -circle1.speed; 
     }
@@ -137,6 +133,25 @@ function handleInput() {
 
         circle1.vy = 0;
     }
+}
+
+function circleAvoid() {
+    let dx = circle2.x - mouseX;
+    let dy = circle2.y - mouseY;
+
+if (dx < 0) {
+    circle2.vx = -circle2.speed;
+}
+else if (dx > 0) {
+    circle2.vx = circle2.speed;
+}
+
+if (dy < 0) {
+    circle2.vy = -circle2.speed;
+}
+else if (dy > 0) {
+    circle2.vy = circle2.speed;
+}
 }
 
 function checkOffscreen() {
@@ -174,3 +189,4 @@ function mousePressed() {
         state = `simulation`;
     }
 }
+
