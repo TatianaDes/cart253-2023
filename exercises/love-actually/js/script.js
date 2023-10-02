@@ -25,6 +25,12 @@ let circle2 = {
     speed: 3
 };
 
+let rectangle = {
+    x: 50,
+    y: 60,
+    size: 5,
+};
+
 let state = `title`; // Can be: title, simulation, love, sadness, acceptance
 
 /**
@@ -87,8 +93,7 @@ function simulation() {
     circleAvoid();
     checkOffscreen();
     checkOverlap();
-    hitsPoint();
-    arrivalPoint();
+    hitsSecretPoint();
     display();
 }
 
@@ -200,19 +205,11 @@ function checkOverlap() {
  }
 }
 
-function arrivalPoint() {
-    // Realization that circle2 hit that specific point
-    if (hitsPoint(circle2)) {
-        state = `acceptance`;
-    }
-}
-function hitsPoint() {
+function hitsSecretPoint() {
     // Check if circle2 hits the top left corner on the screen for another state
-    if (circle2.x < 0 || circle2.x > 500) {
-        return true;
-    }
-    else {
-        return false;
+    let d = dist(circle2.x, circle2.y, rectangle.x, rectangle.y);
+    if (d < circle2.size/2 + rectangle.size/2) {
+        state = `acceptance`;
     }
 }
 
@@ -220,6 +217,8 @@ function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
     ellipse(circle2.x, circle2.y, circle2.size);
+    // Display the rectangle
+    rect(rectangle.x, rectangle.y, rectangle.size);
 }
 
 function mousePressed() {
