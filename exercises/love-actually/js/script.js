@@ -102,6 +102,15 @@ function sadness() {
     pop();
 }
 
+function acceptance() {
+    push();
+    textSize(64);
+    fill(150, 150, 255);
+    textAlign(CENTER, CENTER);
+    text(`It's okay, they were not the one`, width/2, height/2);
+    pop();
+}
+
 function move() {
     // Move the circles
     circle1.x = circle1.x + circle1.vx;
