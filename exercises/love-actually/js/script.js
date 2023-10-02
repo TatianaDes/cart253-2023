@@ -25,7 +25,7 @@ let circle2 = {
     speed: 3
 };
 
-let state = `title`; // Can be: title, simulation, love, sadness
+let state = `title`; // Can be: title, simulation, love, sadness, acceptance
 
 /**
  * Description of preload
@@ -63,6 +63,9 @@ function draw() {
     }
     else if (state === `sadness`) {
         sadness();
+    }
+    else if (state === `acceptance`) {
+        acceptance();
     }
 }
 
@@ -105,7 +108,7 @@ function sadness() {
 function acceptance() {
     push();
     textSize(64);
-    fill(150, 150, 255);
+    fill(150, 200, 150);
     textAlign(CENTER, CENTER);
     text(`It's okay, they were not the one`, width/2, height/2);
     pop();
