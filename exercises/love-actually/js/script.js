@@ -52,6 +52,7 @@ function setup() {
 function draw() {
     background(0);
 
+    // Setting up all the different states
     if (state === `title`) {
         title();
     }
@@ -70,6 +71,7 @@ function draw() {
 }
 
 function title() {
+    // Title state
     push();
     textSize(64);
     fill(200, 100, 100);
@@ -79,15 +81,19 @@ function title() {
 }
 
 function simulation() {
+    // Simulation state
     move();
     handleInput();
     circleAvoid();
     checkOffscreen();
     checkOverlap();
+    hitsPoint();
+    arrivalPoint();
     display();
 }
 
 function love() {
+    // Love state
     push();
     textSize(64);
     fill(200, 150, 150);
@@ -97,6 +103,7 @@ function love() {
 }
 
 function sadness() {
+    // Sadness state
     push();
     textSize(64);
     fill(150, 150, 255);
@@ -106,11 +113,12 @@ function sadness() {
 }
 
 function acceptance() {
+    // Acceptance state
     push();
-    textSize(64);
-    fill(150, 200, 150);
+    textSize(30);
+    fill(150, 255, 150);
     textAlign(CENTER, CENTER);
-    text(`It's okay, they were not the one`, width/2, height/2);
+    text(`It's okay, they were not the one.`, width/2, height/2);
     pop();
 }
 
@@ -148,6 +156,7 @@ function handleInput() {
 }
 
 function circleAvoid() {
+    // Making circle2 avoid the cursor
     let dx = circle2.x - mouseX;
     let dy = circle2.y - mouseY;
 
@@ -167,13 +176,14 @@ else if (dy > 0) {
 }
 
 function checkOffscreen() {
-  // Chech if the circles have gone offscreen
+  // Check if the circles have gone offscreen
     if (isOffscreen(circle1) || isOffscreen(circle2)) {
     state = `sadness`;
   }
 }
 
 function isOffscreen(circle) {
+    // Realization of when the circles are actually offscreen
     if (circle.x < 0 || circle.x > width || circle.y < 0 || circle.y > height) {
         return true;
     }
@@ -190,6 +200,22 @@ function checkOverlap() {
  }
 }
 
+function arrivalPoint() {
+    // Realization that circle2 hit that specific point
+    if (hitsPoint(circle2)) {
+        state = `acceptance`;
+    }
+}
+function hitsPoint() {
+    // Check if circle2 hits the top left corner on the screen for another state
+    if (circle2.x < 0 || circle2.x > 500) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
@@ -197,6 +223,7 @@ function display() {
 }
 
 function mousePressed() {
+    // When pressing the mouse button, changes the title screen
     if (state === `title`) {
         state = `simulation`;
     }
