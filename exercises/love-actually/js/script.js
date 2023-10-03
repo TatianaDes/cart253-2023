@@ -22,7 +22,7 @@ let circle2 = {
     size: 100,
     vx: 0,
     vy: 0,
-    speed: 3
+    speed: 2
 };
 
 let rectangle = {
