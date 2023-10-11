@@ -7,6 +7,9 @@
  */
 
 "use strict";
+
+let petstoreImage;
+
 let circle1 = {
     x: undefined,
     y: 250,
@@ -16,47 +19,23 @@ let circle1 = {
     speed: 3
 };
 
-let circle2 = {
-    x: undefined,
-    y: 250,
-    size: 100,
-    vx: 0,
-    vy: 0,
-    speed: 2
-};
-
-let rectangle = {
-    x: 50,
-    y: 60,
-    size: 5,
-};
-
 let state = `title`; // Can be: title, simulation, love, sadness, acceptance
 
 /**
  * Description of preload
 */
 function preload() {
+    petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
 
 }
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    
-  setupCircles();
-}
-
-
-    function setupCircles() {
-    // Position circles separated from one another
-    circle1.x = width / 3;
-    circle2.x = 2 * width / 3;
-    
 
 }
 
 function draw() {
-    background(0);
+    background(petstoreImage, 0, 0);
 
     // Setting up all the different states
     if (state === `title`) {
@@ -131,9 +110,6 @@ function move() {
     // Move the circles
     circle1.x = circle1.x + circle1.vx;
     circle1.y = circle1.y + circle1.vy;
-
-    circle2.x = circle2.x + circle2.vx;
-    circle2.y = circle2.y + circle2.vy;
 }
 
 function handleInput() {
@@ -160,55 +136,10 @@ function handleInput() {
     }
 }
 
-function circleAvoid() {
-    // Making circle2 avoid the cursor
-    let dx = circle2.x - mouseX;
-    let dy = circle2.y - mouseY;
-
-if (dx < 0) {
-    circle2.vx = -circle2.speed;
-}
-else if (dx > 0) {
-    circle2.vx = circle2.speed;
-}
-
-if (dy < 0) {
-    circle2.vy = -circle2.speed;
-}
-else if (dy > 0) {
-    circle2.vy = circle2.speed;
-}
-}
-
-function checkOffscreen() {
-  // Check if the circles have gone offscreen
-    if (isOffscreen(circle1) || isOffscreen(circle2)) {
-    state = `sadness`;
-  }
-}
-
-function isOffscreen(circle) {
-    // Realization of when the circles are actually offscreen
-    if (circle.x < 0 || circle.x > width || circle.y < 0 || circle.y > height) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-function checkOverlap() {
- // Check if the circles overlap
- let d = dist(circle1.x, circle1.y, circle2.x, circle2.y);
- if (d < circle1.size/2 + circle2.size/2) {
-    state = `love`;
- }
-}
-
 function hitsSecretPoint() {
-    // Check if circle2 hits the top left corner on the screen for another state
-    let d = dist(circle2.x, circle2.y, rectangle.x, rectangle.y);
-    if (d < circle2.size/2 + rectangle.size/2) {
+    // Check if circle1 hits the top left corner on the screen for another state
+    let d = dist(circle1.x, circle1.y, rectangle.x, rectangle.y);
+    if (d < circle1.size/2 + rectangle.size/2) {
         state = `acceptance`;
     }
 }
@@ -216,7 +147,6 @@ function hitsSecretPoint() {
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
-    ellipse(circle2.x, circle2.y, circle2.size);
     // Display the rectangle
     push();
     fill(255,232,73);
