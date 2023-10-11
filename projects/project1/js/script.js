@@ -16,7 +16,10 @@ let circle1 = {
     size: 100,
     vx: 0,
     vy: 0,
-    speed: 3
+    speed: 3,
+    fill: 0
+
+
 };
 
 let state = `title`; // Can be: title, simulation, love, sadness, acceptance
@@ -35,8 +38,6 @@ function setup() {
 }
 
 function draw() {
-    background(petstoreImage, 0, 0);
-
     // Setting up all the different states
     if (state === `title`) {
         title();
@@ -44,72 +45,26 @@ function draw() {
     else if (state === `simulation`) {
         simulation();
     }
-    else if (state === `love`) {
-        love();
-    }
-    else if (state === `sadness`) {
-        sadness();
-    }
-    else if (state === `acceptance`) {
-        acceptance();
-    }
 }
 
 function title() {
     // Title state
     push();
+    background(0);
     textSize(64);
-    fill(200, 100, 100);
+    fill(255,181,48);
     textAlign(CENTER, CENTER);
-    text(`LOVE?`, width/2, height/2);
+    text(`Welcome to Our Humble Pet Store!`, width/2, height/2);
     pop();
 }
 
 function simulation() {
     // Simulation state
-    move();
+    push();
+    background(petstoreImage, 0, 0);
     handleInput();
-    circleAvoid();
-    checkOffscreen();
-    checkOverlap();
-    hitsSecretPoint();
     display();
-}
-
-function love() {
-    // Love state
-    push();
-    textSize(64);
-    fill(200, 150, 150);
-    textAlign(CENTER, CENTER);
-    text(`LOVE!`, width/2, height/2);
     pop();
-}
-
-function sadness() {
-    // Sadness state
-    push();
-    textSize(64);
-    fill(150, 150, 255);
-    textAlign(CENTER, CENTER);
-    text(`:(`, width/2, height/2);
-    pop();
-}
-
-function acceptance() {
-    // Acceptance state
-    push();
-    textSize(30);
-    fill(150, 255, 150);
-    textAlign(CENTER, CENTER);
-    text(`It's okay, they were not the one.`, width/2, height/2);
-    pop();
-}
-
-function move() {
-    // Move the circles
-    circle1.x = circle1.x + circle1.vx;
-    circle1.y = circle1.y + circle1.vy;
 }
 
 function handleInput() {
@@ -136,22 +91,9 @@ function handleInput() {
     }
 }
 
-function hitsSecretPoint() {
-    // Check if circle1 hits the top left corner on the screen for another state
-    let d = dist(circle1.x, circle1.y, rectangle.x, rectangle.y);
-    if (d < circle1.size/2 + rectangle.size/2) {
-        state = `acceptance`;
-    }
-}
-
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
-    // Display the rectangle
-    push();
-    fill(255,232,73);
-    rect(rectangle.x, rectangle.y, rectangle.size);
-    pop();
 }
 
 function mousePressed() {
