@@ -12,17 +12,21 @@ let petstoreImage;
 
 let circle1 = {
     x: undefined,
-    y: 250,
-    size: 100,
+    y: undefined,
+    size: 60,
     vx: 0,
     vy: 0,
     speed: 3,
-    fill: 0
-
-
 };
 
-let state = `title`; // Can be: title, simulation, love, sadness, acceptance
+let rectangle = {
+    x: 50,
+    y: 60,
+    size: 5,
+};
+
+
+let state = `title`; // Can be: title, simulation, 
 
 /**
  * Description of preload
@@ -33,7 +37,10 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(500, 500);
+
+    circle1.x = width/2
+    circle1.y = height/2
 
 }
 
@@ -51,7 +58,7 @@ function title() {
     // Title state
     push();
     background(0);
-    textSize(64);
+    textSize(30);
     fill(255,181,48);
     textAlign(CENTER, CENTER);
     text(`Welcome to Our Humble Pet Store!`, width/2, height/2);
@@ -62,9 +69,19 @@ function simulation() {
     // Simulation state
     push();
     background(petstoreImage, 0, 0);
+    move();
     handleInput();
     display();
     pop();
+}
+
+function move() {
+    // Move the circles
+    circle1.x = circle1.x + circle1.vx;
+    circle1.y = circle1.y + circle1.vy;
+
+    circle1.x = constrain(circle1.x, 0, width);
+    circle1.y = constrain(circle1.y, 0, height);
 }
 
 function handleInput() {
@@ -94,6 +111,11 @@ function handleInput() {
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
+    // Display the rectangle
+    push();
+    fill(255,232,73);
+    rect(rectangle.x, rectangle.y, rectangle.size);
+    pop();
 }
 
 function mousePressed() {
