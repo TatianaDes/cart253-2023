@@ -9,6 +9,7 @@
 "use strict";
 
 let petstoreImage;
+let shibaImage;
 
 let circle1 = {
     x: undefined,
@@ -19,13 +20,6 @@ let circle1 = {
     speed: 3,
 };
 
-let rectangle = {
-    x: 50,
-    y: 60,
-    size: 5,
-};
-
-
 let state = `title`; // Can be: title, simulation, 
 
 /**
@@ -33,6 +27,7 @@ let state = `title`; // Can be: title, simulation,
 */
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
+    shibaImage = loadImage("assets/images/shiba.avif");
 
 }
 
@@ -113,8 +108,7 @@ function display() {
     ellipse(circle1.x, circle1.y, circle1.size);
     // Display the rectangle
     push();
-    fill(255,232,73);
-    rect(rectangle.x, rectangle.y, rectangle.size);
+    image(shibaImage, 60, 355, 90, 90);
     pop();
 }
 
