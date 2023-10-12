@@ -109,13 +109,13 @@ function handleInput() {
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
-    // Display the shiba
+    // Display the shiba image from "Prompt Hunt"
     image(shibaImage, 60, 335, 120, 120);
-    // Display the golden retriever
+    // Display the golden retriever image from "PNGTree"
     image(goldenImage, 340, 370, 170, 170);
-    // Display the pug
+    // Display the pug image from "FreePik"
     image(pugImage, 285, 58, 120, 120);
-    // Display the cashier
+    // Display the cashier image from "Adobe Stock"
     image(cashierImage, 135, 140, 260, 170);
 
 }
