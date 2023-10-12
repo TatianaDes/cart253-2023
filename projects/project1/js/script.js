@@ -22,7 +22,7 @@ let circle1 = {
     speed: 3,
 };
 
-let state = `title`; // Can be: title, simulation, 
+let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, cashier
 
 /**
  * Description of preload
@@ -41,12 +41,24 @@ function setup() {
 }
 
 function draw() {
-    // Setting up all the different states
-    if (state === `title`) {
+   // Setting up all the different states
+   if (state === `title`) {
         title();
     }
     else if (state === `simulation`) {
         simulation();
+    }
+    else if (state === `shiba`) {
+        shiba();
+    }
+    else if (state === `goldenRetriever`) {
+        goldenRetriever();
+    }
+    else if (state === `pug`) {
+        pug();
+    }
+    else if (state === `cashier`) {
+        cashier();
     }
 }
 
@@ -68,6 +80,50 @@ function simulation() {
     move();
     handleInput();
     display();
+    pop();
+}
+
+function shiba() {
+    // Shiba state
+    push();
+    background(0);
+    textSize(30);
+    fill(255,181,48);
+    textAlign(CENTER, CENTER);
+    text(`Shiba`, width/2, height/2);
+    pop();
+}
+
+function goldenRetriever() {
+    // Golden Retriever state
+    push();
+    background(0);
+    textSize(30);
+    fill(255,181,48);
+    textAlign(CENTER, CENTER);
+    text(`Golden Retriever`, width/2, height/2);
+    pop();
+}
+
+function pug() {
+    // Pug state
+    push();
+    background(0);
+    textSize(30);
+    fill(255,181,48);
+    textAlign(CENTER, CENTER);
+    text(`Pug`, width/2, height/2);
+    pop();
+}
+
+function cashier() {
+    // Cashier state
+    push();
+    background(0);
+    textSize(30);
+    fill(255,181,48);
+    textAlign(CENTER, CENTER);
+    text(`Cashier`, width/2, height/2);
     pop();
 }
 
@@ -104,6 +160,14 @@ function handleInput() {
         circle1.vy = 0;
     }
 }
+
+function checkOverlap() {
+    // Check if the circle1 and shiba overlap
+    let d = dist(circle1.x, circle1.y, shibaImage);
+    if (d < circle1.size/2 + shibaImage/2) {
+       state = `shiba`;
+    }
+   }
 
 function display() {
     // Display the circles
