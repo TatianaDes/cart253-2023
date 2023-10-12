@@ -10,6 +10,7 @@
 
 let petstoreImage;
 let shibaImage;
+let goldenImage;
 
 let circle1 = {
     x: undefined,
@@ -28,12 +29,14 @@ let state = `title`; // Can be: title, simulation,
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
     shibaImage = loadImage("assets/images/shiba.avif");
+    goldenImage = loadImage("assets/images/goldenretriever.jpg");
 
 }
 
 function setup() {
     createCanvas(500, 500);
 
+    // Creates the start out point for circle1
     circle1.x = width/2
     circle1.y = height/2
 
@@ -75,6 +78,7 @@ function move() {
     circle1.x = circle1.x + circle1.vx;
     circle1.y = circle1.y + circle1.vy;
 
+    // Constrains circle1 from passing any border of the screen
     circle1.x = constrain(circle1.x, 0, width);
     circle1.y = constrain(circle1.y, 0, height);
 }
@@ -106,10 +110,11 @@ function handleInput() {
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
-    // Display the rectangle
-    push();
+    // Display the shiba
     image(shibaImage, 60, 355, 90, 90);
-    pop();
+    // Display the golden retriever
+    image(goldenImage, 360, 400, 90, 90);
+
 }
 
 function mousePressed() {
