@@ -11,11 +11,13 @@
 let petstoreImage;
 let shibaImage;
 let goldenImage;
+let pugImage;
+let cashierImage;
 
 let circle1 = {
-    x: undefined,
-    y: undefined,
-    size: 60,
+    x: 250,
+    y: 450,
+    size: 50,
     vx: 0,
     vy: 0,
     speed: 3,
@@ -28,18 +30,15 @@ let state = `title`; // Can be: title, simulation,
 */
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
-    shibaImage = loadImage("assets/images/shiba.avif");
-    goldenImage = loadImage("assets/images/goldenretriever.jpg");
+    shibaImage = loadImage("assets/images/shiba.png");
+    goldenImage = loadImage("assets/images/goldenretriever.png");
+    pugImage = loadImage("assets/images/pug.png");
+    cashierImage = loadImage("assets/images/cashier.png");
 
 }
 
 function setup() {
     createCanvas(500, 500);
-
-    // Creates the start out point for circle1
-    circle1.x = width/2
-    circle1.y = height/2
-
 }
 
 function draw() {
@@ -111,9 +110,13 @@ function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
     // Display the shiba
-    image(shibaImage, 60, 355, 90, 90);
+    image(shibaImage, 60, 335, 120, 120);
     // Display the golden retriever
-    image(goldenImage, 360, 400, 90, 90);
+    image(goldenImage, 340, 370, 170, 170);
+    // Display the pug
+    image(pugImage, 285, 58, 120, 120);
+    // Display the cashier
+    image(cashierImage, 135, 140, 260, 170);
 
 }
 
