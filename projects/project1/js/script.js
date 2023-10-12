@@ -2,8 +2,7 @@
  * The Right Dog For You
  * Tatiana Désormeaux
  * 
- * This is a template. You must fill in the title, author, 
- * and this description to match your project!
+ * This is a simulation about a pet store and about finding the right fit dog for you, you can go over each type of dog to find out what breed it is as well as a bit of a description of the dog.
  */
 
 "use strict";
