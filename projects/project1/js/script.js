@@ -118,7 +118,7 @@ function shibaDog() {
     text(`Name: Luna`, 50, 80);
     text(`Sex: Female`, 50, 130);
     text(`Breed: Shiba Inu`, 50, 180);
-    text(`Age: 1 Year`, 50, 230);
+    text(`Age: 8 Year`, 50, 230);
     textSize(14.8);
     text(`Who is Luna: Luna is an excitable, lovable dog.`, 50, 280);
     text(`She is gentle and always happy to be around people of any age.`, 50, 310);
@@ -140,7 +140,7 @@ function goldenRetrieverDog() {
     text(`Name: Mia`, 50, 80);
     text(`Sex: Female`, 50, 130);
     text(`Breed: Golden Retriever`, 50, 180);
-    text(`Age: 6 Years`, 50, 230);
+    text(`Age: 11 Years`, 50, 230);
     textSize(14.8);
     text(`Who is Mia: Mia is a calm and gentle dog.`, 50, 280);
     text(`She is quiet and loves watching TV by the couch.`, 50, 310);
@@ -157,9 +157,18 @@ function pugDog() {
     push();
     background(0);
     textSize(30);
-    fill(255,181,48);
-    textAlign(CENTER, CENTER);
-    text(`Pug`, width/2, height/2);
+    fill(255,23,23);
+    text(`Name: Hades`, 50, 80);
+    text(`Sex: Male`, 50, 130);
+    text(`Breed: Pug`, 50, 180);
+    text(`Age: 2 Years`, 50, 230);
+    textSize(14.8);
+    text(`Who is Hades: Hades is a hyper and silly dog.`, 50, 280);
+    text(`He can be loud but can easily be calmed down by toys.`, 50, 310);
+    text(`He is great with other dogs and loves to make friends.`, 50, 340);
+    text(`He is loving and adores company.`, 50, 370);
+    text(`Hades is looking for a family ready to love a little fur ball,`, 50, 400);
+    text(`and can also make him feel safe in this big world of big dogs!`, 50, 430);
     pop();
 }
 
