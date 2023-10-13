@@ -177,9 +177,11 @@ function cashierWorker() {
     push();
     background(0);
     textSize(30);
-    fill(255,181,48);
+    fill(255,127,214);
     textAlign(CENTER, CENTER);
-    text(`Cashier`, width/2, height/2);
+    text(`I hope you have a wonderful day,`, 250, 220);
+    text(`and we hope to see you soon!`, 250, 250);
+    text(`The dogs will surely miss you!`, 250, 300);
     pop();
 }
 
