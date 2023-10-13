@@ -8,12 +8,11 @@
 "use strict";
 
 let petstoreImage;
-let cashierImage;
 
 let circle1 = {
     x: 250,
     y: 450,
-    size: 50,
+    size: 40,
     vx: 0,
     vy: 0,
     speed: 3,
@@ -40,6 +39,14 @@ let pug = {
     image: undefined
 };
 
+let cashier = {
+    x: 265, 
+    y: 240, 
+    sizeX: 200,
+    sizeY: 140,
+    image: undefined
+}
+
 let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, cashier
 
 /**
@@ -50,7 +57,7 @@ function preload() {
     shiba.image = loadImage("assets/images/shiba.png");
     golden.image = loadImage("assets/images/goldenretriever.png");
     pug.image = loadImage("assets/images/pug.png");
-    cashierImage = loadImage("assets/images/cashier.png");
+    cashier.image = loadImage("assets/images/cashier.png");
 
 }
 
@@ -76,7 +83,7 @@ function draw() {
         pugDog();
     }
     else if (state === `cashier`) {
-        cashier();
+        cashierWorker();
     }
 }
 
@@ -136,7 +143,7 @@ function pugDog() {
     pop();
 }
 
-function cashier() {
+function cashierWorker() {
     // Cashier state
     push();
     background(0);
@@ -148,7 +155,7 @@ function cashier() {
 }
 
 function move() {
-    // Move the circles
+    // Move circle1
     circle1.x = circle1.x + circle1.vx;
     circle1.y = circle1.y + circle1.vy;
 
@@ -195,6 +202,10 @@ function checkOverlap() {
     if (s < circle1.size/2 + pug.size/2) {
        state = `pug`;
     }
+    let t = dist(circle1.x, circle1.y, cashier.x, cashier.y);
+    if (t < circle1.size/2 + cashier.sizeX/2) {
+       state = `cashier`;
+    }
    }
 
 function display() {
@@ -208,7 +219,7 @@ function display() {
     // Display the pug image from "FreePik"
     image(pug.image, pug.x, pug.y, pug.size, pug.size);
     // Display the cashier image from "Adobe Stock"
-    image(cashierImage, 135, 140, 260, 170);
+    image(cashier.image, cashier.x, cashier.y, cashier.sizeX, cashier.sizeY);
 
 }
 
