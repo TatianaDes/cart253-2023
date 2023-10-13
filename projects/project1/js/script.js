@@ -20,30 +20,32 @@ let circle1 = {
 
 let shiba = {
     x: 110,
-    y: 395,
-    size: 120,
+    y: 392,
+    size: 100,
     image: undefined
 };
 
 let golden = {
     x: 420,
-    y: 450, 
-    size: 170,
+    y: 445, 
+    sizeX: 170,
+    sizeY: 100,
     image: undefined
 };
 
 let pug = {
     x: 345,
     y: 117, 
-    size: 120,
+    sizeX: 60,
+    sizeY: 80,
     image: undefined
 };
 
 let cashier = {
-    x: 265, 
-    y: 240, 
-    sizeX: 200,
-    sizeY: 140,
+    x: 263, 
+    y: 260, 
+    sizeX: 120,
+    sizeY: 100,
     image: undefined
 }
 
@@ -226,11 +228,11 @@ function checkOverlap() {
        state = `shiba`;
     }
     let i = dist(circle1.x, circle1.y, golden.x, golden.y);
-    if (i < circle1.size/2 + golden.size/2) {
+    if (i < circle1.size/2 + golden.sizeX/2) {
        state = `goldenRetriever`;
     }
     let s = dist(circle1.x, circle1.y, pug.x, pug.y);
-    if (s < circle1.size/2 + pug.size/2) {
+    if (s < circle1.size/2 + pug.sizeX/2) {
        state = `pug`;
     }
     let t = dist(circle1.x, circle1.y, cashier.x, cashier.y);
@@ -246,9 +248,9 @@ function display() {
     // Display the shiba image from "Prompt Hunt"
     image(shiba.image, shiba.x, shiba.y, shiba.size, shiba.size);
     // Display the golden retriever image from "PNGTree"
-    image(golden.image, golden.x, golden.y, golden.size, golden.size);
+    image(golden.image, golden.x, golden.y, golden.sizeX, golden.sizeY);
     // Display the pug image from "FreePik"
-    image(pug.image, pug.x, pug.y, pug.size, pug.size);
+    image(pug.image, pug.x, pug.y, pug.sizeX, pug.sizeY);
     // Display the cashier image from "Adobe Stock"
     image(cashier.image, cashier.x, cashier.y, cashier.sizeX, cashier.sizeY);
 
