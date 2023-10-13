@@ -31,10 +31,6 @@ let rectangle = {
     size: 5,
 };
 
-let x = 10;
-let speed = 2;
-
-
 let state = `title`; // Can be: title, simulation, love, sadness, acceptance
 
 /**
@@ -61,16 +57,6 @@ function setup() {
 
 function draw() {
     background(0);
-
-    push();
-    fill(255, 255, 255);
-    ellipse(x, height/2, 20, 20);
-    x = x + speed;
-    
-    if(x > width - 10 || x < 10) {
-      speed = -speed;
-    }
-    pop();
 
     // Setting up all the different states
     if (state === `title`) {

@@ -8,7 +8,6 @@
 "use strict";
 
 let petstoreImage;
-let shibaImage;
 let goldenImage;
 let pugImage;
 let cashierImage;
@@ -22,6 +21,13 @@ let circle1 = {
     speed: 3,
 };
 
+let shiba = {
+    x: 110,
+    y: 395,
+    size: 120,
+    image: undefined
+};
+
 let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, cashier
 
 /**
@@ -29,7 +35,7 @@ let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, 
 */
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
-    shibaImage = loadImage("assets/images/shiba.png");
+    shiba.image = loadImage("assets/images/shiba.png");
     goldenImage = loadImage("assets/images/goldenretriever.png");
     pugImage = loadImage("assets/images/pug.png");
     cashierImage = loadImage("assets/images/cashier.png");
@@ -49,7 +55,7 @@ function draw() {
         simulation();
     }
     else if (state === `shiba`) {
-        shiba();
+        shibaDog();
     }
     else if (state === `goldenRetriever`) {
         goldenRetriever();
@@ -79,11 +85,12 @@ function simulation() {
     background(petstoreImage, 0, 0);
     move();
     handleInput();
+    checkOverlap();
     display();
     pop();
 }
 
-function shiba() {
+function shibaDog() {
     // Shiba state
     push();
     background(0);
@@ -93,6 +100,7 @@ function shiba() {
     text(`Shiba`, width/2, height/2);
     pop();
 }
+
 
 function goldenRetriever() {
     // Golden Retriever state
@@ -162,9 +170,9 @@ function handleInput() {
 }
 
 function checkOverlap() {
-    // Check if the circle1 and shiba overlap
-    let d = dist(circle1.x, circle1.y, shibaImage);
-    if (d < circle1.size/2 + shibaImage/2) {
+    // Check if the circles overlap
+    let d = dist(circle1.x, circle1.y, shiba.x, shiba.y);
+    if (d < circle1.size/2 + shiba.size/2) {
        state = `shiba`;
     }
    }
@@ -172,8 +180,9 @@ function checkOverlap() {
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
+    imageMode(CENTER);
     // Display the shiba image from "Prompt Hunt"
-    image(shibaImage, 60, 335, 120, 120);
+    image(shiba.image, shiba.x, shiba.y, shiba.size, shiba.size);
     // Display the golden retriever image from "PNGTree"
     image(goldenImage, 340, 370, 170, 170);
     // Display the pug image from "FreePik"
