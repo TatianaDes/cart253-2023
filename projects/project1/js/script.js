@@ -28,6 +28,13 @@ let shiba = {
     image: undefined
 };
 
+let golden = {
+    x: 420,
+    y: 450, 
+    size: 170,
+    image: undefined
+};
+
 let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, cashier
 
 /**
@@ -36,7 +43,7 @@ let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, 
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
     shiba.image = loadImage("assets/images/shiba.png");
-    goldenImage = loadImage("assets/images/goldenretriever.png");
+    golden.image = loadImage("assets/images/goldenretriever.png");
     pugImage = loadImage("assets/images/pug.png");
     cashierImage = loadImage("assets/images/cashier.png");
 
@@ -58,7 +65,7 @@ function draw() {
         shibaDog();
     }
     else if (state === `goldenRetriever`) {
-        goldenRetriever();
+        goldenRetrieverDog();
     }
     else if (state === `pug`) {
         pug();
@@ -102,7 +109,7 @@ function shibaDog() {
 }
 
 
-function goldenRetriever() {
+function goldenRetrieverDog() {
     // Golden Retriever state
     push();
     background(0);
@@ -175,6 +182,10 @@ function checkOverlap() {
     if (d < circle1.size/2 + shiba.size/2) {
        state = `shiba`;
     }
+    let i = dist(circle1.x, circle1.y, golden.x, golden.y);
+    if (i < circle1.size/2 + golden.size/2) {
+       state = `goldenRetriever`;
+    }
    }
 
 function display() {
@@ -184,7 +195,7 @@ function display() {
     // Display the shiba image from "Prompt Hunt"
     image(shiba.image, shiba.x, shiba.y, shiba.size, shiba.size);
     // Display the golden retriever image from "PNGTree"
-    image(goldenImage, 340, 370, 170, 170);
+    image(golden.image, golden.x, golden.y, golden.size, golden.size);
     // Display the pug image from "FreePik"
     image(pugImage, 285, 58, 120, 120);
     // Display the cashier image from "Adobe Stock"
