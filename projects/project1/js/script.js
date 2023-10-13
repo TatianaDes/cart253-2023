@@ -115,8 +115,18 @@ function shibaDog() {
     background(0);
     textSize(30);
     fill(255,181,48);
-    textAlign(CENTER, CENTER);
-    text(`Shiba`, width/2, height/2);
+    text(`Name: Emmy`, 50, 80);
+    text(`Sex: Female`, 50, 130);
+    text(`Breed: Shiba Inu`, 50, 180);
+    text(`Age: 1 Year`, 50, 230);
+    textSize(14.8);
+    text(`Who is Emmy: Emmy is an excitable, lovable dog.`, 50, 280);
+    text(`She is gentle and always happy to be around people of any age.`, 50, 310);
+    text(`She can get nervous when too much stimulation occurs around her,`, 50, 340);
+    text(`but a little breather outside and comforting`, 50, 370);
+    text(`pets can calm her straight down.`, 50, 400);
+    text(`She is looking for a beautiful family`, 50, 430);
+    text(`ready to treat her like the wonderful dog she is!`, 50, 460);
     pop();
 }
 
