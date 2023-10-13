@@ -8,8 +8,6 @@
 "use strict";
 
 let petstoreImage;
-let goldenImage;
-let pugImage;
 let cashierImage;
 
 let circle1 = {
@@ -35,6 +33,13 @@ let golden = {
     image: undefined
 };
 
+let pug = {
+    x: 345,
+    y: 117, 
+    size: 120,
+    image: undefined
+};
+
 let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, cashier
 
 /**
@@ -44,7 +49,7 @@ function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
     shiba.image = loadImage("assets/images/shiba.png");
     golden.image = loadImage("assets/images/goldenretriever.png");
-    pugImage = loadImage("assets/images/pug.png");
+    pug.image = loadImage("assets/images/pug.png");
     cashierImage = loadImage("assets/images/cashier.png");
 
 }
@@ -68,7 +73,7 @@ function draw() {
         goldenRetrieverDog();
     }
     else if (state === `pug`) {
-        pug();
+        pugDog();
     }
     else if (state === `cashier`) {
         cashier();
@@ -120,7 +125,7 @@ function goldenRetrieverDog() {
     pop();
 }
 
-function pug() {
+function pugDog() {
     // Pug state
     push();
     background(0);
@@ -186,6 +191,10 @@ function checkOverlap() {
     if (i < circle1.size/2 + golden.size/2) {
        state = `goldenRetriever`;
     }
+    let s = dist(circle1.x, circle1.y, pug.x, pug.y);
+    if (s < circle1.size/2 + pug.size/2) {
+       state = `pug`;
+    }
    }
 
 function display() {
@@ -197,7 +206,7 @@ function display() {
     // Display the golden retriever image from "PNGTree"
     image(golden.image, golden.x, golden.y, golden.size, golden.size);
     // Display the pug image from "FreePik"
-    image(pugImage, 285, 58, 120, 120);
+    image(pug.image, pug.x, pug.y, pug.size, pug.size);
     // Display the cashier image from "Adobe Stock"
     image(cashierImage, 135, 140, 260, 170);
 
