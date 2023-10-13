@@ -114,18 +114,18 @@ function shibaDog() {
     push();
     background(0);
     textSize(30);
-    fill(255,181,48);
-    text(`Name: Emmy`, 50, 80);
+    fill(255,237,32);
+    text(`Name: Luna`, 50, 80);
     text(`Sex: Female`, 50, 130);
     text(`Breed: Shiba Inu`, 50, 180);
     text(`Age: 1 Year`, 50, 230);
     textSize(14.8);
-    text(`Who is Emmy: Emmy is an excitable, lovable dog.`, 50, 280);
+    text(`Who is Luna: Luna is an excitable, lovable dog.`, 50, 280);
     text(`She is gentle and always happy to be around people of any age.`, 50, 310);
     text(`She can get nervous when too much stimulation occurs around her,`, 50, 340);
     text(`but a little breather outside and comforting`, 50, 370);
     text(`pets can calm her straight down.`, 50, 400);
-    text(`She is looking for a beautiful family`, 50, 430);
+    text(`Luna is looking for a beautiful family`, 50, 430);
     text(`ready to treat her like the wonderful dog she is!`, 50, 460);
     pop();
 }
@@ -136,9 +136,19 @@ function goldenRetrieverDog() {
     push();
     background(0);
     textSize(30);
-    fill(255,181,48);
-    textAlign(CENTER, CENTER);
-    text(`Golden Retriever`, width/2, height/2);
+    fill(27,22,255);
+    text(`Name: Mia`, 50, 80);
+    text(`Sex: Female`, 50, 130);
+    text(`Breed: Golden Retriever`, 50, 180);
+    text(`Age: 6 Years`, 50, 230);
+    textSize(14.8);
+    text(`Who is Mia: Mia is a calm and gentle dog.`, 50, 280);
+    text(`She is quiet and loves watching TV by the couch.`, 50, 310);
+    text(`While she likes to rest, she puts a heavy importance on protection.`, 50, 340);
+    text(`She is a wonderful guard dog and`, 50, 370);
+    text(`loves to make sure everyone is safe.`, 50, 400);
+    text(`Mia is looking for a family that likes to stay at home,`, 50, 430);
+    text(`but is more than willing to give her the exercise she needs!`, 50, 460);
     pop();
 }
 
