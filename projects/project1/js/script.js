@@ -15,7 +15,14 @@ let circle1 = {
     size: 40,
     vx: 0,
     vy: 0,
-    speed: 3,
+    speed: 3
+};
+
+let circle2 = {
+    x: 0,
+    y: 490,
+    size: 20,
+    speed: 0.5
 };
 
 let shiba = {
@@ -51,9 +58,6 @@ let cashier = {
 
 let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, cashier
 
-/**
- * Description of preload
-*/
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
     shiba.image = loadImage("assets/images/shiba.png");
@@ -195,6 +199,10 @@ function move() {
     // Constrains circle1 from passing any border of the screen
     circle1.x = constrain(circle1.x, 0, width);
     circle1.y = constrain(circle1.y, 0, height);
+
+    // Circle2 moving it back and forth
+    circle2.x = circle2.x + circle2.speed;
+
 }
 
 function handleInput() {
@@ -239,11 +247,27 @@ function checkOverlap() {
     if (t < circle1.size/2 + cashier.sizeX/2) {
        state = `cashier`;
     }
+
+    let a = dist(circle1.x, circle1.y, circle2.x, circle2.y);
+    if (a < circle1.size/2 + circle2.size/2) {
+        circle2.speed = -circle2.speed
    }
+   else if (circle2.x < 0) {
+    circle2.speed = -circle2.speed;
+   }
+   else if (circle2.x > 329) {
+    circle2.speed = -circle2.speed;
+   }
+
+
+}
 
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
+    noStroke();
+    fill(16,30,88);
+    ellipse(circle2.x, circle2.y, circle2.size);
     imageMode(CENTER);
     // Display the shiba image from "Prompt Hunt"
     image(shiba.image, shiba.x, shiba.y, shiba.size, shiba.size);
