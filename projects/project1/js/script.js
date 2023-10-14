@@ -15,7 +15,7 @@ let circle1 = {
     size: 40,
     vx: 0,
     vy: 0,
-    speed: 3
+    speed: 3,
 };
 
 let circle2 = {
@@ -23,6 +23,13 @@ let circle2 = {
     y: 490,
     size: 20,
     speed: 0.5
+};
+
+let circle3 = {
+    x: 250,
+    y: 20,
+    size: 50,
+    speed: 0.25,
 };
 
 let shiba = {
@@ -54,7 +61,7 @@ let cashier = {
     sizeX: 120,
     sizeY: 100,
     image: undefined
-}
+};
 
 let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, cashier
 
@@ -111,6 +118,7 @@ function simulation() {
     move();
     handleInput();
     checkOverlap();
+    onOff();
     display();
     pop();
 }
@@ -200,9 +208,8 @@ function move() {
     circle1.x = constrain(circle1.x, 0, width);
     circle1.y = constrain(circle1.y, 0, height);
 
-    // Circle2 moving it back and forth
+    // Circle2 moving
     circle2.x = circle2.x + circle2.speed;
-
 }
 
 function handleInput() {
@@ -230,44 +237,69 @@ function handleInput() {
 }
 
 function checkOverlap() {
-    // Check if the circles overlap
+    // Check if circle1 and shiba overlap
     let d = dist(circle1.x, circle1.y, shiba.x, shiba.y);
     if (d < circle1.size/2 + shiba.size/2) {
        state = `shiba`;
     }
+    // Check if circle1 and golden overlap
     let i = dist(circle1.x, circle1.y, golden.x, golden.y);
     if (i < circle1.size/2 + golden.sizeX/2) {
        state = `goldenRetriever`;
     }
+    // Check if circle1 and pug overlap
     let s = dist(circle1.x, circle1.y, pug.x, pug.y);
     if (s < circle1.size/2 + pug.sizeX/2) {
        state = `pug`;
     }
+    // Check if circle1 and cashier overlap
     let t = dist(circle1.x, circle1.y, cashier.x, cashier.y);
     if (t < circle1.size/2 + cashier.sizeX/2) {
        state = `cashier`;
     }
 
+    // Giving circle2 boundaries as well as check if circle1 and circle2 overlap
     let a = dist(circle1.x, circle1.y, circle2.x, circle2.y);
     if (a < circle1.size/2 + circle2.size/2) {
         circle2.speed = -circle2.speed
    }
+   // Creating boundaries
    else if (circle2.x < 0) {
     circle2.speed = -circle2.speed;
    }
    else if (circle2.x > 329) {
     circle2.speed = -circle2.speed;
    }
+}
 
+function onOff() {
+    // Circle3 moving back and forth
+    circle3.x = circle3.x + circle3.speed;
 
+    if (circle3.x > 260) {
+        circle3.speed = -circle3.speed;
+    }
+    
+    if (circle3.x < 240) {
+        circle3.speed = -circle3.speed;
+    }
 }
 
 function display() {
     // Display the circles
     ellipse(circle1.x, circle1.y, circle1.size);
+
+    push();
     noStroke();
     fill(16,30,88);
     ellipse(circle2.x, circle2.y, circle2.size);
+    pop();
+
+    push();
+    noStroke();
+    ellipse(circle3.x, circle3.y, circle3.size);
+    pop();
+
     imageMode(CENTER);
     // Display the shiba image from "Prompt Hunt"
     image(shiba.image, shiba.x, shiba.y, shiba.size, shiba.size);
