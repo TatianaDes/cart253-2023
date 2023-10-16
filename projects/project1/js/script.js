@@ -26,10 +26,11 @@ let circle2 = {
 };
 
 let circle3 = {
-    x: 250,
-    y: 20,
+    x: undefined,
+    y: undefined,
     size: 50,
     speed: 0.25,
+    fill: 255
 };
 
 let shiba = {
@@ -76,6 +77,11 @@ function preload() {
 
 function setup() {
     createCanvas(500, 500);
+    
+    // Giving circle3 a location
+    noStroke();
+    circle3.x = 250;
+    circle3.y = 20;
 }
 
 function draw() {
@@ -301,6 +307,7 @@ function display() {
 
     push();
     noStroke();
+    circle3.fill = map(mouseX, 0, width, 0, 255);
     ellipse(circle3.x, circle3.y, circle3.size);
     pop();
 
