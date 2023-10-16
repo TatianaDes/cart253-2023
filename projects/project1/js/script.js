@@ -16,6 +16,7 @@ let circle1 = {
     vx: 0,
     vy: 0,
     speed: 3,
+    image: undefined
 };
 
 let circle2 = {
@@ -68,6 +69,7 @@ let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, 
 
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
+    carrier.image = loadImage("assets/images/carrier.png");
     shiba.image = loadImage("assets/images/shiba.png");
     golden.image = loadImage("assets/images/goldenretriever.png");
     pug.image = loadImage("assets/images/pug.png");
@@ -295,20 +297,22 @@ function onOff() {
 function display() {
     // Display circle1
     push();
-    noStroke();
-    fill(17,58,9);
-    ellipse(circle1.x, circle1.y, circle1.size);
+    imageMode(CENTER);
+    image(circle1.image, circle1.x, circle1.y, circle1.size, circle1.size);
     pop();
 
+    // Display circle2
     push();
     noStroke();
     fill(16,30,88);
     ellipse(circle2.x, circle2.y, circle2.size);
     pop();
 
+    // Display circle3
     push();
     noStroke();
     circle3.fill = map(mouseX, 0, width, 0, 255);
+    fill(circle3.fill);
     ellipse(circle3.x, circle3.y, circle3.size);
     pop();
 
