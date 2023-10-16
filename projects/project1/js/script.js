@@ -103,9 +103,9 @@ function draw() {
 function title() {
     // Title state
     push();
-    background(0);
+    background(255,227,78);
     textSize(30);
-    fill(255,181,48);
+    fill(238,159,19);
     textAlign(CENTER, CENTER);
     text(`Welcome to Our Humble Pet Store!`, width/2, height/2);
     pop();
@@ -126,13 +126,13 @@ function simulation() {
 function shibaDog() {
     // Shiba state
     push();
-    background(0);
+    background(212,119,33);
     textSize(30);
     fill(255,237,32);
     text(`Name: Luna`, 50, 80);
     text(`Sex: Female`, 50, 130);
     text(`Breed: Shiba Inu`, 50, 180);
-    text(`Age: 8 Year`, 50, 230);
+    text(`Age: 8 Years`, 50, 230);
     textSize(14.8);
     text(`Who is Luna: Luna is an excitable, lovable dog.`, 50, 280);
     text(`She is gentle and always happy to be around people of any age.`, 50, 310);
@@ -148,7 +148,7 @@ function shibaDog() {
 function goldenRetrieverDog() {
     // Golden Retriever state
     push();
-    background(0);
+    background(157,168,255);
     textSize(30);
     fill(27,22,255);
     text(`Name: Mia`, 50, 80);
@@ -169,7 +169,7 @@ function goldenRetrieverDog() {
 function pugDog() {
     // Pug state
     push();
-    background(0);
+    background(102,36,36);
     textSize(30);
     fill(255,23,23);
     text(`Name: Hades`, 50, 80);
@@ -189,7 +189,7 @@ function pugDog() {
 function cashierWorker() {
     // Cashier state
     push();
-    background(0);
+    background(112,22,114);
     textSize(30);
     fill(255,127,214);
     textAlign(CENTER, CENTER);
@@ -286,8 +286,12 @@ function onOff() {
 }
 
 function display() {
-    // Display the circles
+    // Display circle1
+    push();
+    noStroke();
+    fill(17,58,9);
     ellipse(circle1.x, circle1.y, circle1.size);
+    pop();
 
     push();
     noStroke();
