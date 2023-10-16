@@ -113,7 +113,8 @@ function title() {
     textSize(30);
     fill(238,159,19);
     textAlign(CENTER, CENTER);
-    text(`Welcome to Our Humble Pet Store!`, width/2, height/2);
+    text(`The Right Dog for You:`, 250, 250);
+    text(`Welcome to Our Humble Pet Store!`, 250, 290);
     pop();
 }
 
