@@ -117,6 +117,9 @@ function title() {
     textAlign(CENTER, CENTER);
     text(`The Right Dog for You:`, 250, 250);
     text(`Welcome to Our Humble Pet Store!`, 250, 290);
+    textSize(11);
+    fill(244,104,84);
+    text(`Use the arrow keys to move the carrier, and the mouse to turn the light on and off.`, 290, 490);
     pop();
 }
 
