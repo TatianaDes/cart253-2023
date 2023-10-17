@@ -9,7 +9,7 @@
 
 let petstoreImage;
 
-let circle1 = {
+let carrier = {
     x: 250,
     y: 450,
     size: 60,
@@ -19,14 +19,14 @@ let circle1 = {
     image: undefined
 };
 
-let circle2 = {
+let ball = {
     x: 0,
     y: 490,
     size: 20,
     speed: 0.5
 };
 
-let circle3 = {
+let light = {
     x: undefined,
     y: undefined,
     size: 50,
@@ -69,7 +69,7 @@ let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, 
 
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
-    circle1.image = loadImage("assets/images/carrier.png");
+    carrier.image = loadImage("assets/images/carrier.png");
     shiba.image = loadImage("assets/images/shiba.png");
     golden.image = loadImage("assets/images/goldenretriever.png");
     pug.image = loadImage("assets/images/pug.png");
@@ -80,10 +80,10 @@ function preload() {
 function setup() {
     createCanvas(500, 500);
     
-    // Giving circle3 a location
+    // Giving light a location
     noStroke();
-    circle3.x = 250;
-    circle3.y = 20;
+    light.x = 250;
+    light.y = 20;
 }
 
 function draw() {
@@ -209,111 +209,111 @@ function cashierWorker() {
 }
 
 function move() {
-    // Move circle1
-    circle1.x = circle1.x + circle1.vx;
-    circle1.y = circle1.y + circle1.vy;
+    // Move carrier
+    carrier.x = carrier.x + carrier.vx;
+    carrier.y = carrier.y + carrier.vy;
 
-    // Constrains circle1 from passing any border of the screen
-    circle1.x = constrain(circle1.x, 0, width);
-    circle1.y = constrain(circle1.y, 0, height);
+    // Constrains carrier from passing any border of the screen
+    carrier.x = constrain(carrier.x, 0, width);
+    carrier.y = constrain(carrier.y, 0, height);
 
-    // Circle2 moving
-    circle2.x = circle2.x + circle2.speed;
+    // Ball moving
+    ball.x = ball.x + ball.speed;
 }
 
 function handleInput() {
-    // Make circle1 move using the arrow keys
+    // Make carrier move using the arrow keys
     if (keyIsDown(LEFT_ARROW)) {
-        circle1.vx = -circle1.speed; 
+        carrier.vx = -carrier.speed; 
     }
     else if (keyIsDown(RIGHT_ARROW)) {
-        circle1.vx = circle1.speed;
+        carrier.vx = carrier.speed;
     }
     else {
-        circle1.vx = 0;
+        carrier.vx = 0;
     }
 
     if (keyIsDown(UP_ARROW)) {
-        circle1.vy = -circle1.speed;
+        carrier.vy = -carrier.speed;
     }
     else if (keyIsDown(DOWN_ARROW)) {
-        circle1.vy = circle1.speed;
+        carrier.vy = carrier.speed;
     }
     else {
 
-        circle1.vy = 0;
+        carrier.vy = 0;
     }
 }
 
 function checkOverlap() {
-    // Check if circle1 and shiba overlap
-    let d = dist(circle1.x, circle1.y, shiba.x, shiba.y);
-    if (d < circle1.size/2 + shiba.size/2) {
+    // Check if carrier and shiba overlap
+    let d = dist(carrier.x, carrier.y, shiba.x, shiba.y);
+    if (d < carrier.size/2 + shiba.size/2) {
        state = `shiba`;
     }
-    // Check if circle1 and golden overlap
-    let i = dist(circle1.x, circle1.y, golden.x, golden.y);
-    if (i < circle1.size/2 + golden.sizeX/2) {
+    // Check if carrier and golden overlap
+    let i = dist(carrier.x, carrier.y, golden.x, golden.y);
+    if (i < carrier.size/2 + golden.sizeX/2) {
        state = `goldenRetriever`;
     }
-    // Check if circle1 and pug overlap
-    let s = dist(circle1.x, circle1.y, pug.x, pug.y);
-    if (s < circle1.size/2 + pug.sizeX/2) {
+    // Check if carrier and pug overlap
+    let s = dist(carrier.x, carrier.y, pug.x, pug.y);
+    if (s < carrier.size/2 + pug.sizeX/2) {
        state = `pug`;
     }
-    // Check if circle1 and cashier overlap
-    let t = dist(circle1.x, circle1.y, cashier.x, cashier.y);
-    if (t < circle1.size/2 + cashier.sizeX/2) {
+    // Check if carrier and cashier overlap
+    let t = dist(carrier.x, carrier.y, cashier.x, cashier.y);
+    if (t < carrier.size/2 + cashier.sizeX/2) {
        state = `cashier`;
     }
 
-    // Giving circle2 boundaries as well as check if circle1 and circle2 overlap
-    let a = dist(circle1.x, circle1.y, circle2.x, circle2.y);
-    if (a < circle1.size/2 + circle2.size/2) {
-        circle2.speed = -circle2.speed
+    // Giving ball boundaries as well as check if carrier and ball overlap
+    let a = dist(carrier.x, carrier.y, ball.x, ball.y);
+    if (a < carrier.size/2 + ball.size/2) {
+        ball.speed = -ball.speed
    }
    // Creating boundaries
-   else if (circle2.x < 0) {
-    circle2.speed = -circle2.speed;
+   else if (ball.x < 0) {
+    ball.speed = -ball.speed;
    }
-   else if (circle2.x > 329) {
-    circle2.speed = -circle2.speed;
+   else if (ball.x > 329) {
+    ball.speed = -ball.speed;
    }
 }
 
 function onOff() {
-    // Circle3 moving back and forth
-    circle3.x = circle3.x + circle3.speed;
+    // Light moving back and forth
+    light.x = light.x + light.speed;
 
-    if (circle3.x > 260) {
-        circle3.speed = -circle3.speed;
+    if (light.x > 260) {
+        light.speed = -light.speed;
     }
     
-    if (circle3.x < 240) {
-        circle3.speed = -circle3.speed;
+    if (light.x < 240) {
+        light.speed = -light.speed;
     }
 }
 
 function display() {
-    // Display circle1
+    // Display carrier
     push();
     imageMode(CENTER);
-    image(circle1.image, circle1.x, circle1.y, circle1.size, circle1.size);
+    image(carrier.image, carrier.x, carrier.y, carrier.size, carrier.size);
     pop();
 
-    // Display circle2
+    // Display ball
     push();
     noStroke();
     fill(16,30,88);
-    ellipse(circle2.x, circle2.y, circle2.size);
+    ellipse(ball.x, ball.y, ball.size);
     pop();
 
-    // Display circle3
+    // Display light
     push();
     noStroke();
-    circle3.fill = map(mouseX, 0, width, 0, 255);
-    fill(circle3.fill);
-    ellipse(circle3.x, circle3.y, circle3.size);
+    light.fill = map(mouseX, 0, width, 0, 255);
+    fill(light.fill);
+    ellipse(light.x, light.y, light.size);
     pop();
 
     imageMode(CENTER);
