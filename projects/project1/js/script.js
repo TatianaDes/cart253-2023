@@ -150,13 +150,16 @@ function shibaDog() {
     text(`Age: 8 Years`, 50, 220);
     textSize(14.8);
     text(`Who is Luna:`, 50, 260);
-    text(`Who is Luna: Luna is an excitable, lovable dog.`, 50, 290);
+    text(`Luna is an excitable, lovable dog.`, 50, 290);
     text(`She is gentle and always happy to be around people of any age.`, 50, 320);
     text(`She can get nervous when too much stimulation occurs around her,`, 50, 350);
     text(`but a little breather outside and comforting`, 50, 380);
     text(`pets can calm her straight down.`, 50, 410);
     text(`Luna is looking for a beautiful family`, 50, 440);
     text(`ready to treat her like the wonderful dog she is!`, 50, 470);
+    textSize(12);
+    fill(249,255,101);
+    text(`(Refresh Page to Restart)`, 165, 495);
     pop();
 }
 
@@ -173,13 +176,16 @@ function goldenRetrieverDog() {
     text(`Age: 11 Years`, 50, 220);
     textSize(14.8);
     text(`Who is Mia:`, 50, 260);
-    text(`Who is Mia: Mia is a calm and gentle dog.`, 50, 290);
+    text(`Mia is a calm and gentle dog.`, 50, 290);
     text(`She is quiet and loves watching TV by the couch.`, 50, 320);
     text(`While she likes to rest, she puts a heavy importance on protection.`, 50, 350);
     text(`She is a wonderful guard dog and`, 50, 380);
     text(`loves to make sure everyone is safe.`, 50, 410);
     text(`Mia is looking for a family that likes to stay at home,`, 50, 440);
     text(`but is more than willing to give her the exercise she needs!`, 50, 470);
+    textSize(12);
+    fill(17,28,84);
+    text(`(Refresh Page to Restart)`, 165, 495);
     pop();
 }
 
@@ -195,12 +201,15 @@ function pugDog() {
     text(`Age: 2 Years`, 50, 220);
     textSize(14.8);
     text(`Who is Hades:`, 50, 260);
-    text(`Who is Hades: Hades is a hyper and silly dog.`, 50, 290);
+    text(`Hades is a hyper and silly dog.`, 50, 290);
     text(`He can be loud but can easily be calmed down by toys.`, 50, 320);
     text(`He is great with other dogs and loves to make friends.`, 50, 350);
     text(`He is loving and adores company.`, 50, 380);
     text(`Hades is looking for a family ready to love a little fur ball,`, 50, 410);
     text(`and can also make him feel safe in this big world of big dogs!`, 50, 440);
+    textSize(12);
+    fill(255,80,80);
+    text(`(Refresh Page to Restart)`, 165, 495);
     pop();
 }
 
@@ -214,6 +223,9 @@ function cashierWorker() {
     text(`I hope you have a wonderful day,`, 250, 220);
     text(`and we hope to see you soon!`, 250, 250);
     text(`The dogs will surely miss you!`, 250, 300);
+    textSize(12);
+    fill(251,191,238);
+    text(`(Refresh Page to Restart)`, 245, 490);
     pop();
 }
 
