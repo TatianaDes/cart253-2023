@@ -138,18 +138,19 @@ function shibaDog() {
     background(212,119,33);
     textSize(30);
     fill(255,237,32);
-    text(`Name: Luna`, 50, 80);
-    text(`Sex: Female`, 50, 130);
-    text(`Breed: Shiba Inu`, 50, 180);
-    text(`Age: 8 Years`, 50, 230);
+    text(`Name: Luna`, 50, 70);
+    text(`Sex: Female`, 50, 120);
+    text(`Breed: Shiba Inu`, 50, 170);
+    text(`Age: 8 Years`, 50, 220);
     textSize(14.8);
-    text(`Who is Luna: Luna is an excitable, lovable dog.`, 50, 280);
-    text(`She is gentle and always happy to be around people of any age.`, 50, 310);
-    text(`She can get nervous when too much stimulation occurs around her,`, 50, 340);
-    text(`but a little breather outside and comforting`, 50, 370);
-    text(`pets can calm her straight down.`, 50, 400);
-    text(`Luna is looking for a beautiful family`, 50, 430);
-    text(`ready to treat her like the wonderful dog she is!`, 50, 460);
+    text(`Who is Luna:`, 50, 260);
+    text(`Who is Luna: Luna is an excitable, lovable dog.`, 50, 290);
+    text(`She is gentle and always happy to be around people of any age.`, 50, 320);
+    text(`She can get nervous when too much stimulation occurs around her,`, 50, 350);
+    text(`but a little breather outside and comforting`, 50, 380);
+    text(`pets can calm her straight down.`, 50, 410);
+    text(`Luna is looking for a beautiful family`, 50, 440);
+    text(`ready to treat her like the wonderful dog she is!`, 50, 470);
     pop();
 }
 
@@ -160,18 +161,19 @@ function goldenRetrieverDog() {
     background(157,168,255);
     textSize(30);
     fill(27,22,255);
-    text(`Name: Mia`, 50, 80);
-    text(`Sex: Female`, 50, 130);
-    text(`Breed: Golden Retriever`, 50, 180);
-    text(`Age: 11 Years`, 50, 230);
+    text(`Name: Mia`, 50, 70);
+    text(`Sex: Female`, 50, 120);
+    text(`Breed: Golden Retriever`, 50, 170);
+    text(`Age: 11 Years`, 50, 220);
     textSize(14.8);
-    text(`Who is Mia: Mia is a calm and gentle dog.`, 50, 280);
-    text(`She is quiet and loves watching TV by the couch.`, 50, 310);
-    text(`While she likes to rest, she puts a heavy importance on protection.`, 50, 340);
-    text(`She is a wonderful guard dog and`, 50, 370);
-    text(`loves to make sure everyone is safe.`, 50, 400);
-    text(`Mia is looking for a family that likes to stay at home,`, 50, 430);
-    text(`but is more than willing to give her the exercise she needs!`, 50, 460);
+    text(`Who is Mia:`, 50, 260);
+    text(`Who is Mia: Mia is a calm and gentle dog.`, 50, 290);
+    text(`She is quiet and loves watching TV by the couch.`, 50, 320);
+    text(`While she likes to rest, she puts a heavy importance on protection.`, 50, 350);
+    text(`She is a wonderful guard dog and`, 50, 380);
+    text(`loves to make sure everyone is safe.`, 50, 410);
+    text(`Mia is looking for a family that likes to stay at home,`, 50, 440);
+    text(`but is more than willing to give her the exercise she needs!`, 50, 470);
     pop();
 }
 
@@ -181,17 +183,18 @@ function pugDog() {
     background(102,36,36);
     textSize(30);
     fill(255,23,23);
-    text(`Name: Hades`, 50, 80);
-    text(`Sex: Male`, 50, 130);
-    text(`Breed: Pug`, 50, 180);
-    text(`Age: 2 Years`, 50, 230);
+    text(`Name: Hades`, 50, 70);
+    text(`Sex: Male`, 50, 120);
+    text(`Breed: Pug`, 50, 170);
+    text(`Age: 2 Years`, 50, 220);
     textSize(14.8);
-    text(`Who is Hades: Hades is a hyper and silly dog.`, 50, 280);
-    text(`He can be loud but can easily be calmed down by toys.`, 50, 310);
-    text(`He is great with other dogs and loves to make friends.`, 50, 340);
-    text(`He is loving and adores company.`, 50, 370);
-    text(`Hades is looking for a family ready to love a little fur ball,`, 50, 400);
-    text(`and can also make him feel safe in this big world of big dogs!`, 50, 430);
+    text(`Who is Hades:`, 50, 260);
+    text(`Who is Hades: Hades is a hyper and silly dog.`, 50, 290);
+    text(`He can be loud but can easily be calmed down by toys.`, 50, 320);
+    text(`He is great with other dogs and loves to make friends.`, 50, 350);
+    text(`He is loving and adores company.`, 50, 380);
+    text(`Hades is looking for a family ready to love a little fur ball,`, 50, 410);
+    text(`and can also make him feel safe in this big world of big dogs!`, 50, 440);
     pop();
 }
 
