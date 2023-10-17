@@ -12,7 +12,7 @@ let petstoreImage;
 let circle1 = {
     x: 250,
     y: 450,
-    size: 40,
+    size: 60,
     vx: 0,
     vy: 0,
     speed: 3,
@@ -69,7 +69,7 @@ let state = `title`; // Can be: title, simulation, shiba, goldenretriever, pug, 
 
 function preload() {
     petstoreImage = loadImage("assets/images/pet-shop-interior.avif");
-    carrier.image = loadImage("assets/images/carrier.png");
+    circle1.image = loadImage("assets/images/carrier.png");
     shiba.image = loadImage("assets/images/shiba.png");
     golden.image = loadImage("assets/images/goldenretriever.png");
     pug.image = loadImage("assets/images/pug.png");
