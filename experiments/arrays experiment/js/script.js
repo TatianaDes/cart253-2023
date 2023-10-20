@@ -1,28 +1,27 @@
 
 "use strict";
 
-let fortunes = [
-    `It's not looking so good.`,
-    `You will trip over Brad Pitt today.`,
-    `You are going to enjoy gum.`,
-    `Happiness is yours for the taking.`,
-    `You will meet David Lynch.`
-];
+let images = [];
+let displayImage;
 
-let chosenFortune = `Click to see your future!`;
+function preload() {
+    for (let i = 0; i < 10; i++) {
+    let clownImage = loadImage(`assets/Images/clown-${i}.png`);
+    image.push(clownImage);
+    }
+}
 
 function setup() {
     createCanvas(600, 600);
-    textAlign(CENTER, CENTER);
-    textSize(32);
-    fill(255);
+
+    displayImage = random(images);
 }
 
 function draw() {
     background(0);
-    text(chosenFortune, width/2, height/2);
-}
 
-function mousePressed() {
-    chosenFortune = random(fortunes);
+    push();
+    imageMode(CENTER);
+    image(displayImage, width/2, height/2);
+    pop();
 }
