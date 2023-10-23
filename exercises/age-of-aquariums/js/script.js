@@ -10,11 +10,14 @@
 let dog = {
     x: 0,
     y: 0,
-    size: 40
+    size: 40,
+    vx: 0,
+    vy: 0,
+    speed: 3
   }
 
-let school = [];
-let schoolSize = 4;
+let litter = [];
+let litterSize = 4;
 
 let food = [];
 let foodSize = 0;
@@ -27,9 +30,9 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
-    // Make the fish have random positions and clean up the code
-    for (let i = 0; i < schoolSize; i++) {
-        school[i] = createFish(random(0, width), random(0, height));
+    // Make the puppies have random positions and clean up the code
+    for (let i = 0; i < litterSize; i++) {
+        litter[i] = createPuppies(random(0, width), random(0, height));
     }
 
     for (let i = 0; i < foodSize; i++) {
@@ -37,9 +40,9 @@ function setup() {
     }
 }
 
-// Creating the fish object for all the fish
-function createFish(x, y) {
-    let fish = {
+// Creating the puppies object for all the puppies
+function createPuppies(x, y) {
+    let puppies = {
         x: x,
         y: y,
         size: 50,
@@ -50,7 +53,7 @@ function createFish(x, y) {
         acceleration: 0.1,
         maxSpeed: 2
     };
-    return fish;
+    return puppies;
 }
 
 // Creating the dogFood object for all the dog food
@@ -70,13 +73,13 @@ function draw() {
     moveDog();
     displayDog();
 
-    // Calling the fuctions for all the fish in a clean way
-    for (let i = 0; i < school.length; i++) {
-        moveFish(school[i]);
-        displayFish(school[i]);
+    // Calling the fuctions for all the puppies in a clean way
+    for (let i = 0; i < litter.length; i++) {
+        movePuppies(litter[i]);
+        displayPuppies(litter[i]);
     }
 
-    // Calling the functions for all the fish in a clean way
+    // Calling the functions for all the puppies in a clean way
     for (let i = 0; i < food.length; i++) {
         displayFood(food[i]);
     }
@@ -88,54 +91,80 @@ function draw() {
 
 // Move dog with the mouse
 function moveDog() {
-    dog.x = mouseX;
-    dog.y = mouseY;
+
+    // Moving dog
+    dog.x = dog.x + dog.vx;
+    dog.y = dog.y + dog.vy;
+
+    // Make dog move using the arrow keys
+    if (keyIsDown(LEFT_ARROW)) {
+        dog.vx = -dog.speed; 
+    }
+    else if (keyIsDown(RIGHT_ARROW)) {
+        dog.vx = dog.speed;
+    }
+    else {
+        dog.vx = 0;
+    }
+    
+    if (keyIsDown(UP_ARROW)) {
+        dog.vy = -dog.speed;
+    }
+    else if (keyIsDown(DOWN_ARROW)) {
+        dog.vy = dog.speed;
+    }
+    else {
+    
+        dog.vy = 0;
+    }
+
+
 }
 
-// Make the fish run away from the dog
-function moveFish(fish) {
-    if (mouseX < fish.x) {
-        fish.ax = fish.acceleration;
+// Make the puppies run away from the dog
+function movePuppies(puppies) {
+    if (mouseX < puppies.x) {
+        puppies.ax = puppies.acceleration;
     }
     else {
-        fish.ax = -fish.acceleration;
+        puppies.ax = -puppies.acceleration;
     }
 
-    if (mouseY < fish.y) {
-        fish.ay = fish.acceleration;
+    if (mouseY < puppies.y) {
+        puppies.ay = puppies.acceleration;
     }
     else {
-        fish.ay = -fish.acceleration;
+        puppies.ay = -puppies.acceleration;
     }
 
-    /* Trying to see if I can make the fish scared of the dog but attracted to the food
-    if (food.x < fish.x) {
-        fish.ax = -fish.acceleration;
+    /* Trying to see if I can make the puppies scared of the dog but attracted to the food
+    if (food.x < puppies.x) {
+        puppies.ax = -puppies.acceleration;
     }
     else {
-        fish.ax = fish.acceleration;
+        puppies.ax = puppies.acceleration;
     }
 
-    if (food.y < fish.y) {
-        fish.ay = -fish.acceleration;
+    if (food.y < puppies.y) {
+        puppies.ay = -puppies.acceleration;
     }
     else {
-        fish.ay = fish.acceleration;
+        puppies.ay = puppies.acceleration;
     }
     */
 
-    fish.vx = fish.vx + fish.ax;
-    fish.vx = constrain(fish.vx, -fish.maxSpeed, fish.maxSpeed);
-    fish.vy = fish.vy + fish.ay;
-    fish.vy = constrain(fish.vy, -fish.maxSpeed, fish.maxSpeed);
+    puppies.vx = puppies.vx + puppies.ax;
+    puppies.vx = constrain(puppies.vx, -puppies.maxSpeed, puppies.maxSpeed);
+    puppies.vy = puppies.vy + puppies.ay;
+    puppies.vy = constrain(puppies.vy, -puppies.maxSpeed, puppies.maxSpeed);
 
-// Position is being added onto the velocity of fish
-fish.x = fish.x + fish.vx;
-fish.y = fish.y + fish.vy;
+// Position is being added onto the velocity of puppies
+puppies.x = puppies.x + puppies.vx;
+puppies.y = puppies.y + puppies.vy;
 
-// Constrain the fish to the width and height of the canvas
-fish.x = constrain(fish.x, 0, width);
-fish.y = constrain(fish.y, 0, height);
+// Constrain the puppies to the width and height of the canvas
+puppies.x = constrain(puppies.x, 0, width);
+puppies.y = constrain(puppies.y, 0, height);
 }
 
 // Display the dog
@@ -146,12 +175,12 @@ function displayDog() {
     pop(); 
     }
 
-// Display the fish
-function displayFish(fish) {
+// Display the puppies
+function displayPuppies(puppies) {
     push();
     fill(200, 100, 100);
     noStroke();
-    ellipse(fish.x, fish.y, fish.size);
+    ellipse(puppies.x, puppies.y, puppies.size);
     pop();
 }
 
