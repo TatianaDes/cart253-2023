@@ -142,7 +142,6 @@ function puppiesEat() {
     text(`The Puppies Ate!`, windowWidth/2, windowHeight/2);
     text(`Thank you for being kind and letting the puppies eat first! :)`, windowWidth/2, 350);
     pop();
-
 }
 
    
