@@ -10,7 +10,7 @@
 let dog = {
     x: 0,
     y: 0,
-    size: 40,
+    size: 50,
     vx: 0,
     vy: 0,
     speed: 3
@@ -45,7 +45,7 @@ function createPuppies(x, y) {
     let puppies = {
         x: x,
         y: y,
-        size: 50,
+        size: 40,
         vx: 0,
         vy: 0,
         ax: 0,
@@ -82,12 +82,11 @@ function draw() {
     // Calling the functions for all the puppies in a clean way
     for (let i = 0; i < food.length; i++) {
         displayFood(food[i]);
+        checkDogFood(litter[i]);
     }
     
 
 }
-
-
 
 // Move dog with the mouse
 function moveDog() {
@@ -167,6 +166,22 @@ puppies.x = constrain(puppies.x, 0, width);
 puppies.y = constrain(puppies.y, 0, height);
 }
 
+function checkDogFood(food) {
+    if (!food.eaten) {
+        let d = dist(dog.x, dog.y, food.x, food.y);
+        if (d < dog.size / 2 + food.size / 2) {
+            food.eaten = true;
+        }
+    }
+
+    if (!food.eaten) {
+        let i = dist(puppies.x, puppies.y, food.x, food.y);
+        if (i < puppies.size / 2 + food.size / 2) {
+            food.eaten = true;
+        }
+    }
+}
+
 // Display the dog
 function displayDog() {
     push();
@@ -186,12 +201,13 @@ function displayPuppies(puppies) {
 
 // Display the food
 function displayFood(food) {
-    push();
-    fill(255);
-    ellipse(food.x, food.y, food.size);
-    pop();
+    if (!food.eaten) {
+        push();
+        fill(255);
+        ellipse(food.x, food.y, food.size);
+        pop();
+    }
 }
-
 // Make dogFood be placed by clicking the mouse
 function mousePressed() {
     let dogFood = createDogFood(mouseX, mouseY);
