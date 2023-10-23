@@ -22,6 +22,8 @@ let litterSize = 4;
 let food = [];
 let foodSize = 0;
 
+let state = `title`; // Can be: title, simulation, dog, puppies
+
 function preload() {
 
 }
@@ -68,11 +70,45 @@ function createDogFood(x, y) {
 }
 
 function draw() {
-    background(0);
+    // Setting up all the different states
+    if (state === `title`) {
+        title();
+    }
+    else if (state === `simulation`) {
+        simulation();
+    }
+    else if (state === `dogAte`) {
+        dogEat();
+    }
+    else if (state === `puppiesAte`) {
+        puppiesEat();
+    }
+}
 
+function title() {
+    // Title state
+    push();
+    background(0);
+    textSize(60);
+    fill(238,159,19);
+    textAlign(CENTER, CENTER);
+    text(`Play Time!`, windowWidth/2, windowHeight/2);
+    textSize(20);
+    fill(240,141,63);
+    text(`(Press Any Key to Start)`, windowWidth/2, 350);
+    textSize(15);
+    fill(244,104,84);
+    text(`Use the arrow keys to move the dog, and click the mouse to drop the food.`, 1100, 570);
+    pop();
+}
+
+function simulation() {
+    // Simulation state
+    push();
+    background(0);
     moveDog();
     displayDog();
-
+    checkOverlap();
     // Calling the fuctions for all the puppies in a clean way
     for (let i = 0; i < litter.length; i++) {
         movePuppies(litter[i]);
@@ -82,11 +118,35 @@ function draw() {
     // Calling the functions for all the puppies in a clean way
     for (let i = 0; i < food.length; i++) {
         displayFood(food[i]);
-        checkDogFood(litter[i]);
     }
-    
+    pop();
+}
+
+function dogEat() {
+    push();
+    background(0);
+    textSize(60);
+    fill(238,159,19);
+    textAlign(CENTER, CENTER);
+    text(`You Ate!`, windowWidth/2, windowHeight/2);
+    text(`But at what cost? Now the puppies are hungry. :(`, windowWidth/2, 350);
+    pop();
+}
+
+function puppiesEat() {
+    push();
+    background(0);
+    textSize(60);
+    fill(238,159,19);
+    textAlign(CENTER, CENTER);
+    text(`The Puppies Ate!`, windowWidth/2, windowHeight/2);
+    text(`Thank you for being kind and letting the puppies eat first! :)`, windowWidth/2, 350);
+    pop();
 
 }
+
+   
+    
 
 // Move dog with the mouse
 function moveDog() {
@@ -116,8 +176,6 @@ function moveDog() {
     
         dog.vy = 0;
     }
-
-
 }
 
 // Make the puppies run away from the dog
@@ -166,19 +224,17 @@ puppies.x = constrain(puppies.x, 0, width);
 puppies.y = constrain(puppies.y, 0, height);
 }
 
-function checkDogFood(food) {
-    if (!food.eaten) {
-        let d = dist(dog.x, dog.y, food.x, food.y);
-        if (d < dog.size / 2 + food.size / 2) {
-            food.eaten = true;
-        }
-    }
 
-    if (!food.eaten) {
-        let i = dist(puppies.x, puppies.y, food.x, food.y);
-        if (i < puppies.size / 2 + food.size / 2) {
-            food.eaten = true;
-        }
+function checkOverlap() {
+    // Check if dog and dogFood overlap
+    let d = dist(dog.x, dog.y, food.x, food.y);
+    if (d < dog.size/2 + food.size/2) {
+       state = `dogAte`;
+    }
+    // Check if puppies and dogFood overlap
+    let i = dist(litter.x, litter.y, food.x, food.y);
+    if (i < litter.size/2 + food.sizeX/2) {
+       state = `puppiesAte`;
     }
 }
 
@@ -208,8 +264,16 @@ function displayFood(food) {
         pop();
     }
 }
+
 // Make dogFood be placed by clicking the mouse
 function mousePressed() {
     let dogFood = createDogFood(mouseX, mouseY);
     food.push(dogFood);
+}
+
+function keyPressed() {
+     // When pressing the mouse button, changes the title screen
+     if (state === `title`) {
+        state = `simulation`;
+    }
 }
