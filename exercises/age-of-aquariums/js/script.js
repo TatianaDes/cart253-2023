@@ -231,8 +231,8 @@ function checkOverlap() {
        state = `dogAte`;
     }
     // Check if puppies and dogFood overlap
-    let i = dist(litter.x, litter.y, food.x, food.y);
-    if (i < litter.size/2 + food.sizeX/2) {
+    let i = dist(puppies.x, puppies.y, food.x, food.y);
+    if (i < puppies.size/2 + food.sizeX/2) {
        state = `puppiesAte`;
     }
 }
