@@ -10,11 +10,14 @@
 let dog = {
     x: 0,
     y: 0,
-    size: 100
+    size: 40
   }
 
 let school = [];
 let schoolSize = 4;
+
+let food = [];
+let foodSize = 0;
 
 function preload() {
 
@@ -22,11 +25,15 @@ function preload() {
 
 
 function setup() {
-    createCanvas(600, 600);
+    createCanvas(windowWidth, windowHeight);
 
     // Make the fish have random positions and clean up the code
     for (let i = 0; i < schoolSize; i++) {
         school[i] = createFish(random(0, width), random(0, height));
+    }
+
+    for (let i = 0; i < foodSize; i++) {
+        food[i] = createDogFood(random(0, width), random(0, height));
     }
 }
 
@@ -38,9 +45,23 @@ function createFish(x, y) {
         size: 50,
         vx: 0,
         vy: 0,
-        speed: 2
+        ax: 0,
+        ay: 0,
+        acceleration: 0.1,
+        maxSpeed: 2
     };
     return fish;
+}
+
+// Creating the dogFood object for all the dog food
+function createDogFood(x, y) {
+    let dogFood = {
+        x: x,
+        y: y,
+        size: 20,
+        eaten: false
+    };
+    return dogFood;
 }
 
 function draw() {
@@ -54,7 +75,16 @@ function draw() {
         moveFish(school[i]);
         displayFish(school[i]);
     }
+
+    // Calling the functions for all the fish in a clean way
+    for (let i = 0; i < food.length; i++) {
+        displayFood(food[i]);
+    }
+    
+
 }
+
+
 
 // Move dog with the mouse
 function moveDog() {
@@ -62,13 +92,42 @@ function moveDog() {
     dog.y = mouseY;
 }
 
-// Move fish randomly
+// Make the fish run away from the dog
 function moveFish(fish) {
-    let change = random(0, 1);
-    if (change < 0.05) {
-        fish.vx = random(-fish.speed, fish.speed);
-        fish.vy = random(-fish.speed, fish.speed);
+    if (mouseX < fish.x) {
+        fish.ax = fish.acceleration;
     }
+    else {
+        fish.ax = -fish.acceleration;
+    }
+
+    if (mouseY < fish.y) {
+        fish.ay = fish.acceleration;
+    }
+    else {
+        fish.ay = -fish.acceleration;
+    }
+
+    /* Trying to see if I can make the fish scared of the dog but attracted to the food
+    if (food.x < fish.x) {
+        fish.ax = -fish.acceleration;
+    }
+    else {
+        fish.ax = fish.acceleration;
+    }
+
+    if (food.y < fish.y) {
+        fish.ay = -fish.acceleration;
+    }
+    else {
+        fish.ay = fish.acceleration;
+    }
+    */
+
+    fish.vx = fish.vx + fish.ax;
+    fish.vx = constrain(fish.vx, -fish.maxSpeed, fish.maxSpeed);
+    fish.vy = fish.vy + fish.ay;
+    fish.vy = constrain(fish.vy, -fish.maxSpeed, fish.maxSpeed);
 
 // Position is being added onto the velocity of fish
 fish.x = fish.x + fish.vx;
@@ -94,4 +153,18 @@ function displayFish(fish) {
     noStroke();
     ellipse(fish.x, fish.y, fish.size);
     pop();
+}
+
+// Display the food
+function displayFood(food) {
+    push();
+    fill(255);
+    ellipse(food.x, food.y, food.size);
+    pop();
+}
+
+// Make dogFood be placed by clicking the mouse
+function mousePressed() {
+    let dogFood = createDogFood(mouseX, mouseY);
+    food.push(dogFood);
 }
