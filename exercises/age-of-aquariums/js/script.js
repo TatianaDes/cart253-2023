@@ -13,14 +13,14 @@ let dog = {
     size: 50,
     vx: 0,
     vy: 0,
-    speed: 3
+    speed: 5
   }
 
 let litter = [];
 let litterSize = 4;
 
 let food = [];
-let foodSize = 0;
+let foodSize = 1;
 
 let state = `title`; // Can be: title, simulation, dog, puppies
 
@@ -47,13 +47,13 @@ function createPuppies(x, y) {
     let puppies = {
         x: x,
         y: y,
-        size: 40,
+        size: random(10, 50),
         vx: 0,
         vy: 0,
         ax: 0,
         ay: 0,
         acceleration: 0.1,
-        maxSpeed: 2
+        maxSpeed: 1
     };
     return puppies;
 }
@@ -108,17 +108,16 @@ function simulation() {
     background(0);
     moveDog();
     displayDog();
-    // Calling the fuctions for all the puppies in a clean way
-    for (let i = 0; i < litter.length; i++) {
-        movePuppies(litter[i]);
-        displayPuppies(litter[i]);
-        checkOverlap(litter[i]);
-    }
 
     // Calling the functions for all the puppies in a clean way
     for (let i = 0; i < food.length; i++) {
         displayFood(food[i]);
-        checkOverlap(food[i]);
+
+        for (let j = 0; j < litter.length; j++) {
+            checkOverlap(food[i], litter[j]);
+             movePuppies(food[i], litter[j]);
+            displayPuppies(litter[j]);
+        }
     }
     pop();
 }
@@ -179,42 +178,50 @@ function moveDog() {
 }
 
 // Make the puppies run away from the dog
-function movePuppies(puppies, dogFood) {
-    if (dog.x < puppies.x) {
-        puppies.ax = puppies.acceleration;
-    }
-    else {
-        puppies.ax = -puppies.acceleration;
-    }
+function movePuppies(dogFood, puppies) {
+    let a = dist(dog.x, dog.y, puppies.x, puppies.y);
+    if (a < dog.size/2 + puppies.size/2 + 300) {
+         if (dog.x < puppies.x) {
+            puppies.ax = puppies.acceleration;
+        }
+        else {
+            puppies.ax = -puppies.acceleration;
+        }
 
-    if (dog.y < puppies.y) {
-        puppies.ay = puppies.acceleration;
-    }
-    else {
-        puppies.ay = -puppies.acceleration;
-    }
+        if (dog.y < puppies.y) {
+            puppies.ay = puppies.acceleration;
+        }
+        else {
+            puppies.ay = -puppies.acceleration;
+        }
+   }
+   else {
 
-    /*
+   }
+
     //Trying to see if I can make the puppies scared of the dog but attracted to the food
-    if (dogFood.x < puppies.x) {
-        puppies.ax = -puppies.acceleration;
-    }
-    else {
-        puppies.ax = puppies.acceleration;
-    }
+    let t = dist(dogFood.x, dogFood.y, puppies.x, puppies.y);
+    if (t < dogFood.size/2 + puppies.size/2 + 200) {
+        if (dogFood.x < puppies.x) {
+            puppies.ax = -puppies.acceleration;
+        }
+        else {
+            puppies.ax = puppies.acceleration;
+        }
 
-    if (dogFood.y < puppies.y) {
-        puppies.ay = -puppies.acceleration;
+        if (dogFood.y < puppies.y) {
+            puppies.ay = -puppies.acceleration;
+        }
+        else {
+            puppies.ay = puppies.acceleration;
+        }
     }
-    else {
-        puppies.ay = puppies.acceleration;
-    }
-    */
+    
 
-    puppies.vx = puppies.vx + puppies.ax;
-    puppies.vx = constrain(puppies.vx, -puppies.maxSpeed, puppies.maxSpeed);
-    puppies.vy = puppies.vy + puppies.ay;
-    puppies.vy = constrain(puppies.vy, -puppies.maxSpeed, puppies.maxSpeed);
+puppies.vx = puppies.vx + puppies.ax;
+puppies.vx = constrain(puppies.vx, -puppies.maxSpeed, puppies.maxSpeed);
+puppies.vy = puppies.vy + puppies.ay;
+puppies.vy = constrain(puppies.vy, -puppies.maxSpeed, puppies.maxSpeed);
 
 // Position is being added onto the velocity of puppies
 puppies.x = puppies.x + puppies.vx;
@@ -233,14 +240,14 @@ function checkOverlap(dogFood, puppies) {
        state = `dogAte`;
     }
     
-    /*
+    
     // Check if puppies and dogFood overlap
     let s = dist(puppies.x, puppies.y, dogFood.x, dogFood.y);
     if (s < puppies.size/2 + dogFood.size/2) {
        state = `puppiesAte`;
 
     }
-    */
+
 }
 
 // Display the dog
