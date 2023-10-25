@@ -1,5 +1,5 @@
 /**
- * Play Time
+ * Play Time!
  * Tatiana Désormeaux
  * 
  * A program about a big dog scaring off little puppies from eating the dog food.
@@ -10,8 +10,8 @@
 let grassImage;
 
 let dog = {
-    x: 0,
-    y: 0,
+    x: 550,
+    y: 300,
     sizeX: 120,
     sizeY: 110,
     vx: 0,
@@ -145,6 +145,9 @@ function dogEat() {
     textAlign(CENTER, CENTER);
     text(`You Ate!`, windowWidth/2, windowHeight/2);
     text(`But at what cost? Now the puppies are hungry. :(`, windowWidth/2, 360);
+    textSize(20);
+    fill(76,8,111);
+    text(`(Refresh Page to Restart)`, windowWidth/2, 410);
     pop();
 }
 
@@ -156,11 +159,11 @@ function puppiesEat() {
     textAlign(CENTER, CENTER);
     text(`The Puppies Ate!`, windowWidth/2, windowHeight/2);
     text(`Thank you for being kind and letting the puppies eat first! :)`, windowWidth/2, 360);
+    textSize(20);
+    fill(223,122,20);
+    text(`(Refresh Page to Restart)`, windowWidth/2, 400);
     pop();
 }
-
-   
-    
 
 // Move dog with the mouse
 function moveDog() {
@@ -277,7 +280,8 @@ function displayDog() {
 // Display the puppies
 function displayPuppies(puppies) {
     push();
-    fill(255);
+    noStroke();
+    fill(227,198,106);
     //imageMode(CENTER);
     /*image*/ ellipse(/*displayImage,*/ puppies.x, puppies.y, puppies.size);
     pop();
@@ -287,7 +291,8 @@ function displayPuppies(puppies) {
 function displayFood(dogFood) {
     if (!food.eaten) {
         push();
-        fill(255);
+        noStroke();
+        fill(51,29,8);
         ellipse(dogFood.x, dogFood.y, dogFood.size);
         pop();
     }
