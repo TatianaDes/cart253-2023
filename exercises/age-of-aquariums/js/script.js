@@ -22,21 +22,21 @@ let dog = {
 
 let litter = [];
 let litterSize = 4;
-//let displayImage;
 
 let food = [];
 let foodSize = 1;
+
+let puppiesImage;
+let dogFoodImage;
+
 
 let state = `title`; // Can be: title, simulation, dog, puppies
 
 function preload() {
     grassImage = loadImage("assets/images/stardewvalleygrass.jpg");
     dog.image = loadImage("assets/images/labrador.png");
-    //litter[0] = loadImage("assets/images/puppy.png");
-    //litter[1] = loadImage("assets/images/puppy2.png");
-    //litter[2] = loadImage("assets/images/puppy3.png");
-    //litter[3] = loadImage("assets/images/puppy4.png");
-    //foodimages[0] = loadImage("assets/images/dogfood(1).png");
+    puppiesImage = loadImage("assets/images/puppy2.png");
+    dogFoodImage = loadImage("assets/images/dogfood(1).png");
 
 }
 
@@ -47,7 +47,6 @@ function setup() {
     // Make the puppies have random positions and clean up the code
     for (let i = 0; i < litterSize; i++) {
         litter[i] = createPuppies(random(0, width), random(0, height));
-        //displayImage = random(litter);
     }
 
     for (let i = 0; i < foodSize; i++) {
@@ -60,14 +59,15 @@ function createPuppies(x, y) {
     let puppies = {
         x: x,
         y: y,
-        size: random(10, 50),
+        sizeX: random(100, 100),
+        sizeY: random(50, 100),
         vx: 0,
         vy: 0,
         ax: 0,
         ay: 0,
         acceleration: 1,
         maxSpeed: 1,
-        image: undefined
+        image: puppiesImage
     };
     return puppies;
 }
@@ -77,9 +77,9 @@ function createDogFood(x, y) {
     let dogFood = {
         x: x,
         y: y,
-        size: 20,
+        size: 100,
         eaten: false,
-        image: undefined
+        image: dogFoodImage
     };
     return dogFood;
 }
@@ -138,6 +138,7 @@ function simulation() {
 }
 
 function dogEat() {
+    // dogAte state
     push();
     background(255,110,110);
     textSize(60);
@@ -152,6 +153,7 @@ function dogEat() {
 }
 
 function puppiesEat() {
+    // puppiesAte state
     push();
     background(248,248,89);
     textSize(50);
@@ -197,8 +199,9 @@ function moveDog() {
 
 // Make the puppies run away from the dog
 function movePuppies(dogFood, puppies) {
+    // Make the puppies scared of the dog
     let a = dist(dog.x, dog.y, puppies.x, puppies.y);
-    if (a < dog.sizeX/2 + puppies.size/2 + 300) {
+    if (a < dog.sizeX/2 + puppies.sizeX/2 + 300) {
          if (dog.x < puppies.x) {
             puppies.ax = puppies.acceleration;
         }
@@ -217,9 +220,9 @@ function movePuppies(dogFood, puppies) {
 
    }
 
-    //Trying to see if I can make the puppies scared of the dog but attracted to the food
+    // Make the puppies attracted to the food
     let t = dist(dogFood.x, dogFood.y, puppies.x, puppies.y);
-    if (t < dogFood.size/2 + puppies.size/2 + 200) {
+    if (t < dogFood.size/2 + puppies.sizeX/2 + 200) {
         if (dogFood.x < puppies.x) {
             puppies.ax = -puppies.acceleration;
         }
@@ -235,20 +238,19 @@ function movePuppies(dogFood, puppies) {
         }
     }
     
-
+    // Constraining the speed and movement of the puppies from their x-axis and y-axis
     puppies.vx = puppies.vx + puppies.ax;
     puppies.vx = constrain(puppies.vx, -puppies.maxSpeed, puppies.maxSpeed);
     puppies.vy = puppies.vy + puppies.ay;
     puppies.vy = constrain(puppies.vy, -puppies.maxSpeed, puppies.maxSpeed);  
    
-// Position is being added onto the velocity of puppies
-puppies.x = puppies.x + puppies.vx;
-puppies.y = puppies.y + puppies.vy;
+    // Position is being added onto the velocity of puppies
+    puppies.x = puppies.x + puppies.vx;
+    puppies.y = puppies.y + puppies.vy;
 
-// Constrain the puppies to the width and height of the canvas
-puppies.x = constrain(puppies.x, 0, width);
-puppies.y = constrain(puppies.y, 0, height);
-
+    // Constrain the puppies to the width and height of the canvas
+    puppies.x = constrain(puppies.x, 0, width);
+    puppies.y = constrain(puppies.y, 0, height);
 }
 
 
@@ -262,11 +264,10 @@ function checkOverlap(dogFood, puppies) {
     
     // Check if puppies and dogFood overlap
     let s = dist(puppies.x, puppies.y, dogFood.x, dogFood.y);
-    if (s < puppies.size/2 + dogFood.size/2) {
+    if (s < puppies.sizeX/2 + dogFood.size/2) {
        state = `puppiesAte`;
 
     }
-
 }
 
 // Display the dog
@@ -280,20 +281,17 @@ function displayDog() {
 // Display the puppies
 function displayPuppies(puppies) {
     push();
-    noStroke();
-    fill(227,198,106);
-    //imageMode(CENTER);
-    /*image*/ ellipse(/*displayImage,*/ puppies.x, puppies.y, puppies.size);
+    imageMode(CENTER);
+    image(puppies.image, puppies.x, puppies.y, puppies.sizeX, puppies.sizeY);
     pop();
 }
 
 // Display the food
 function displayFood(dogFood) {
-    if (!food.eaten) {
+    if (!dogFood.eaten) {
         push();
-        noStroke();
-        fill(51,29,8);
-        ellipse(dogFood.x, dogFood.y, dogFood.size);
+        imageMode(CENTER);
+        image(dogFood.image, dogFood.x, dogFood.y, dogFood.size, dogFood.size);
         pop();
     }
 }
