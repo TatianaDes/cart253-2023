@@ -7,13 +7,16 @@
 
 "use strict";
 
+let grassImage;
+
 let dog = {
     x: 0,
     y: 0,
     size: 50,
     vx: 0,
     vy: 0,
-    speed: 5
+    speed: 5,
+    image: undefined
   }
 
 let litter = [];
@@ -25,6 +28,13 @@ let foodSize = 1;
 let state = `title`; // Can be: title, simulation, dog, puppies
 
 function preload() {
+    grassImage = loadImage("assets/images/stardewvalleygrass.jpg");
+    dog.image = loadImage("assets/images/labrador.png");
+    /*puppy1.image = loadImage("assets/images/puppy.png");
+    puppy2.image = loadImage("assets/images/puppy2.png");
+    puppy3.image = loadImage("assets/images/puppy3.png");
+    puppy4.image = loadImage("assets/images/puppy4.png");*/
+    dogFood.image = loadImage("assets/images/dogfood(1).png");
 
 }
 
@@ -52,8 +62,9 @@ function createPuppies(x, y) {
         vy: 0,
         ax: 0,
         ay: 0,
-        acceleration: 0.1,
-        maxSpeed: 1
+        acceleration: 1,
+        maxSpeed: 1,
+        image: undefined
     };
     return puppies;
 }
@@ -64,7 +75,8 @@ function createDogFood(x, y) {
         x: x,
         y: y,
         size: 20,
-        eaten: false
+        eaten: false,
+        image: undefined
     };
     return dogFood;
 }
@@ -105,7 +117,7 @@ function title() {
 function simulation() {
     // Simulation state
     push();
-    background(0);
+    background(grassImage, 0, 0);
     moveDog();
     displayDog();
 
@@ -218,11 +230,11 @@ function movePuppies(dogFood, puppies) {
     }
     
 
-puppies.vx = puppies.vx + puppies.ax;
-puppies.vx = constrain(puppies.vx, -puppies.maxSpeed, puppies.maxSpeed);
-puppies.vy = puppies.vy + puppies.ay;
-puppies.vy = constrain(puppies.vy, -puppies.maxSpeed, puppies.maxSpeed);
-
+    puppies.vx = puppies.vx + puppies.ax;
+    puppies.vx = constrain(puppies.vx, -puppies.maxSpeed, puppies.maxSpeed);
+    puppies.vy = puppies.vy + puppies.ay;
+    puppies.vy = constrain(puppies.vy, -puppies.maxSpeed, puppies.maxSpeed);  
+   
 // Position is being added onto the velocity of puppies
 puppies.x = puppies.x + puppies.vx;
 puppies.y = puppies.y + puppies.vy;
@@ -230,6 +242,7 @@ puppies.y = puppies.y + puppies.vy;
 // Constrain the puppies to the width and height of the canvas
 puppies.x = constrain(puppies.x, 0, width);
 puppies.y = constrain(puppies.y, 0, height);
+
 }
 
 
@@ -254,7 +267,7 @@ function checkOverlap(dogFood, puppies) {
 function displayDog() {
     push();
     fill(255);
-    ellipse(dog.x, dog.y, dog.size);
+    image(dog.image, dog.x, dog.y, dog.size, dog.size);
     pop(); 
     }
 
@@ -272,7 +285,7 @@ function displayFood(dogFood) {
     if (!food.eaten) {
         push();
         fill(255);
-        ellipse(dogFood.x, dogFood.y, dogFood.size);
+        image(dogFood.image, dogFood.x, dogFood.y, dogFood.size);
         pop();
     }
 }
