@@ -7,7 +7,7 @@
 
 "use strict";
 
-let gravityForce = 0.0025;
+let gravityForce = 0.0005;
 
 let paddle;
 
@@ -28,7 +28,7 @@ let garden = {
 // An array of bees
 let bees = [];
 // How many bees in the garden
-let numBees = 30;
+let numBees = 5;
 
 let state = `title`; // Can be: title, simulation, bees, pesticide
   
@@ -56,6 +56,7 @@ function setup() {
       let flower = new Flower(x, y, size, stemLength, petalColor);
       // Add the flower to the array of flowers
       garden.flowers.push(flower);
+    }
 
       for (let i = 0; i < numBees; i++) {
             let x = random(0, width);
@@ -63,7 +64,6 @@ function setup() {
             let bee = new Bee(x, y);
             bees.push(bee);
         }
-    }
     paddle = new Paddle(300, 20);
   }
 
@@ -90,6 +90,7 @@ function draw() {
             bee.move();
             bee.bounce(paddle);
             bee.display();
+            
 
             for (let j = 0; j < garden.flowers.length; j++) {
                 let flower = garden.flowers[j];
