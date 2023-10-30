@@ -1,5 +1,6 @@
 class Paddle {
 
+    // Creating the look of the paddle
     constructor(w, h) {
         this.width = w;
         this.height = h;
@@ -8,10 +9,12 @@ class Paddle {
 
     }
 
+    // Mkaing the paddle able to move only on the x-axis
     move() {
         this.x = mouseX;
     }
 
+    // Displaying the paddle and all its colours and shapes
     display() {
         push();
         fill(255);

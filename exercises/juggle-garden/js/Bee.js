@@ -10,15 +10,15 @@ class Bee {
       this.ax = 0;
       this.ay = 0;
       this.maxSpeed = 5;
-      this.jitteriness = 0.1; // How likely the bee is to change direction
       this.alive = true; // The Bee starts out alive!
     }
   
+    // Adding gravity to the bee so that it can bounce
     gravity(force) {
         this.ay = this.ay + force;
     }
 
-
+    // Making the bee able to pollinate the flowers
     tryToPollinate(flower) {
         let d = dist(this.x, this.y, flower.x, flower.y);
         if (d < this.size/2 + flower.size/2 + flower.petalThickness) {
@@ -43,6 +43,7 @@ class Bee {
         }
     }
 
+    // Making the bee able to bounce like a ball and changing the way the bounce is displayed
     bounce(paddle) {
         if (this.x > paddle.x - paddle.width/2 &&
         this.x < paddle.x + paddle.width/2 &&

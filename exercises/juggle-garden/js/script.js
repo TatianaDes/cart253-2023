@@ -26,12 +26,20 @@ let bees = [];
 // How many bees in the garden
 let numBees = 5;
 
-let state = `title`; // Can be: title, simulation, bees, pesticide
+// An array of weedkiller
+let weedkillers = [];
+// How many weedkillers are in the garden
+let numWeedkillers = 1;
+
+let state = `title`; // Can be: title, simulation, bees, weedkiller
   
+
 // preload() creates the images I wish to put in my program
 function preload() {
 grassImage = loadImage("assets/images/grassbackground.avif");
+// weedkillerImage = loadImage("assets/images/weedkiller.png");
 }
+
 
 // setup() creates the canvas and the flowers in the garden
 function setup() {
@@ -60,6 +68,14 @@ function setup() {
             let bee = new Bee(x, y);
             bees.push(bee);
         }
+
+         // Create a new weedkiller
+      for (let i = 0; i < numWeedkillers; i++) {
+        let x = random(0, width);
+        let y = random(-400, -100);
+        let weedkiller = new Weedkiller(x, y);
+        weedkillers.push(weedkiller);
+    }
     // Create the paddle inside the main script
     paddle = new Paddle(300, 20);
   }
@@ -97,6 +113,19 @@ function draw() {
             }
         }
     }
+
+     // Making the weedkiller bounce like a ball on the paddle
+     for (let i = 0; i < weedkillers.length; i++) {
+        let weedkiller = weedkillers[i];
+        if (weedkiller.alive) {
+            weedkiller.gravity(gravityForce);
+            weedkiller.move();
+            weedkiller.bounce(paddle);
+            weedkiller.display();
+        }
+    }
+    
+
     // Making the paddle able to display in the main script
     paddle.move();
     paddle.display();
