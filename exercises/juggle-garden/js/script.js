@@ -86,7 +86,6 @@ function draw() {
         let bee = bees[i];
         if (bee.alive) {
             bee.gravity(gravityForce);
-            bee.shrink();
             bee.move();
             bee.bounce(paddle);
             bee.display();
