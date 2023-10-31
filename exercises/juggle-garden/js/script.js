@@ -1,8 +1,8 @@
 /**
- * Beautiful Ecosystem
+ * Juggle the Ecosystem
  * Tatiana Désormeaux
  * 
- * Adding onto the garden simulation and making it more user-friendly
+ * A simulation about juggling bees to make flowers grow, but the weedkiller is also juggled and will kill the flowers faster.
  */
 
 "use strict";
@@ -69,13 +69,13 @@ function setup() {
             bees.push(bee);
         }
 
-         // Create a new weedkiller
+      /*  // Create a new weedkiller
       for (let i = 0; i < numWeedkillers; i++) {
         let x = random(0, width);
         let y = random(-400, -100);
         let weedkiller = new Weedkiller(x, y);
         weedkillers.push(weedkiller);
-    }
+    } */
     // Create the paddle inside the main script
     paddle = new Paddle(300, 20);
   }
@@ -83,38 +83,65 @@ function setup() {
   // draw()
 // Displays our flowers
 function draw() {
-    // Display the grass
-    background(grassImage, 0, 0);
-  
-    // Loop through all the flowers in the array and display them
-    for (let i = 0; i < garden.flowers.length; i++) {
-      let flower = garden.flowers[i];
-      if (flower.alive) {
-      flower.shrink();
-      flower.display();
-      }
+
+    // Setting up all the different states
+    if (state === `title`) {
+        title();
+    }
+    else if (state === `simulation`) {
+        simulation();
     }
 
-    // Making the bees bounce like a ball on the paddle
-    for (let i = 0; i < bees.length; i++) {
-        let bee = bees[i];
-        if (bee.alive) {
-            bee.gravity(gravityForce);
-            bee.move();
-            bee.bounce(paddle);
-            bee.display();
-            
-            // Making the bees pollinate the flowers to make them grow
-            for (let j = 0; j < garden.flowers.length; j++) {
-                let flower = garden.flowers[j];
-                if (flower.alive) {
-                    bee.tryToPollinate(flower);
-                }
-            }
+    function title() {
+        // Title state
+        push();
+        background(186,209,252);
+        textSize(60);
+        fill(7,33,78);
+        textAlign(CENTER, CENTER);
+        text(`Juggle the Ecosystem`, windowWidth/2, windowHeight/2);
+        textSize(20);
+        fill(231,96,84);
+        text(`(Press Any Key to Start)`, windowWidth/2, 350);
+        textSize(15);
+        fill(57,160,100);
+        text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller.`, 1000, 570);
+        pop();
+    }
+
+    function simulation() {
+        // Simulation state
+        push();
+        background(grassImage, 0, 0);
+    
+        // Loop through all the flowers in the array and display them
+        for (let i = 0; i < garden.flowers.length; i++) {
+            let flower = garden.flowers[i];
+            if (flower.alive) {
+            flower.shrink();
+            flower.display();
         }
-    }
-
-     // Making the weedkiller bounce like a ball on the paddle
+      }
+  
+      // Making the bees bounce like a ball on the paddle
+      for (let i = 0; i < bees.length; i++) {
+          let bee = bees[i];
+          if (bee.alive) {
+              bee.gravity(gravityForce);
+              bee.move();
+              bee.bounce(paddle);
+              bee.display();
+              
+              // Making the bees pollinate the flowers to make them grow
+              for (let j = 0; j < garden.flowers.length; j++) {
+                  let flower = garden.flowers[j];
+                  if (flower.alive) {
+                      bee.tryToPollinate(flower);
+                  }
+              }
+          }
+      }
+   /* // Making the weedkiller bounce like a ball on the paddle
      for (let i = 0; i < weedkillers.length; i++) {
         let weedkiller = weedkillers[i];
         if (weedkiller.alive) {
@@ -123,12 +150,17 @@ function draw() {
             weedkiller.bounce(paddle);
             weedkiller.display();
         }
-    }
+    }*/
     
 
-    // Making the paddle able to display in the main script
-    paddle.move();
-    paddle.display();
+        // Making the paddle able to display in the main script
+        paddle.move();
+        paddle.display();
+        pop();
+    }
+
+
+   
   }
 
 function mousePressed() {
@@ -137,11 +169,17 @@ function mousePressed() {
         let flower = garden.flowers[i];
         flower.mousePressed();
     }
-    /*// Make bees be placed by clicking the mouse
+   /* // Make bees be placed by clicking the mouse
     for (let i = 0; i < bees.length; i++) {
         let bee = new Bee(mouseX, mouseY);
         bees.push(bee);
-    }*/
+    } */
   }
 
+  function keyPressed() {
+    // When pressing the mouse button, changes the title screen
+    if (state === `title`) {
+       state = `simulation`;
+   }
+}
 
