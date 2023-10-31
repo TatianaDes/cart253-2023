@@ -13,6 +13,8 @@ let gravityForce = 0.0005;
 
 let paddle;
 
+let weedkillerImage;
+
 // Our garden
 let garden = {
     // An array to store the individual flowers
@@ -27,9 +29,9 @@ let bees = [];
 let numBees = 5;
 
 // An array of weedkiller
-let weedkillers = [];
-// How many weedkillers are in the garden
-let numWeedkillers = 1;
+let weeds = [];
+let numWeed = 1;
+
 
 let state = `title`; // Can be: title, simulation, flowers, bees, weedkiller
   
@@ -37,7 +39,7 @@ let state = `title`; // Can be: title, simulation, flowers, bees, weedkiller
 // preload() creates the images I wish to put in my program
 function preload() {
 grassImage = loadImage("assets/images/grassbackground.avif");
-// weedkillerImage = loadImage("assets/images/weedkiller.png");
+weedkillerImage = loadImage("assets/images/weedkiller.png");
 }
 
 
@@ -69,13 +71,14 @@ function setup() {
             bees.push(bee);
         }
 
-      /*  // Create a new weedkiller
-      for (let i = 0; i < numWeedkillers; i++) {
+        // Create a new weedkiller
+      for (let i = 0; i < numWeed; i++) {
         let x = random(0, width);
         let y = random(-400, -100);
-        let weedkiller = new Weedkiller(x, y);
-        weedkillers.push(weedkiller);
-    } */
+        let weed = new Weed(x, y, weedkillerImage);
+        weeds.push(weed);
+    }
+
     // Create the paddle inside the main script
     paddle = new Paddle(300, 20);
   }
@@ -98,7 +101,7 @@ function draw() {
         beesDead();
     }
     else if (state === `weedkiller`) {
-        weedkillerKils();
+        weedkillerKills();
     }
 
     function title() {
@@ -150,17 +153,16 @@ function draw() {
               }
           }
       }
-   /* // Making the weedkiller bounce like a ball on the paddle
-     for (let i = 0; i < weedkillers.length; i++) {
-        let weedkiller = weedkillers[i];
+      // Making the weedkiller bounce like a ball on the paddle
+      for (let i = 0; i < weeds.length; i++) {
+        let weedkiller = weeds[i];
         if (weedkiller.alive) {
             weedkiller.gravity(gravityForce);
             weedkiller.move();
             weedkiller.bounce(paddle);
             weedkiller.display();
         }
-    }*/
-    
+    }
 
         // Making the paddle able to display in the main script
         paddle.move();

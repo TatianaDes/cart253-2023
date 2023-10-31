@@ -1,16 +1,17 @@
-class Weedkiller {
-
-    // constructor() sets up our starting properties
-    constructor(x, y) {
+class Weed {
+      // constructor() sets up our starting properties
+      constructor(x, y, weedkillerImage) {
         this.x = x;
         this.y = y;
-        this.size = 40;
+        this.sizeX = 80;
+        this.sizeY = 100;
         this.vx = 0;
         this.vy = 0;
         this.ax = 0;
         this.ay = 0;
         this.maxSpeed = 5;
         this.alive = true;
+        this.image = weedkillerImage;
         //this.image = weedkillerImage;
 
       }
@@ -32,7 +33,7 @@ class Weedkiller {
           this.x = this.x + this.vx;
           this.y = this.y + this.vy;
   
-          if (this.y - this.size/2 > height) {
+          if (this.y - this.sizeX/2 > height) {
               this.active = false;
           }
       }
@@ -41,8 +42,8 @@ class Weedkiller {
       bounce(paddle) {
           if (this.x > paddle.x - paddle.width/2 &&
           this.x < paddle.x + paddle.width/2 &&
-          this.y + this.size/2 > paddle.y - paddle.height/2 &&
-          this.y - this.size/2 < paddle.y + paddle.height/2) {
+          this.y + this.sizeX/2 > paddle.y - paddle.height/2 &&
+          this.y - this.sizeX/2 < paddle.y + paddle.height/2) {
               // Bounce
               let dx = this.x - paddle.x;
               this.vx = this.vx + map(dx, -paddle.width/2, paddle.width/2, -2, 2);
@@ -57,10 +58,8 @@ class Weedkiller {
       // display() draws our bee onto the canvas
       display() {
         push();
-        fill(255);
-        ellipse(this.x, this.y, this.size);
-        //imageMode(CENTER);
-        //image(this.image, this.x, this.y, this.size, this.size);
+        imageMode(CENTER);
+        image(this.image, this.x, this.y, this.sizeX, this.sizeY);
         pop();
     
     }
