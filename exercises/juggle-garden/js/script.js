@@ -91,6 +91,15 @@ function draw() {
     else if (state === `simulation`) {
         simulation();
     }
+    else if (state === `flowers`) {
+        flowersDead();
+    }
+    else if (state === `bees`) {
+        beesDead();
+    }
+    else if (state === `weedkiller`) {
+        weedkillerKils();
+    }
 
     function title() {
         // Title state
@@ -158,9 +167,79 @@ function draw() {
         paddle.display();
         pop();
     }
+  }
+
+  function flowersDead() {
+    // flowers state
+    push();
+    background(186,209,252);
+    textSize(60);
+    fill(7,33,78);
+    textAlign(CENTER, CENTER);
+    text(`Juggle the Ecosystem`, windowWidth/2, windowHeight/2);
+    textSize(20);
+    fill(231,96,84);
+    text(`(Press Any Key to Start)`, windowWidth/2, 350);
+    textSize(15);
+    fill(57,160,100);
+    text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller.`, 1000, 570);
+    pop();
+  }
+
+  function beesDead() {
+    // bees state
+    push();
+    background(186,209,252);
+    textSize(60);
+    fill(7,33,78);
+    textAlign(CENTER, CENTER);
+    text(`Juggle the Ecosystem`, windowWidth/2, windowHeight/2);
+    textSize(20);
+    fill(231,96,84);
+    text(`(Press Any Key to Start)`, windowWidth/2, 350);
+    textSize(15);
+    fill(57,160,100);
+    text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller.`, 1000, 570);
+    pop();
+  }
+
+  function weedkillerKills() {
+    // weedkiller state
+    push();
+    background(186,209,252);
+    textSize(60);
+    fill(7,33,78);
+    textAlign(CENTER, CENTER);
+    text(`Juggle the Ecosystem`, windowWidth/2, windowHeight/2);
+    textSize(20);
+    fill(231,96,84);
+    text(`(Press Any Key to Start)`, windowWidth/2, 350);
+    textSize(15);
+    fill(57,160,100);
+    text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller.`, 1000, 570);
+    pop();
+  }
+
+  function allFlowersDead() {
+    let allFlowersDead = true; // Are they all dead? Assume they are...
+    for (let i = 0; i < garden.flowers.length; i++) {
+      if (flowers[i].alive) {
+        allFlowersDead = false; // We found a living flower
+        break; // Stop searching the flowers
+      }
+      else if (allFlowersDead = false) {
+        state = `flowers`;
+      }
+    }
+}
 
 
-   
+function allBeesFell() {
+
+  }
+
+function weedkillerLoss() {
+
   }
 
 function mousePressed() {
@@ -169,10 +248,10 @@ function mousePressed() {
         let flower = garden.flowers[i];
         flower.mousePressed();
     }
-   /* // Make bees be placed by clicking the mouse
-    for (let i = 0; i < bees.length; i++) {
-        let bee = new Bee(mouseX, mouseY);
-        bees.push(bee);
+   /* // Make weedkiller be placed by clicking the mouse
+    for (let i = 0; i < weedkillers.length; i++) {
+        let weedkiller = new Weedkiller(mouseX, mouseY);
+        weedkillers.push(weedkiller);
     } */
   }
 
