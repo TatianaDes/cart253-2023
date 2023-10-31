@@ -35,6 +35,7 @@ let numWeed = 1;
 let flowerDeath = 0;
 
 let allBeesDead = true;
+let allFlowersDead = true;
 
 
 let state = `title`; // Can be: title, simulation, flowers, bees, weedkiller
@@ -195,6 +196,19 @@ function draw() {
   }
 
   function checkEndings() {
+    // Checks if all the flowers have died, then `flowers` state occurs
+    for (let i = 0; i < garden.flowers.length; i++) {
+      if (garden.flowers[i].alive) {
+        allFlowersDead = false;
+        break;
+      }
+      else {
+        allFlowersDead = true;
+        state = `flowers`;
+      }
+    }
+
+    // Checks if all the bees have fallen, then `bees` state occurs
     for (let i = 0; i < bees.length; i++) {
       if (bees[i].alive) {
         allBeesDead = false;
@@ -206,6 +220,7 @@ function draw() {
       }
     }
 
+    // Checks if the weedkiller kills 5 flowers, then `weedkiller` state occurs
     if (flowerDeath >= 5) {
       state = `weedkiller`;
     }
@@ -251,28 +266,6 @@ function draw() {
     fill(231,96,84);
     text(`(Refresh Page to Restart)`, windowWidth/2, 350);
     pop();
-  }
-
-  function allFlowersDead() {
-    let allFlowersDead = true; // Are they all dead? Assume they are...
-    for (let i = 0; i < garden.flowers.length; i++) {
-      if (flowers[i].alive) {
-        allFlowersDead = false; // We found a living flower
-        break; // Stop searching the flowers
-      }
-      else if (allFlowersDead = false) {
-        state = `flowers`;
-      }
-    }
-}
-
-    function weedkillerLoss() {
-      for (let j = 0; j < garden.flowers.length; j++) {
-        let flower = garden.flowers[j];
-        if (weedkiller.kill(flower)) {
-          state = `weedkiller`;
-        }
-      }
   }
 
     function mousePressed() {
