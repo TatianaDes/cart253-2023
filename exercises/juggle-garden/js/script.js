@@ -31,7 +31,7 @@ let weedkillers = [];
 // How many weedkillers are in the garden
 let numWeedkillers = 1;
 
-let state = `title`; // Can be: title, simulation, bees, weedkiller
+let state = `title`; // Can be: title, simulation, flowers, bees, weedkiller
   
 
 // preload() creates the images I wish to put in my program
@@ -233,16 +233,28 @@ function draw() {
     }
 }
 
+    function allBeesFell(bees) {
+        for (let i = 0; i < bees.length; i++) {
+            if (bee.x < 0 || bee.x > width || bee.y < 0 || bee.y > height) {
+                return true;
+            }
+            else {
+                return false;
+        }
+    }
+}
 
-function allBeesFell() {
+    function fell() {
+    if (allBeesFell(bee)) {
+        state = `bees`;
+      }
+    }
+
+    function weedkillerLoss() {
 
   }
 
-function weedkillerLoss() {
-
-  }
-
-function mousePressed() {
+    function mousePressed() {
     // Making the flowers grow when the user presses them
     for (let i = 0; i < garden.flowers.length; i++) {
         let flower = garden.flowers[i];
