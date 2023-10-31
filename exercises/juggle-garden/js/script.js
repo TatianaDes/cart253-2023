@@ -161,8 +161,16 @@ function draw() {
             weedkiller.move();
             weedkiller.bounce(paddle);
             weedkiller.display();
+
+          // Making the bees pollinate the flowers to make them grow
+          for (let j = 0; j < garden.flowers.length; j++) {
+            let flower = garden.flowers[j];
+            if (flower.alive) {
+                weedkiller.kill(flower);
+            }
+          }
         }
-    }
+      }
 
         // Making the paddle able to display in the main script
         paddle.move();
@@ -244,6 +252,7 @@ function draw() {
     }
 
     function weedkillerLoss() {
+
 
   }
 

@@ -12,7 +12,6 @@ class Weed {
         this.maxSpeed = 5;
         this.alive = true;
         this.image = weedkillerImage;
-        //this.image = weedkillerImage;
 
       }
     
@@ -53,6 +52,13 @@ class Weed {
           }
          
             
+      }
+
+      kill(flower) {
+        let d = dist(this.x, this.y, flower.x, flower.y);
+        if (d < this.sizeX/2 + flower.size/2 + flower.petalThickness) {
+            flower.alive = false;
+        }
       }
     
       // display() draws our bee onto the canvas
