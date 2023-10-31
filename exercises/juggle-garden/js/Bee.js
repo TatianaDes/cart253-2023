@@ -39,7 +39,7 @@ class Bee {
         this.y = this.y + this.vy;
 
         if (this.y - this.size/2 > height) {
-            this.active = false;
+            this.alive = false;
         }
     }
 

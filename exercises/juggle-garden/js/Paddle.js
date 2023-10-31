@@ -9,7 +9,7 @@ class Paddle {
 
     }
 
-    // Mkaing the paddle able to move only on the x-axis
+    // Making the paddle able to move only on the x-axis
     move() {
         this.x = mouseX;
     }

@@ -32,6 +32,10 @@ let numBees = 5;
 let weeds = [];
 let numWeed = 1;
 
+let flowerDeath = 0;
+
+let allBeesDead = true;
+
 
 let state = `title`; // Can be: title, simulation, flowers, bees, weedkiller
   
@@ -125,6 +129,12 @@ function draw() {
         // Simulation state
         push();
         background(grassImage, 0, 0);
+        textSize(60);
+        fill(255);
+        textAlign(CENTER, CENTER);
+        text(flowerDeath, 50, 50);
+
+        checkEndings();
     
         // Loop through all the flowers in the array and display them
         for (let i = 0; i < garden.flowers.length; i++) {
@@ -153,6 +163,7 @@ function draw() {
               }
           }
       }
+
       // Making the weedkiller bounce like a ball on the paddle
       for (let i = 0; i < weeds.length; i++) {
         let weedkiller = weeds[i];
@@ -162,10 +173,14 @@ function draw() {
             weedkiller.bounce(paddle);
             weedkiller.display();
 
-          // Making the bees pollinate the flowers to make them grow
+          // Making the weedkiller kills the flowers when touched
           for (let j = 0; j < garden.flowers.length; j++) {
             let flower = garden.flowers[j];
             if (flower.alive) {
+                let d = dist(weedkiller.x, weedkiller.y, flower.x, flower.y);
+                if (d < weedkiller.sizeX/2 + flower.size/2 + flower.petalThickness) {
+                  flowerDeath += 1;
+                }
                 weedkiller.kill(flower);
             }
           }
@@ -176,6 +191,23 @@ function draw() {
         paddle.move();
         paddle.display();
         pop();
+    }
+  }
+
+  function checkEndings() {
+    for (let i = 0; i < bees.length; i++) {
+      if (bees[i].alive) {
+        allBeesDead = false;
+        break;
+      }
+      else {
+        allBeesDead = true;
+        state = `bees`;
+      }
+    }
+
+    if (flowerDeath >= 5) {
+      state = `weedkiller`;
     }
   }
 
@@ -234,26 +266,13 @@ function draw() {
     }
 }
 
-    function allBeesFell(bees) {
-        for (let i = 0; i < bees.length; i++) {
-            if (bee.x < 0 || bee.x > width || bee.y < 0 || bee.y > height) {
-                return true;
-            }
-            else {
-                return false;
-        }
-    }
-}
-
-    function fell() {
-    if (allBeesFell(bee)) {
-        state = `bees`;
-      }
-    }
-
     function weedkillerLoss() {
-
-
+      for (let j = 0; j < garden.flowers.length; j++) {
+        let flower = garden.flowers[j];
+        if (weedkiller.kill(flower)) {
+          state = `weedkiller`;
+        }
+      }
   }
 
     function mousePressed() {
