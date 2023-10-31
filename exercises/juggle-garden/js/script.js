@@ -176,13 +176,10 @@ function draw() {
     textSize(60);
     fill(7,33,78);
     textAlign(CENTER, CENTER);
-    text(`Juggle the Ecosystem`, windowWidth/2, windowHeight/2);
+    text(`Oh no! All the flowers are dead.`, windowWidth/2, windowHeight/2);
     textSize(20);
     fill(231,96,84);
-    text(`(Press Any Key to Start)`, windowWidth/2, 350);
-    textSize(15);
-    fill(57,160,100);
-    text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller.`, 1000, 570);
+    text(`(Refresh Page to Restart)`, windowWidth/2, 350);
     pop();
   }
 
@@ -193,13 +190,10 @@ function draw() {
     textSize(60);
     fill(7,33,78);
     textAlign(CENTER, CENTER);
-    text(`Juggle the Ecosystem`, windowWidth/2, windowHeight/2);
+    text(`Better luck next time, all the bees fell.`, windowWidth/2, windowHeight/2);
     textSize(20);
     fill(231,96,84);
-    text(`(Press Any Key to Start)`, windowWidth/2, 350);
-    textSize(15);
-    fill(57,160,100);
-    text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller.`, 1000, 570);
+    text(`(Refresh Page to Restart)`, windowWidth/2, 350);
     pop();
   }
 
@@ -210,13 +204,10 @@ function draw() {
     textSize(60);
     fill(7,33,78);
     textAlign(CENTER, CENTER);
-    text(`Juggle the Ecosystem`, windowWidth/2, windowHeight/2);
+    text(`Horrible weed killer, now the ecosystem is ruined.`, windowWidth/2, windowHeight/2);
     textSize(20);
     fill(231,96,84);
-    text(`(Press Any Key to Start)`, windowWidth/2, 350);
-    textSize(15);
-    fill(57,160,100);
-    text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller.`, 1000, 570);
+    text(`(Refresh Page to Restart)`, windowWidth/2, 350);
     pop();
   }
 
