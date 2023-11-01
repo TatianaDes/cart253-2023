@@ -263,7 +263,7 @@ function draw() {
     textAlign(CENTER, CENTER);
     text(`Horrible weed killer, now the ecosystem is ruined.`, windowWidth/2, windowHeight/2);
     textSize(20);
-    fill();
+    fill(255);
     text(`(Refresh Page to Restart)`, windowWidth/2, 350);
     pop();
   }
