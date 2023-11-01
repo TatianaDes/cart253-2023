@@ -25,6 +25,7 @@ class Flower {
       this.alive = true;
     }
 
+    // Makes the flowers shrink as time passes
     shrink() {
         let shrinkage = random(0, 0.1);
         this.size = this.size - shrinkage;
@@ -35,6 +36,7 @@ class Flower {
         }
     }
 
+    // Allows the bees to pollinate the flowers as they are touched
     pollinate() {
         let growth = random(0, 0.5);
         this.size = this.size + growth;
@@ -44,6 +46,8 @@ class Flower {
         this.petalThickness = constrain(this.petalThickness, 0, this.maxPetalThickness);
 
     }
+
+    // Allows the flowers to be displayed
     display() {
         push();
         // Draw a line for the stem
@@ -58,6 +62,7 @@ class Flower {
         pop();
     }
 
+    // Allows the user to click on the flower to make it grow
     mousePressed() {
         let d = dist(this.x, this.y, mouseX, mouseY);
         if (d < this.size/2 + this.petalThickness) {

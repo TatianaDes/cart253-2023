@@ -92,37 +92,37 @@ function setup() {
 // Displays our flowers
 function draw() {
 
-    // Setting up all the different states
+  // Setting up all the different states
     if (state === `title`) {
-        title();
+      title();
     }
     else if (state === `simulation`) {
-        simulation();
+      simulation();
     }
     else if (state === `flowers`) {
-        flowersDead();
+      flowersDead();
     }
     else if (state === `bees`) {
-        beesDead();
+      beesDead();
     }
     else if (state === `weedkiller`) {
-        weedkillerKills();
+      weedkillerKills();
     }
 
     function title() {
         // Title state
         push();
-        background(186,209,252);
+        background(3,59,10);
         textSize(60);
-        fill(7,33,78);
+        fill(25,187,100);
         textAlign(CENTER, CENTER);
         text(`Juggle the Ecosystem`, windowWidth/2, windowHeight/2);
         textSize(20);
-        fill(231,96,84);
+        fill(90,176,57);
         text(`(Press Any Key to Start)`, windowWidth/2, 350);
         textSize(15);
-        fill(57,160,100);
-        text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller.`, 1000, 570);
+        fill(176,129,57);
+        text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller. If the weedkiller kills 10 flowers, it is game over!`, 870, 570);
         pop();
     }
 
@@ -220,22 +220,22 @@ function draw() {
       }
     }
 
-    // Checks if the weedkiller kills 5 flowers, then `weedkiller` state occurs
-    if (flowerDeath >= 5) {
+    // Checks if the weedkiller kills 10 flowers, then `weedkiller` state occurs
+    if (flowerDeath >= 10) {
       state = `weedkiller`;
     }
-  }
+   }
 
   function flowersDead() {
     // flowers state
     push();
-    background(186,209,252);
+    background(130,34,34);
     textSize(60);
-    fill(7,33,78);
+    fill(255,199,78);
     textAlign(CENTER, CENTER);
     text(`Oh no! All the flowers are dead.`, windowWidth/2, windowHeight/2);
     textSize(20);
-    fill(231,96,84);
+    fill(213,170,218);
     text(`(Refresh Page to Restart)`, windowWidth/2, 350);
     pop();
   }
@@ -243,13 +243,13 @@ function draw() {
   function beesDead() {
     // bees state
     push();
-    background(186,209,252);
+    background(0);
     textSize(60);
-    fill(7,33,78);
+    fill(255,246,25);
     textAlign(CENTER, CENTER);
     text(`Better luck next time, all the bees fell.`, windowWidth/2, windowHeight/2);
     textSize(20);
-    fill(231,96,84);
+    fill(208,245,253);
     text(`(Refresh Page to Restart)`, windowWidth/2, 350);
     pop();
   }
@@ -257,13 +257,13 @@ function draw() {
   function weedkillerKills() {
     // weedkiller state
     push();
-    background(186,209,252);
+    background(236,242,88);
     textSize(60);
-    fill(7,33,78);
+    fill(31,94,28);
     textAlign(CENTER, CENTER);
     text(`Horrible weed killer, now the ecosystem is ruined.`, windowWidth/2, windowHeight/2);
     textSize(20);
-    fill(231,96,84);
+    fill();
     text(`(Refresh Page to Restart)`, windowWidth/2, 350);
     pop();
   }

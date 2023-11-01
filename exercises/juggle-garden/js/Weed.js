@@ -50,10 +50,9 @@ class Weed {
               this.vy = -this.vy;
               this.ay = 0;
           }
-         
-            
       }
 
+      // Once the weedkiller touches the flower, the flower dies
       kill(flower) {
         let d = dist(this.x, this.y, flower.x, flower.y);
         if (d < this.sizeX/2 + flower.size/2 + flower.petalThickness) {

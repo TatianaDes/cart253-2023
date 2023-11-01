@@ -56,8 +56,6 @@ class Bee {
             this.vy = -this.vy;
             this.ay = 0;
         }
-       
-          
     }
   
     // display() draws our bee onto the canvas
