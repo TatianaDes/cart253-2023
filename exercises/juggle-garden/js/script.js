@@ -274,11 +274,11 @@ function draw() {
         let flower = garden.flowers[i];
         flower.mousePressed();
     }
-   /* // Make weedkiller be placed by clicking the mouse
-    for (let i = 0; i < weedkillers.length; i++) {
-        let weedkiller = new Weedkiller(mouseX, mouseY);
-        weedkillers.push(weedkiller);
-    } */
+  //  // Make weedkiller be placed by clicking the mouse
+  //   for (let i = 0; i < weeds.length; i++) {
+  //       let weedkill = weeds(mouseX, mouseY);
+  //       weeds.push(weedkill);
+  //   } 
   }
 
   function keyPressed() {
