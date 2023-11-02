@@ -17,7 +17,7 @@ class Paddle {
     // Displaying the paddle and all its colours and shapes
     display() {
         push();
-        fill(255);
+        fill(252,159,30);
         noStroke();
         rectMode(CENTER);
         rect(this.x, this.y, this.width, this.height);

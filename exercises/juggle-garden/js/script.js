@@ -269,17 +269,10 @@ function draw() {
   }
 
     function mousePressed() {
-    // Making the flowers grow when the user presses them
-    for (let i = 0; i < garden.flowers.length; i++) {
-        let flower = garden.flowers[i];
-        flower.mousePressed();
-    }
-  //  // Make weedkiller be placed by clicking the mouse
-  //   for (let i = 0; i < weeds.length; i++) {
-  //       let weedkill = weeds(mouseX, mouseY);
-  //       weeds.push(weedkill);
-  //   } 
-  }
+   // Make weedkiller be placed by clicking the mouse
+  let weedkill = new Weed(mouseX, mouseY, weedkillerImage);
+  weeds.push(weedkill);
+}
 
   function keyPressed() {
     // When pressing the mouse button, changes the title screen
