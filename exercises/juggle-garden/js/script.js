@@ -118,7 +118,7 @@ function draw() {
     text(`(Press Any Key to Start)`, windowWidth / 2, 350);
     textSize(15);
     fill(176, 129, 57);
-    text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller. If the weedkiller kills 10 flowers, it is game over!`, 870, 570);
+    text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller and make it harder. If the weedkiller kills 15 flowers, it is game over!`, 800, 570);
     pop();
   }
 
@@ -192,40 +192,40 @@ function draw() {
 }
 
 function checkEndings() {
-  function checkEndings() {
-    // Checks if all the flowers have died, then `flowers` state occurs
-    let allFlowersDead = true;
-    for (let i = 0; i < garden.flowers.length; i++) {
-      if (garden.flowers[i].alive) {
-        allFlowersDead = false;
-        break;
-      }
-    }
-
-    if (allFlowersDead) {
-      state = `flowers`;
-    }
-
-
-    // Checks if all the bees have fallen, then `bees` state occurs
-    let allBeesDead = true; // NEW! Same thing.
-    for (let i = 0; i < bees.length; i++) {
-      if (bees[i].alive) {
-        allBeesDead = false;
-        break;
-      }
-    }
-
-    if (allBeesDead) {
-      state = `bees`;
+  // Checks if all the flowers have died, then `flowers` state occurs
+  let allFlowersDead = true;
+  for (let i = 0; i < garden.flowers.length; i++) {
+    if (garden.flowers[i].alive) {
+      allFlowersDead = false;
+      break;
     }
   }
 
-  // Checks if the weedkiller kills 10 flowers, then `weedkiller` state occurs
-  if (flowerDeath >= 10) {
+  // Checks if all flowers are actually dead and starts the ending
+  if (allFlowersDead) {
+    state = `flowers`;
+  }
+
+  // Checks if all the bees have fallen, then `bees` state occurs
+  let allBeesDead = true;
+  for (let i = 0; i < bees.length; i++) {
+    if (bees[i].alive) {
+      allBeesDead = false;
+      break;
+    }
+  }
+
+  // Checks if all the bees are actually dead and starts the ending
+  if (allBeesDead) {
+    state = `bees`;
+  }
+
+  // Checks if the weedkiller kills 15 flowers, then `weedkiller` state occurs
+  if (flowerDeath >= 15) {
     state = `weedkiller`;
   }
 }
+
 
 function flowersDead() {
   // flowers state
