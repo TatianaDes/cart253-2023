@@ -9,13 +9,18 @@
 
 let player;
 
+let platform;
+
 function preload() {
 
 }
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    player = new Player(200, 200, 30, 80);
+    player = new Player(40, 531, 30, 80);
+
+    // Create the paddle inside the main script
+    platform = new Platform(2800, 40);
 }
 
 
@@ -24,6 +29,10 @@ function draw() {
 
     player.move();
     player.display();
+
+    push();
+    platform.display();
+    pop();
 }
 
 function keyPressed() {

@@ -32,13 +32,6 @@ class Player {
         else if (keyCode === RIGHT_ARROW) {
             this.vx = this.speed;
         }
-
-        if (keyCode === UP_ARROW) {
-            this.vy = -this.speed;
-        }
-        else if (keyCode === DOWN_ARROW) {
-            this.vy = this.speed;
-        }
     }
 
     keyReleased(keyCode) {
@@ -48,13 +41,5 @@ class Player {
         else if (keyCode === RIGHT_ARROW) {
             this.vx = 0;
         }
-
-        if (keyCode === UP_ARROW) {
-            this.vy = 0;
-        }
-        else if (keyCode === DOWN_ARROW) {
-            this.vy = 0
-        }
     }
-
 }

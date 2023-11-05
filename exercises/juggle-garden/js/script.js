@@ -185,6 +185,7 @@ function draw() {
     }
 
     // Making the paddle able to display in the main script
+    push();
     paddle.move();
     paddle.display();
     pop();
