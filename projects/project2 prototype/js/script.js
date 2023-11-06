@@ -18,14 +18,18 @@ let door;
 
 let note;
 
-let state = `title`; // Can be: title, simulation, .....
+let state = `title`; // Can be: title, simulation, note, door
 
+// preload() creates the images I wish to put in my program
 function preload() {
 
 }
 
+// setup() creates the canvas and the new classes
 function setup() {
     createCanvas(windowWidth, windowHeight);
+
+    // Create the player inside the main script
     player = new Player(40, 531, 30, 80);
 
     // Create the platform inside the main script
@@ -34,12 +38,14 @@ function setup() {
     platform3 = new Platform(1050, 300, 750, 35);
     platform4 = new Platform(250, 127, 650, 35);
 
+    // Create the door inside the main script
     door = new Door(100, 70, 50, 80, 8);
 
+    // Create the note inside the main script
     note = new Note(1300, 250);
 }
 
-
+// draw() displays all the different states and their functions
 function draw() {
     // Setting up all the different states
     if (state === `title`) {
@@ -62,7 +68,7 @@ function draw() {
         textSize(60);
         fill(25, 187, 100);
         textAlign(CENTER, CENTER);
-        text(`Juggle the Ecosystem`, windowWidth / 2, windowHeight / 2);
+        text(`Longing`, windowWidth / 2, windowHeight / 2);
         textSize(20);
         fill(90, 176, 57);
         text(`(Press Any Key to Start)`, windowWidth / 2, 350);
@@ -76,12 +82,14 @@ function draw() {
         // Simulation state
         background(176, 249, 224);
 
+        // Draws the player with all its functions
         push();
         player.move();
         player.display();
         player.checkOverlap(platform);
         pop();
 
+        // Draws the platform with all its functions
         push();
         platform.display();
         platform2.display();
@@ -89,10 +97,12 @@ function draw() {
         platform4.display();
         pop();
 
+        // Draws the door with all its functions
         push();
         door.display();
         pop();
 
+        // // Draws the note with all its functions
         push();
         note.display();
         pop();
@@ -100,7 +110,7 @@ function draw() {
 }
 
 function noteCheck() {
-    // flowers state
+    // Note state
     push();
     background(130, 34, 34);
     textSize(60);
@@ -114,7 +124,7 @@ function noteCheck() {
 }
 
 function doorCheck() {
-    // flowers state
+    // Door state
     push();
     background(130, 34, 34);
     textSize(60);
@@ -128,11 +138,13 @@ function doorCheck() {
 }
 
 function checkEndings() {
+    // Checks if the player and note overlap and creates the note ending
     let d = dist(player.x, player.y, note.x, note.y);
     if (d < player.size / 2 + note.size / 2) {
         state = `note`;
     }
 
+    // Checks if the player and door overlap and creates the door ending
     let i = dist(player.x, player.y, door.x, door.y);
     if (i < player.size / 2 + door.size / 2) {
         state = `door`;
@@ -140,6 +152,7 @@ function checkEndings() {
 }
 
 function keyPressed() {
+    // Moves player with pressed keys
     player.keyPressed(keyCode);
 
     // When pressing the mouse button, changes the title screen
@@ -149,5 +162,6 @@ function keyPressed() {
 }
 
 function keyReleased() {
+    // Stops player with keys released
     player.keyReleased(keyCode);
 }

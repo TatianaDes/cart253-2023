@@ -1,5 +1,6 @@
 class Player {
 
+    // Creating dimensions of the player
     constructor(x, y, w, h) {
         this.x = x;
         this.y = y;
@@ -11,11 +12,13 @@ class Player {
         this.vy = 0;
     }
 
+    // Gives movement to the player
     move() {
         this.x += this.vx;
         this.y += this.vy;
     }
 
+    // Checks if the player overlaps the platform
     checkOverlap(platform) {
         let d = dist(player.x, player.y, platform.x, platform.y);
         if (d < player.size / 2 + platform.size / 2) {
@@ -23,6 +26,7 @@ class Player {
         }
     }
 
+    // Displays the player
     display() {
         push();
         noStroke();
@@ -32,6 +36,7 @@ class Player {
         pop();
     }
 
+    // Moves player by pressing the arrow keys
     keyPressed(keyCode) {
         if (keyCode === LEFT_ARROW) {
             this.vx = -this.speed;
@@ -47,6 +52,7 @@ class Player {
         }
     }
 
+    // Stops player by releasing the arrow keys
     keyReleased(keyCode) {
         if (keyCode === LEFT_ARROW && this.vx < 0) {
             this.vx = 0;

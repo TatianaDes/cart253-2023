@@ -1,13 +1,13 @@
 class Note {
 
-    // Creating the look of the paddle
+    // Creating the dimensions of the note
     constructor(x, y) {
         this.x = x;
         this.y = y;
         this.size = 20;
     }
 
-    // Displaying the paddle and all its colours and shapes
+    // Displaying the note
     display() {
         push();
         fill(255, 237, 71);

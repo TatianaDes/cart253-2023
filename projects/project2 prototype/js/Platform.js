@@ -1,6 +1,6 @@
 class Platform {
 
-    // Creating the look of the paddle
+    // Creating the dimensions of the platform
     constructor(x, y, w, h) {
         this.x = x;
         this.y = y;
@@ -9,7 +9,7 @@ class Platform {
 
     }
 
-    // Displaying the paddle and all its colours and shapes
+    // Displaying the platform
     display() {
         push();
         fill(36, 76, 25);
