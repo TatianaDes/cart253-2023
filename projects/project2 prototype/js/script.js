@@ -10,6 +10,8 @@
 let player;
 
 let platform;
+let platform2;
+let platform3;
 
 let door;
 
@@ -22,7 +24,10 @@ function setup() {
     player = new Player(40, 531, 30, 80);
 
     // Create the platform inside the main script
-    platform = new Platform(2800, 40);
+    platform = new Platform(690, 600, 1380, 58);
+    platform2 = new Platform(250, 450, 500, 35);
+    platform3 = new Platform(1050, 300, 750, 35);
+
 
     door = new Door(100, 70, 50, 80, 8);
 }
@@ -38,6 +43,14 @@ function draw() {
 
     push();
     platform.display();
+    pop();
+
+    push();
+    platform2.display();
+    pop();
+
+    push();
+    platform3.display();
     pop();
 
     push();

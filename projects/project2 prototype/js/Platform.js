@@ -1,11 +1,11 @@
 class Platform {
 
     // Creating the look of the paddle
-    constructor(w, h) {
-        this.width = w;
-        this.height = h;
-        this.x = 0;
-        this.y = height - this.height / 2;
+    constructor(x, y, w, h) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
 
     }
 
@@ -15,7 +15,7 @@ class Platform {
         fill(36, 76, 25);
         noStroke();
         rectMode(CENTER);
-        rect(this.x, this.y, this.width, this.height);
+        rect(this.x, this.y, this.w, this.h);
         pop();
     }
 }
