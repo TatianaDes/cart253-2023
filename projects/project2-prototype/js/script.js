@@ -9,7 +9,6 @@
 
 let player;
 
-let platform;
 let platform2;
 let platform3;
 let platform4;
@@ -33,7 +32,6 @@ function setup() {
     player = new Player(40, 531, 30, 80);
 
     // Create the platform inside the main script
-    platform = new Platform(690, 600, 1380, 58);
     platform2 = new Platform(250, 450, 500, 35);
     platform3 = new Platform(1050, 300, 750, 35);
     platform4 = new Platform(250, 127, 650, 35);
@@ -85,13 +83,14 @@ function draw() {
         // Draws the player with all its functions
         push();
         player.move();
+        player.checkGrounded();
+        player.jumpGravity();
+        player.checkSides();
         player.display();
-        player.checkOverlap(platform);
         pop();
 
         // Draws the platform with all its functions
         push();
-        platform.display();
         platform2.display();
         platform3.display();
         platform4.display();

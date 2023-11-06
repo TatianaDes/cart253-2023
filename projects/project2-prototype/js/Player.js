@@ -10,6 +10,11 @@ class Player {
         this.speed = 5;
         this.vx = 0;
         this.vy = 0;
+        this.ax = 0;
+        this.ay = 0;
+
+        this.grounded = false;
+        this.gravity = 0.01;
     }
 
     // Gives movement to the player
@@ -24,6 +29,32 @@ class Player {
         if (d < player.size / 2 + platform.size / 2) {
             player.speed = -player.speed
         }
+    }
+
+    checkGrounded() {
+        if (this.y === windowHeight) {
+            this.grounded = true;
+        }
+        else {
+            this.grounded = false;
+        }
+    }
+
+    jumpGravity() {
+        if (this.grounded === true) {
+            this.ay = 0;
+            this.vy = 0;
+        }
+        else if (this.grounded === false) {
+            this.y += this.vy;
+            this.vy += this.ay;
+            this.ay += this.gravity;
+        }
+    }
+
+    checkSides() {
+        this.x = constrain(this.x, 0, windowWidth);
+        this.y = constrain(this.y, 0, windowHeight);
     }
 
     // Displays the player
@@ -53,6 +84,10 @@ class Player {
         }
         else if (keyCode === RIGHT_ARROW && this.vx > 0) {
             this.vx = 0;
+        }
+        else if (keyCode === 32) {
+            this.grounded = false;
+            this.vy = -30;
         }
     }
 }
