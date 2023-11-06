@@ -16,6 +16,10 @@ let platform4;
 
 let door;
 
+let note;
+
+let state = `title`; // Can be: title, simulation, .....
+
 function preload() {
 
 }
@@ -31,40 +35,117 @@ function setup() {
     platform4 = new Platform(250, 127, 650, 35);
 
     door = new Door(100, 70, 50, 80, 8);
+
+    note = new Note(1300, 250);
 }
 
 
 function draw() {
-    background(183, 252, 238);
+    // Setting up all the different states
+    if (state === `title`) {
+        title();
+    }
+    else if (state === `simulation`) {
+        simulation();
+    }
+    else if (state === `note`) {
+        noteCheck();
+    }
+    else if (state === `door`) {
+        doorCheck();
+    }
 
-    push();
-    player.move();
-    player.display();
-    pop();
+    function title() {
+        // Title state
+        push();
+        background(3, 59, 10);
+        textSize(60);
+        fill(25, 187, 100);
+        textAlign(CENTER, CENTER);
+        text(`Juggle the Ecosystem`, windowWidth / 2, windowHeight / 2);
+        textSize(20);
+        fill(90, 176, 57);
+        text(`(Press Any Key to Start)`, windowWidth / 2, 350);
+        textSize(15);
+        fill(176, 129, 57);
+        text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller and make it harder. If the weedkiller kills 15 flowers, it is game over!`, 800, 570);
+        pop();
+    }
 
-    push();
-    platform.display();
-    pop();
+    function simulation() {
+        // Simulation state
+        background(176, 249, 224);
 
-    push();
-    platform2.display();
-    pop();
+        push();
+        player.move();
+        player.display();
+        player.checkOverlap(platform);
+        pop();
 
-    push();
-    platform3.display();
-    pop();
+        push();
+        platform.display();
+        platform2.display();
+        platform3.display();
+        platform4.display();
+        pop();
 
-    push();
-    platform4.display();
-    pop();
+        push();
+        door.display();
+        pop();
 
+        push();
+        note.display();
+        pop();
+    }
+}
+
+function noteCheck() {
+    // flowers state
     push();
-    door.display();
+    background(130, 34, 34);
+    textSize(60);
+    fill(255, 199, 78);
+    textAlign(CENTER, CENTER);
+    text(`Oh no! All the flowers are dead.`, windowWidth / 2, windowHeight / 2);
+    textSize(20);
+    fill(213, 170, 218);
+    text(`(Refresh Page to Restart)`, windowWidth / 2, 350);
     pop();
+}
+
+function doorCheck() {
+    // flowers state
+    push();
+    background(130, 34, 34);
+    textSize(60);
+    fill(255, 199, 78);
+    textAlign(CENTER, CENTER);
+    text(`Oh no! All the flowers are dead.`, windowWidth / 2, windowHeight / 2);
+    textSize(20);
+    fill(213, 170, 218);
+    text(`(Refresh Page to Restart)`, windowWidth / 2, 350);
+    pop();
+}
+
+function checkEndings() {
+    let d = dist(player.x, player.y, note.x, note.y);
+    if (d < player.size / 2 + note.size / 2) {
+        state = `note`;
+    }
+
+    let i = dist(player.x, player.y, door.x, door.y);
+    if (i < player.size / 2 + door.size / 2) {
+        state = `door`;
+    }
 }
 
 function keyPressed() {
     player.keyPressed(keyCode);
+
+    // When pressing the mouse button, changes the title screen
+    if (state === `title`) {
+        state = `simulation`;
+    }
 }
 
 function keyReleased() {
