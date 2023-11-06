@@ -35,10 +35,10 @@ class Player {
     }
 
     keyReleased(keyCode) {
-        if (keyCode === LEFT_ARROW) {
+        if (keyCode === LEFT_ARROW && this.vx < 0) {
             this.vx = 0;
         }
-        else if (keyCode === RIGHT_ARROW) {
+        else if (keyCode === RIGHT_ARROW && this.vx > 0) {
             this.vx = 0;
         }
     }

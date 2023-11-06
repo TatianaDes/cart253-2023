@@ -11,6 +11,8 @@ let player;
 
 let platform;
 
+let door;
+
 function preload() {
 
 }
@@ -19,19 +21,27 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     player = new Player(40, 531, 30, 80);
 
-    // Create the paddle inside the main script
+    // Create the platform inside the main script
     platform = new Platform(2800, 40);
+
+    door = new Door(100, 70, 50, 80, 8);
 }
 
 
 function draw() {
     background(183, 252, 238);
 
+    push();
     player.move();
     player.display();
+    pop();
 
     push();
     platform.display();
+    pop();
+
+    push();
+    door.display();
     pop();
 }
 
