@@ -32,7 +32,7 @@ class Player {
     }
 
     checkGrounded() {
-        if (this.y === windowHeight) {
+        if (this.y === height) {
             this.grounded = true;
         }
         else {
@@ -53,8 +53,8 @@ class Player {
     }
 
     checkSides() {
-        this.x = constrain(this.x, 0, windowWidth);
-        this.y = constrain(this.y, 0, windowHeight);
+        this.x = constrain(this.x, 0, width);
+        this.y = constrain(this.y, 0, height);
     }
 
     // Displays the player

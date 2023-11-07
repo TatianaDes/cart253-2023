@@ -9,6 +9,7 @@
 
 let player;
 
+let platform;
 let platform2;
 let platform3;
 let platform4;
@@ -26,21 +27,22 @@ function preload() {
 
 // setup() creates the canvas and the new classes
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(600, 600);
 
     // Create the player inside the main script
     player = new Player(40, 531, 30, 80);
 
     // Create the platform inside the main script
-    platform2 = new Platform(250, 450, 500, 35);
-    platform3 = new Platform(1050, 300, 750, 35);
-    platform4 = new Platform(250, 127, 650, 35);
+    platform = new Platform(300, 600, 600, 35);
+    platform2 = new Platform(100, 450, 300, 35);
+    platform3 = new Platform(600, 300, 500, 35);
+    platform4 = new Platform(100, 127, 400, 35);
 
     // Create the door inside the main script
-    door = new Door(100, 70, 50, 80, 8);
+    door = new Door(50, 70, 50, 80, 8);
 
     // Create the note inside the main script
-    note = new Note(1300, 250);
+    note = new Note(560, 250);
 }
 
 // draw() displays all the different states and their functions
@@ -66,13 +68,13 @@ function draw() {
         textSize(60);
         fill(25, 187, 100);
         textAlign(CENTER, CENTER);
-        text(`Longing`, windowWidth / 2, windowHeight / 2);
+        text(`Longing`, width / 2, height / 2);
         textSize(20);
         fill(90, 176, 57);
-        text(`(Press Any Key to Start)`, windowWidth / 2, 350);
+        text(`(Press Any Key to Start)`, width / 2, 350);
         textSize(15);
         fill(176, 129, 57);
-        text(`Use the mouse to direct the paddle to catch the bees, and click the mouse to drop the weedkiller and make it harder. If the weedkiller kills 15 flowers, it is game over!`, 800, 570);
+        text(`Use the left and right arrow keys to move and jump with the spacebar.`, 350, 570);
         pop();
     }
 
@@ -91,6 +93,7 @@ function draw() {
 
         // Draws the platform with all its functions
         push();
+        platform.display();
         platform2.display();
         platform3.display();
         platform4.display();
@@ -115,10 +118,10 @@ function noteCheck() {
     textSize(60);
     fill(255, 199, 78);
     textAlign(CENTER, CENTER);
-    text(`Oh no! All the flowers are dead.`, windowWidth / 2, windowHeight / 2);
+    text(`Oh no! All the flowers are dead.`, width / 2, height / 2);
     textSize(20);
     fill(213, 170, 218);
-    text(`(Refresh Page to Restart)`, windowWidth / 2, 350);
+    text(`(Refresh Page to Restart)`, width / 2, 350);
     pop();
 }
 
@@ -129,10 +132,10 @@ function doorCheck() {
     textSize(60);
     fill(255, 199, 78);
     textAlign(CENTER, CENTER);
-    text(`Oh no! All the flowers are dead.`, windowWidth / 2, windowHeight / 2);
+    text(`Oh no! All the flowers are dead.`, width / 2, height / 2);
     textSize(20);
     fill(213, 170, 218);
-    text(`(Refresh Page to Restart)`, windowWidth / 2, 350);
+    text(`(Refresh Page to Restart)`, width / 2, 350);
     pop();
 }
 
