@@ -9,6 +9,8 @@
 
 let player;
 
+let creature;
+
 let state = `title`; // Can be: title, simulation, .....
 
 // preload() creates the images I wish to put in my program
@@ -18,10 +20,12 @@ function preload() {
 
 // setup() creates the canvas and the new classes
 function setup() {
-    createCanvas(600, 600);
+    createCanvas(windowWidth, windowHeight);
 
     // Create the player inside the main script
     player = new Player(40, 531, 30, 80);
+
+    creature = new Creature(40, 531, 30, 80);
 }
 
 // draw() displays all the different states and their functions
@@ -53,13 +57,18 @@ function draw() {
 
     function simulation() {
         // Simulation state
-        background(176, 249, 224);
+        background(38, 90, 11);
 
         // Draws the player with all its functions
         push();
         player.move();
-        player.checkSides();
         player.display();
+        pop();
+
+        push();
+        creature.move(player);
+        creature.checkSides();
+        creature.display();
         pop();
     }
 }

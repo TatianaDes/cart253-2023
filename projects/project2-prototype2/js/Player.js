@@ -6,6 +6,7 @@ class Player {
         this.y = y;
         this.w = w;
         this.h = h;
+        this.size = 40;
 
         this.speed = 5;
         this.vx = 0;
@@ -18,11 +19,6 @@ class Player {
     move() {
         this.x += this.vx;
         this.y += this.vy;
-    }
-
-    checkSides() {
-        this.x = constrain(this.x, 0, width);
-        this.y = constrain(this.y, 0, height);
     }
 
     // Displays the player
