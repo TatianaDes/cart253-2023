@@ -35,7 +35,7 @@ class Player {
         pop();
     }
 
-    // Moves player by pressing the arrow keys
+    // Starts the player when the arrow keys are pressed
     keyPressed(keyCode) {
         if (keyCode === LEFT_ARROW) {
             this.vx = -this.speed;
@@ -43,9 +43,16 @@ class Player {
         else if (keyCode === RIGHT_ARROW) {
             this.vx = this.speed;
         }
+
+        if (keyCode === UP_ARROW) {
+            this.vy = -this.speed;
+        }
+        else if (keyCode === DOWN_ARROW) {
+            this.vy = this.speed;
+        }
     }
 
-    // Stops player by releasing the arrow keys
+    // Stops the player when the arrow keys are released
     keyReleased(keyCode) {
         if (keyCode === LEFT_ARROW && this.vx < 0) {
             this.vx = 0;
@@ -53,9 +60,12 @@ class Player {
         else if (keyCode === RIGHT_ARROW && this.vx > 0) {
             this.vx = 0;
         }
-        else if (keyCode === 32) {
-            this.grounded = false;
-            this.vy = -30;
+
+        if (keyCode === UP_ARROW && this.vy < 0) {
+            this.vy = 0;
+        }
+        else if (keyCode === DOWN_ARROW && this.vy > 0) {
+            this.vy = 0
         }
     }
 }
