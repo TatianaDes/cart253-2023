@@ -1,7 +1,7 @@
 class Player {
 
     // Creating dimensions of the player
-    constructor(x, y, w, h, /*leftKey, rightKey, upKey, downKey*/) {
+    constructor(x, y, w, h, leftKey, rightKey, upKey, downKey) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -14,10 +14,10 @@ class Player {
         this.ax = 0;
         this.ay = 0;
 
-        // this.leftKey = leftKey;
-        // this.rightKey = rightKey;
-        // this.upKey = upKey;
-        // this.downKey = downKey;
+        this.leftKey = leftKey;
+        this.rightKey = rightKey;
+        this.upKey = upKey;
+        this.downKey = downKey;
     }
 
     // Gives movement to the player
@@ -38,34 +38,34 @@ class Player {
 
     // Starts the player when the arrow keys are pressed
     keyPressed(keyCode) {
-        if (keyCode === LEFT_ARROW /*this.leftKey*/) {
+        if (keyCode === /*LEFT_ARROW*/ this.leftKey) {
             this.vx = -this.speed;
         }
-        else if (keyCode === RIGHT_ARROW /*this.rightKey*/) {
+        else if (keyCode === /*RIGHT_ARROW*/ this.rightKey) {
             this.vx = this.speed;
         }
 
-        if (keyCode === UP_ARROW /*this.upKey*/) {
+        if (keyCode === /*UP_ARROW*/ this.upKey) {
             this.vy = -this.speed;
         }
-        else if (keyCode === DOWN_ARROW /*this.downKey*/) {
+        else if (keyCode === /*DOWN_ARROW*/ this.downKey) {
             this.vy = this.speed;
         }
     }
 
     // Stops the player when the arrow keys are released
     keyReleased(keyCode) {
-        if (keyCode === LEFT_ARROW /*this.leftKey*/ && this.vx < 0) {
+        if (keyCode === /*LEFT_ARROW*/ this.leftKey && this.vx < 0) {
             this.vx = 0;
         }
-        else if (keyCode === RIGHT_ARROW /*this.rightKey*/ && this.vx > 0) {
+        else if (keyCode === /*RIGHT_ARROW*/ this.rightKey && this.vx > 0) {
             this.vx = 0;
         }
 
-        if (keyCode === UP_ARROW /*this.upKey*/ && this.vy < 0) {
+        if (keyCode === /*UP_ARROW*/ this.upKey && this.vy < 0) {
             this.vy = 0;
         }
-        else if (keyCode === DOWN_ARROW /*this.downKey*/ && this.vy > 0) {
+        else if (keyCode === /*DOWN_ARROW*/ this.downKey && this.vy > 0) {
             this.vy = 0
         }
     }
