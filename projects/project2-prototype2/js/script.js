@@ -12,6 +12,8 @@ let player2;
 
 let creature;
 
+let house;
+
 let state = `title`; // Can be: title, simulation, .....
 
 // preload() creates the images I wish to put in my program
@@ -47,6 +49,8 @@ function setup() {
     });
 
     creature = new Creature(1000, 100, 30, 80);
+
+    house = new House(50, 70, 50, 80, 8);
 }
 
 // draw() displays all the different states and their functions
@@ -100,6 +104,10 @@ function draw() {
         creature.move(player);
         creature.checkSides();
         creature.display();
+        pop();
+
+        push();
+        house.display();
         pop();
     }
 }
