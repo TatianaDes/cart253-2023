@@ -25,10 +25,10 @@ function preload() {
 
 // setup() creates the canvas and the new classes
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(1400, 600);
 
     // Create the player inside the main script
-    player = new Player(50, 300, 30, 80); //({
+    player = new Player(60, 300, 30, 80); //({
     //         x: 50,
     //         y: 550,
     //         w: 30,
@@ -134,14 +134,14 @@ function checkNote() {
     textSize(32);
     fill(0);
     textAlign(LEFT, CENTER);
-    text(`Dear Evelyn,\n\n I remember the first time you held me in your arms.\n I remember looking up at you as you held me, I remember the warmth, and feeling at peace.\n I felt happy, for the first time I knew I felt happy.\n I remember looking up as you stared down at me while holding me, you looked so beautiful.\n That was a really great day.\n Wasn't it?\n\n Sincerely,\n Her`, width / 50, height / 2);
+    text(`Dear Evelyn,\n\n I remember the first time you held me in your arms.\n I remember looking up at you as you held me, I remember the warmth, and feeling at peace.\n I felt happy, for the first time I knew I felt happy.\n I remember looking up as you stared down at me while holding me, you looked so beautiful.\n That was a really great day.\n Wasn't it?\n\n Sincerely,\n Her`, width / 22, height / 2);
     pop();
 
     push();
     textSize(32);
     fill(102, 107, 131);
     textAlign(CENTER, CENTER);
-    text(`(Refresh Page to Restart)`, windowWidth / 2, 580);
+    text(`(Refresh Page to Restart)`, windowWidth / 2, 570);
     pop();
 }
 
