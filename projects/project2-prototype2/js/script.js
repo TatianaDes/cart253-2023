@@ -83,7 +83,7 @@ function draw() {
         text(`(Press Any Key to Start)`, width / 2, 350);
         textSize(15);
         fill(255);
-        text(`Use the left and right arrow keys to move and try to catch the creature`, 1100, 570);
+        text(`Use the left and right arrow keys to move and try to catch the creature.`, 1100, 570);
         pop();
     }
 
@@ -135,6 +135,13 @@ function checkNote() {
     fill(0);
     textAlign(LEFT, CENTER);
     text(`Dear Evelyn,\n\n I remember the first time you held me in your arms.\n I remember looking up at you as you held me, I remember the warmth, and feeling at peace.\n I felt happy, for the first time I knew I felt happy.\n I remember looking up as you stared down at me while holding me, you looked so beautiful.\n That was a really great day.\n Wasn't it?\n\n Sincerely,\n Her`, width / 50, height / 2);
+    pop();
+
+    push();
+    textSize(32);
+    fill(102, 107, 131);
+    textAlign(CENTER, CENTER);
+    text(`(Refresh Page to Restart)`, windowWidth / 2, 580);
     pop();
 }
 
