@@ -11,20 +11,28 @@ class House {
 
     // Displays the player
     display() {
-        // Displaying the door
+        // Displaying the walls
         push();
         noStroke();
-        fill(80, 58, 31);
+        fill(113, 61, 244);
         rectMode(CENTER);
-        rect(this.x, this.y - 3, this.w + 10, this.h + 7);
+        rect(this.x, this.y - 23.5, this.w + 80, this.h + 50);
         pop();
 
         // Displaying the door frame
         push();
         noStroke();
-        fill(99, 68, 16);
+        fill(65, 13, 197);
         rectMode(CENTER);
-        rect(this.x, this.y, this.w, this.h);
+        rect(this.x, this.y - 3, this.w + 10, this.h + 7);
+        pop();
+
+        // Displaying the door
+        push();
+        noStroke();
+        fill(131, 112, 244);
+        rectMode(CENTER);
+        rect(this.x, this.y + 1, this.w, this.h);
         pop();
 
         // Displaying the door knob
@@ -33,6 +41,73 @@ class House {
         noStroke();
         ellipse(this.x + 15, this.y, this.size);
         pop();
+
+
+
+        // Displaying the walls2
+        push();
+        noStroke();
+        fill(43, 165, 79);
+        rectMode(CENTER);
+        rect(this.x - 500, this.y - 400, this.w + 80, this.h + 50);
+        pop();
+
+        // Displaying the door frame2
+        push();
+        noStroke();
+        fill(20, 62, 33);
+        rectMode(CENTER);
+        rect(this.x - 500, this.y - 379, this.w + 10, this.h + 7);
+        pop();
+
+        // Displaying the door2
+        push();
+        noStroke();
+        fill(82, 188, 112);
+        rectMode(CENTER);
+        rect(this.x - 500, this.y - 375, this.w, this.h);
+        pop();
+
+        // Displaying the door knob2
+        push();
+        fill(0);
+        noStroke();
+        ellipse(this.x - 485, this.y - 375, this.size);
+        pop();
+
+
+
+        // Displaying the walls3
+        push();
+        noStroke();
+        fill(28, 123, 138);
+        rectMode(CENTER);
+        rect(this.x + 450, this.y - 250, this.w + 80, this.h + 50);
+        pop();
+
+        // Displaying the door frame3
+        push();
+        noStroke();
+        fill(33, 75, 82);
+        rectMode(CENTER);
+        rect(this.x + 450, this.y - 229, this.w + 10, this.h + 7);
+        pop();
+
+        // Displaying the door3
+        push();
+        noStroke();
+        fill(162, 197, 203);
+        rectMode(CENTER);
+        rect(this.x + 450, this.y - 225, this.w, this.h);
+        pop();
+
+        // Displaying the door knob3
+        push();
+        fill(0);
+        noStroke();
+        ellipse(this.x + 465, this.y - 225, this.size);
+        pop();
+
     }
 
 }
