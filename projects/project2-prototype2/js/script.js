@@ -141,7 +141,7 @@ function checkNote() {
     textSize(32);
     fill(102, 107, 131);
     textAlign(CENTER, CENTER);
-    text(`(Refresh Page to Restart)`, windowWidth / 2, 570);
+    text(`(Refresh Page to Restart)`, width / 2, 570);
     pop();
 }
 
