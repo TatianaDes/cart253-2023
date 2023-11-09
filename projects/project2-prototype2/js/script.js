@@ -50,8 +50,10 @@ function setup() {
     //     downKey: 83
     // });
 
+    // Create creature in the main script
     creature = new Creature(1000, 100, 30, 60);
 
+    // Create the house in the main script
     house = new House(700, 500, 50, 80, 8);
 
     //street = new Street(500, 300, 1000, 150);
@@ -104,12 +106,14 @@ function draw() {
         // player2.display();
         // pop();
 
+        // Draws the creature with all its functions
         push();
         creature.move(player);
         creature.checkSides();
         creature.display();
         pop();
 
+        // Draws the house with all its functions
         push();
         house.checkHouse(player);
         house.display();
@@ -121,6 +125,7 @@ function draw() {
     }
 }
 
+// Checks if the player touches the creature and triggers the `note` state
 function checkEndings() {
     let d = dist(player.x, player.y, creature.x, creature.y);
     if (d < player.size / 2 + creature.size / 2) {
@@ -128,7 +133,9 @@ function checkEndings() {
     }
 }
 
+
 function checkNote() {
+    // Note state
     push();
     background(236, 204, 74);
     textSize(32);

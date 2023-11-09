@@ -1,6 +1,6 @@
 // class Street {
 
-//     // Creating dimensions of the player
+//     // Creating dimensions of the street
 //     constructor(x, y, w, h) {
 //         this.x = x;
 //         this.y = y;
@@ -8,7 +8,7 @@
 //         this.h = h;
 //     }
 
-//     // Displays the player
+//     // Displays the street
 //     display() {
 //         push();
 //         fill(36, 76, 25);

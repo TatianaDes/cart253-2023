@@ -1,6 +1,6 @@
 class House {
 
-    // Creating dimensions of the player
+    // Creating dimensions of the house
     constructor(x, y, w, h, size) {
         this.x = x;
         this.y = y;
@@ -9,6 +9,7 @@ class House {
         this.size = size;
     }
 
+    // Checks if the player touches the house and constrains them (not working)
     checkHouse(player) {
         let d = dist(this.x, this.y, player.x, player.y);
         if (d < this.size / 2 + player.size / 2) {
@@ -16,7 +17,7 @@ class House {
         }
     }
 
-    // Displays the player
+    // Displays the house
     display() {
         // Displaying the walls
         push();

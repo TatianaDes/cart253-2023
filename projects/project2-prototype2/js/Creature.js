@@ -1,4 +1,6 @@
 class Creature {
+
+    // Creating dimensions of the creature
     constructor(x, y, w, h) {
         this.x = x;
         this.y = y;
@@ -14,7 +16,7 @@ class Creature {
         this.ay = 0;
     }
 
-    // Gives movement to the player
+    // Gives movement to the creature
     move(player) {
         // Make the creature scared of the player
         let a = dist(player.x, player.y, this.x, this.y);
@@ -34,22 +36,25 @@ class Creature {
         }
         // }
 
+        // Allows for movement with acceleration and velocity to make the movement stay at a certain speed
         this.vx = this.vx + this.ax;
         this.vx = constrain(this.vx, -this.maxSpeed, this.maxSpeed);
         this.vy = this.vy + this.ay;
         this.vy = constrain(this.vy, -this.maxSpeed, this.maxSpeed);
 
+        // Allows the creature to move
         this.x = this.x + this.vx;
         this.y = this.y + this.vy;
 
     }
 
+    // Constrains the creature from the borders of the canvas
     checkSides() {
         this.x = constrain(this.x, 0, width);
         this.y = constrain(this.y, 0, height);
     }
 
-    // Displays the player
+    // Displays the creature
     display() {
         push();
         noStroke();
