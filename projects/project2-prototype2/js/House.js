@@ -9,6 +9,13 @@ class House {
         this.size = size;
     }
 
+    checkHouse(player) {
+        let d = dist(this.x, this.y, player.x, player.y);
+        if (d < this.size / 2 + player.size / 2) {
+            player.speed = -player.speed
+        }
+    }
+
     // Displays the player
     display() {
         // Displaying the walls

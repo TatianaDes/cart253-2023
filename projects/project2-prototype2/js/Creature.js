@@ -53,7 +53,7 @@ class Creature {
     display() {
         push();
         noStroke();
-        fill(20, 190, 136);
+        fill(20, 36, 74);
         rectMode(CENTER);
         rect(this.x, this.y, this.w, this.h);
         pop();

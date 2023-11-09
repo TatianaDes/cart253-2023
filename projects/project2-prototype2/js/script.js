@@ -14,7 +14,9 @@ let creature;
 
 let house;
 
-let state = `title`; // Can be: title, simulation, .....
+//let street;
+
+let state = `title`; // Can be: title, simulation, note
 
 // preload() creates the images I wish to put in my program
 function preload() {
@@ -26,7 +28,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
 
     // Create the player inside the main script
-    player = new Player(50, 550, 30, 80); //({
+    player = new Player(50, 300, 30, 80); //({
     //         x: 50,
     //         y: 550,
     //         w: 30,
@@ -48,9 +50,11 @@ function setup() {
     //     downKey: 83
     // });
 
-    creature = new Creature(1000, 100, 30, 80);
+    creature = new Creature(1000, 100, 30, 60);
 
     house = new House(700, 500, 50, 80, 8);
+
+    //street = new Street(500, 300, 1000, 150);
 }
 
 // draw() displays all the different states and their functions
@@ -69,17 +73,17 @@ function draw() {
     function title() {
         // Title state
         push();
-        background(3, 59, 10);
+        background(15, 29, 60);
         textSize(60);
-        fill(25, 187, 100);
+        fill(241, 239, 91);
         textAlign(CENTER, CENTER);
         text(`Longing`, width / 2, height / 2);
         textSize(20);
-        fill(90, 176, 57);
+        fill(102, 107, 131);
         text(`(Press Any Key to Start)`, width / 2, 350);
         textSize(15);
-        fill(176, 129, 57);
-        text(`Use the left and right arrow keys to move and jump with the spacebar.`, 350, 570);
+        fill(255);
+        text(`Use the left and right arrow keys to move and try to catch the creature`, 1100, 570);
         pop();
     }
 
@@ -107,8 +111,13 @@ function draw() {
         pop();
 
         push();
+        house.checkHouse(player);
         house.display();
         pop();
+
+        // push();
+        // street.display();
+        // pop();
     }
 }
 
