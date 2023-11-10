@@ -1,8 +1,9 @@
 
 "use strict";
 
-let oscillator;
-let t = 0;
+let synth;
+let notes = [`F2`, `G2`, `F2`, `C3`, `C3`, `F2`, `Eb3`, `C3`]; // F-minor
+let currentNote = 0;
 
 function preload() {
 
@@ -11,27 +12,30 @@ function preload() {
 
 function setup() {
     createCanvas(600, 600);
+
+    synth = new p5.PolySynth();
+
     userStartAudio();
 
-    oscillator = new p5.Oscillator(440, `sine`);
-    oscillator.amp(0.2);
+
 }
 
 function draw() {
     background(0);
 
-    let noiseValue = noise(t);
-    let newFreq = map(noiseValue, 0, 1, 20, 2000);
-    oscillator.freq(newFreq);
-
-    t = t + 0.05;
-
 }
 
-function mousePressed() {
-    oscillator.start();
+function keyPressed() {
+    // Start the ghost player
+    setInterval(playRandomNote, 150);
 }
 
-function mouseReleased() {
-    oscillator.stop();
+function playRandomNote() {
+    let note = notes[currentNote];
+    synth.play(note, 1, 0, 0.1);
+
+    currentNote = currentNote + 1;
+    if (currentNote === notes.length) {
+        currentNote = 0;
+    }
 }
