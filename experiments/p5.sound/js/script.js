@@ -1,41 +1,55 @@
 
 "use strict";
 
-let synth;
-let notes = [`F2`, `G2`, `F2`, `C3`, `C3`, `F2`, `Eb3`, `C3`]; // F-minor
-let currentNote = 0;
+let mic;
+let ghost = {
+    x: 0,
+    y: 0,
+    vx: 0,
+    vy: 0,
+    image: undefined
+};
 
 function preload() {
-
+    ghost.image = loadImage(`assets/images/clown.png`);
 }
 
 
 function setup() {
     createCanvas(600, 600);
 
-    synth = new p5.PolySynth();
+    ghost.x = width / 2;
+    ghost.y = height / 2;
 
-    userStartAudio();
-
-
+    mic = new p5.AudioIn();
+    mic.start();
 }
 
 function draw() {
     background(0);
 
-}
+    // Get volume into microphone
+    let level = mic.getLevel();
 
-function keyPressed() {
-    // Start the ghost player
-    setInterval(playRandomNote, 150);
-}
+    // Trembling
+    ghost.x = ghost.x + random(-1, 1);
+    ghost.y = ghost.y + random(-1, 1);
 
-function playRandomNote() {
-    let note = notes[currentNote];
-    synth.play(note, 1, 0, 0.1);
-
-    currentNote = currentNote + 1;
-    if (currentNote === notes.length) {
-        currentNote = 0;
+    // Check if the ghost is scared
+    if (level > 0.6) {
+        // Exit stage right!
+        ghost.vx = 20;
     }
+
+    // Move the ghost
+    ghost.x = ghost.x + ghost.vx;
+    ghost.y = ghost.y + ghost.vy;
+
+    // Display the ghost
+    push();
+    imageMode(CENTER);
+    tint(255, 50);
+    image(ghost.image, ghost.x, ghost.y);
+    pop();
 }
+
