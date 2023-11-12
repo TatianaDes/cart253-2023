@@ -7,6 +7,10 @@
 
 "use strict";
 
+let synth;
+let notes = [`F3`, `G3`, `Ab3`, `Bb3`, `C3`, `Db3`, `Eb3`, `F4`];  // F-minor
+let currentNote = 0;
+
 let player;
 let player2;
 
@@ -26,6 +30,10 @@ function preload() {
 // setup() creates the canvas and the new classes
 function setup() {
     createCanvas(1400, 600);
+
+    synth = new p5.PolySynth();
+
+    userStartAudio();
 
     // Create the player inside the main script
     player = new Player({
@@ -156,6 +164,20 @@ function checkNote() {
     textAlign(CENTER, CENTER);
     text(`(Refresh Page to Restart)`, width / 2, 570);
     pop();
+}
+
+function playRandomNote() {
+    let note = notes[currentNote];
+    synth.play(note, 1, 0, 0.1);
+
+    currentNote = currentNote + 1;
+    if (currentNote === notes.length) {
+        currentNote = 0;
+    }
+}
+
+function mousePressed() {
+    setInterval(playRandomNote, 150);
 }
 
 function keyPressed() {
