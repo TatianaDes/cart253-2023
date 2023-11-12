@@ -8,7 +8,7 @@
 "use strict";
 
 let synth;
-let notes = [`F3`, `G3`, `Ab3`, `Bb3`, `C3`, `Db3`, `Eb3`, `F4`];  // F-minor
+let notes = [`F2`, `G2`, `F2`, `C3`, `C3`, `F2`, `Eb3`, `C3`];  // F-minor
 let currentNote = 0;
 
 let player;
@@ -124,6 +124,7 @@ function draw() {
         push();
         creature.move(player);
         creature.checkSides();
+        // creature.bounce();
         creature.display();
         pop();
 
