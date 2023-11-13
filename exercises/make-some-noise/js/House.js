@@ -1,7 +1,7 @@
 class House {
 
     // Creating dimensions of the house
-    constructor(x, y, w, h, size) {
+    constructor({ x, y, w, h, size }) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -49,9 +49,9 @@ class House {
         noStroke();
         ellipse(this.x + 15, this.y, this.size);
         pop();
+    }
 
-
-
+    displaySecondHouse() {
         // Displaying the walls2
         push();
         noStroke();
@@ -82,9 +82,9 @@ class House {
         noStroke();
         ellipse(this.x - 485, this.y - 375, this.size);
         pop();
+    }
 
-
-
+    displayThirdHouse() {
         // Displaying the walls3
         push();
         noStroke();
@@ -115,7 +115,6 @@ class House {
         noStroke();
         ellipse(this.x + 465, this.y - 225, this.size);
         pop();
-
     }
 
 }

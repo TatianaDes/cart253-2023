@@ -19,6 +19,8 @@ let player2;
 let creature;
 
 let house;
+let house2;
+let house3;
 
 //let street;
 
@@ -67,10 +69,37 @@ function setup() {
     });
 
     // Create creature in the main script
-    creature = new Creature(1000, 100, 30, 60);
+    creature = new Creature({
+        x: 1000,
+        y: 100,
+        w: 30,
+        h: 60
+    });
 
     // Create the house in the main script
-    house = new House(700, 500, 50, 80, 8);
+    house = new House({
+        x: 700,
+        y: 500,
+        w: 50,
+        h: 80,
+        size: 8
+    });
+
+    house2 = new House({
+        x: 700,
+        y: 500,
+        w: 50,
+        h: 80,
+        size: 8
+    });
+
+    house3 = new House({
+        x: 700,
+        y: 500,
+        w: 50,
+        h: 80,
+        size: 8
+    });
 
     //street = new Street(500, 300, 1000, 150);
 }
@@ -134,6 +163,16 @@ function draw() {
         push();
         house.checkHouse(player);
         house.display();
+        pop();
+
+        push();
+        house2.checkHouse(player);
+        house2.displaySecondHouse();
+        pop();
+
+        push();
+        house2.checkHouse(player);
+        house2.displayThirdHouse();
         pop();
 
         // push();
