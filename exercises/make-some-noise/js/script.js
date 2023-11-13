@@ -101,7 +101,7 @@ function draw() {
         text(`(Press Any Key to Start)`, width / 2, 350);
         textSize(15);
         fill(255);
-        text(`Use the left and right arrow keys to move and try to catch the creature.`, 1100, 570);
+        text(`Use the left and right arrow keys and WASD to move and try to catch the creature.`, 1090, 570);
         pop();
     }
 
@@ -144,8 +144,8 @@ function draw() {
 
 // Checks if the player touches the creature and triggers the `note` state
 function checkEndings() {
-    let d = dist(player.x, player.y, creature.x, creature.y);
-    if (d < player.size / 2 + creature.size / 2) {
+    let d = dist(player2.x, player2.y, creature.x, creature.y);
+    if (d < player2.size / 2 + creature.size / 2) {
         state = `note`;
     }
 }
@@ -191,7 +191,7 @@ function mousePressed() {
     // Making the house play music when pressed on
     let d = dist(mouseX, mouseY, house.x, house.y);
     if (d < house.w / 2) {
-        playRandomNote.play();
+        playRandomNote();
     }
 }
 
