@@ -11,6 +11,8 @@ let synth;
 let notes = [`F2`, `G2`, `F2`, `C3`, `C3`, `F2`, `Eb3`, `C3`];  // F-minor
 let currentNote = 0;
 
+let barkSFX;
+
 let player;
 let player2;
 
@@ -24,7 +26,7 @@ let state = `title`; // Can be: title, simulation, note
 
 // preload() creates the images I wish to put in my program
 function preload() {
-
+    barkSFX = loadSound(`assets/sounds/bark.wav`);
 }
 
 // setup() creates the canvas and the new classes
