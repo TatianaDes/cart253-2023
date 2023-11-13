@@ -180,7 +180,19 @@ function playRandomNote() {
 }
 
 function mousePressed() {
-    setInterval(playRandomNote, 150);
+    // setInterval(playRandomNote, 150);
+
+    // Making the player2 bark when pressed on
+    let i = dist(mouseX, mouseY, player2.x, player2.y);
+    if (i < player2.w / 2) {
+        barkSFX.play();
+    }
+
+    // Making the house play music when pressed on
+    let d = dist(mouseX, mouseY, house.x, house.y);
+    if (d < house.w / 2) {
+        playRandomNote.play();
+    }
 }
 
 function keyPressed() {
