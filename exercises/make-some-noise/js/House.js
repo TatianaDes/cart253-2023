@@ -55,12 +55,17 @@ class House {
 
     mousePressed() {
         // Allows the music to start randomly by pressing the mouse
-        if (this.interval === undefined) {
-            this.interval = setInterval(this.playRandomNote(), 500);
-        }
-        else {
-            clearInterval(this.interval);
-            this.interval = undefined;
+        if (mouseX > this.x - this.w / 2 &&
+            mouseX < this.x + this.w / 2 &&
+            mouseY > this.y - this.h / 2 &&
+            mouseY < this.y + this.h / 2) {
+            if (this.interval === undefined) {
+                this.interval = setInterval(this.playRandomNote(), 500);
+            }
+            else {
+                clearInterval(this.interval);
+                this.interval = undefined;
+            }
         }
     }
 
