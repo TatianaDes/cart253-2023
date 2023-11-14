@@ -7,11 +7,6 @@
 
 "use strict";
 
-// the synth for the 3 notes
-let synth1;
-let synth2;
-let synth3;
-
 let barkSFX;
 
 let player;
@@ -32,14 +27,9 @@ function preload() {
 
 // setup() creates the canvas and the new classes
 function setup() {
-    createCanvas(1400, 600);
+    createCanvas(1350, 600);
 
     userStartAudio();
-
-    // create new synth for each circle
-    synth1 = new p5.PolySynth();
-    synth2 = new p5.PolySynth();
-    synth3 = new p5.PolySynth();
 
     // Create the player inside the main script
     player = new Player({
@@ -84,32 +74,35 @@ function setup() {
         y: 500,
         w: 50,
         h: 80,
-        // red: 113,
-        // green: 61,
-        // blue: 244,
-        size: 8
+        red: 113,
+        green: 61,
+        blue: 244,
+        doorKnobSize: 8,
+        note: "G4"
     });
 
     house2 = new House({
-        x: 700,
-        y: 500,
+        x: 200,
+        y: 150,
         w: 50,
         h: 80,
-        // red: 43,
-        // green: 165,
-        // blue: 79,
-        size: 8
+        red: 43,
+        green: 165,
+        blue: 79,
+        doorKnobSize: 8,
+        note: "C5"
     });
 
     house3 = new House({
-        x: 700,
-        y: 500,
+        x: 1200,
+        y: 300,
         w: 50,
         h: 80,
-        // red: 28,
-        // green: 123,
-        // blue: 138,
-        size: 8
+        red: 28,
+        green: 123,
+        blue: 138,
+        doorKnobSize: 8,
+        note: "F4"
     });
 }
 
@@ -125,64 +118,60 @@ function draw() {
     else if (state === `note`) {
         checkNote();
     }
+}
+function title() {
+    // Title state
+    push();
+    background(15, 29, 60);
+    textSize(60);
+    fill(241, 239, 91);
+    textAlign(CENTER, CENTER);
+    text(`Longing`, width / 2, height / 2);
+    textSize(20);
+    fill(102, 107, 131);
+    text(`(Press Any Key to Start)`, width / 2, 350);
+    textSize(15);
+    fill(255);
+    text(`Use the left and right arrow keys and WASD to move and try to catch the creature.`, 1090, 570);
+    pop();
+}
 
-    function title() {
-        // Title state
-        push();
-        background(15, 29, 60);
-        textSize(60);
-        fill(241, 239, 91);
-        textAlign(CENTER, CENTER);
-        text(`Longing`, width / 2, height / 2);
-        textSize(20);
-        fill(102, 107, 131);
-        text(`(Press Any Key to Start)`, width / 2, 350);
-        textSize(15);
-        fill(255);
-        text(`Use the left and right arrow keys and WASD to move and try to catch the creature.`, 1090, 570);
-        pop();
-    }
+function simulation() {
+    // Simulation state
+    background(186, 239, 158);
 
-    function simulation() {
-        // Simulation state
-        background(186, 239, 158);
+    checkEndings();
 
-        checkEndings();
+    // Draws the house with all its functions
+    push();
+    house.display();
+    pop();
 
-        // Draws the player with all its functions
-        push();
-        player.move();
-        player.display();
-        pop();
+    push();
+    house2.display();
+    pop();
 
-        push();
-        player2.move();
-        player2.display();
-        pop();
+    push();
+    house3.display();
+    pop();
 
-        // Draws the creature with all its functions
-        push();
-        creature.move(player);
-        creature.checkSides();
-        creature.display();
-        pop();
+    // Draws the player with all its functions
+    push();
+    player.move();
+    player.display();
+    pop();
 
-        // Draws the house with all its functions
-        push();
-        house.checkHouse(player);
-        house.display();
-        pop();
+    push();
+    player2.move();
+    player2.display();
+    pop();
 
-        push();
-        house2.checkHouse(player);
-        house2.displaySecondHouse();
-        pop();
-
-        push();
-        house2.checkHouse(player);
-        house2.displayThirdHouse();
-        pop();
-    }
+    // Draws the creature with all its functions
+    push();
+    creature.move(player);
+    creature.checkSides();
+    creature.display();
+    pop();
 }
 
 // Checks if the player touches the creature and triggers the `note` state
@@ -215,27 +204,9 @@ function checkNote() {
 function mousePressed() {
     // setInterval(playRandomNote, 150);
 
-    // look at distance between mouse and center of house
-    let housedist = dist(mouseX, mouseY, house.x, house.y);
-    // if mouse is inside house
-    if (housedist < house.size / 2) {
-        synth1.play('G2', 0.5, 0, 1.5); // play: the note G2 at volume 0.1, right away (0) for 1.5 seconds
-    }
-
-
-    // look at distance between mouse and center of house2
-    let house2dist = dist(mouseX, mouseY, house2.x, house2.y);
-    // if mouse is inside house2
-    if (house2dist < house2.size / 2) {
-        synth2.play(`C4`, .5, 0, 1);
-    }
-
-    // look at distance between mouse and center of house3
-    let house3dist = dist(mouseX, mouseY, house3.x, house3.y);
-    // if mouse is inside house3
-    if (house3dist < house3.size / 2) {
-        synth3.play(`G3`, .5, 0, 1);
-    }
+    house.mousePressed();
+    house2.mousePressed();
+    house3.mousePressed();
 
 
     // Making the player2 bark when pressed on
