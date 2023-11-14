@@ -1,5 +1,5 @@
 /**
- * Longing (But with Sound)
+ * Longing
  * Tatiana Désormeaux
  * 
  * Adding elements of sound to Project 2 "Longing"
@@ -29,7 +29,6 @@ function preload() {
 function setup() {
     createCanvas(1350, 600);
 
-    // Allows audio to start
     userStartAudio();
 
     // Create the player inside the main script
@@ -79,6 +78,7 @@ function setup() {
         green: 61,
         blue: 244,
         doorKnobSize: 8,
+        // note: "G4"
     });
 
     house2 = new House({
@@ -90,6 +90,7 @@ function setup() {
         green: 165,
         blue: 79,
         doorKnobSize: 8,
+        // note: "C5"
     });
 
     house3 = new House({
@@ -101,6 +102,7 @@ function setup() {
         green: 123,
         blue: 138,
         doorKnobSize: 8,
+        // note: "F4"
     });
 }
 
@@ -145,12 +147,10 @@ function simulation() {
     house.display();
     pop();
 
-    // Draws the house2 with all its functions
     push();
     house2.display();
     pop();
 
-    // Draws the house3 with all its functions
     push();
     house3.display();
     pop();
@@ -161,7 +161,6 @@ function simulation() {
     player.display();
     pop();
 
-    // Draws the player2 with all its functions
     push();
     player2.move();
     player2.display();
@@ -203,8 +202,8 @@ function checkNote() {
 }
 
 function mousePressed() {
+    // setInterval(playRandomNote, 150);
 
-    // Making everything mousePressed() in the House class be called
     house.mousePressed();
     house2.mousePressed();
     house3.mousePressed();

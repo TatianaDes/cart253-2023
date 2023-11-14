@@ -1,7 +1,7 @@
 class House {
 
     // Creating dimensions of the house
-    constructor({ x, y, w, h, red, green, blue, doorKnobSize }) {
+    constructor({ x, y, w, h, red, green, blue, doorKnobSize, /*note*/ }) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -10,6 +10,7 @@ class House {
         this.g = green;
         this.b = blue;
         this.doorKnobSize = doorKnobSize;
+        // this.note = note;
         this.notes = [`F4`, `C5`, `F3`, `F4`, `F4`, `A5`, `C4`, `C5`];
         this.interval;
 
@@ -54,7 +55,13 @@ class House {
     }
 
     mousePressed() {
-        // Allows the music to start randomly by pressing the mouse
+        // if (mouseX > this.x - this.w / 2 &&
+        //     mouseX < this.x + this.w / 2 &&
+        //     mouseY > this.y - this.h / 2 &&
+        //     mouseY < this.y + this.h / 2) {
+        //     this.synth.play(this.note, 1, 0, 1.5); // play: the note G2 at volume 0.1, right away (0) for 1.5 seconds
+        // }
+
         if (this.interval === undefined) {
             this.interval = setInterval(this.playRandomNote(), 500);
         }
@@ -64,7 +71,6 @@ class House {
         }
     }
 
-    // Chooses a random note in the notes array
     playRandomNote() {
         let note = random(this.notes);
         this.synth.play(note, 1, 0, 1);
