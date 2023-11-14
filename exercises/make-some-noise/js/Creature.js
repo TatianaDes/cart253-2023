@@ -12,8 +12,6 @@ class Creature {
         this.maxSpeed = 2;
         this.vx = 0;
         this.vy = 0;
-        // this.vx = random(-this.acceleration, this.acceleration);
-        // this.vy = random(-this.acceleration, this.acceleration);
         this.ax = 0;
         this.ay = 0;
     }
@@ -55,16 +53,6 @@ class Creature {
         this.x = constrain(this.x, 0, width);
         this.y = constrain(this.y, 0, height);
     }
-
-    // bounce() {
-    //     if (this.x - this.size / 2 < 0 || this.x + this.size / 2 > width) {
-    //         this.vx = -this.vx;
-    //     }
-
-    //     if (this.y - this.size / 2 < 0 || this.y + this.size / 2 > height) {
-    //         this.vy = -this.vy;
-    //     }
-    // }
 
     // Displays the creature
     display() {

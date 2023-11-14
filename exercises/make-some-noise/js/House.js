@@ -1,11 +1,14 @@
 class House {
 
     // Creating dimensions of the house
-    constructor({ x, y, w, h, size }) {
+    constructor({ x, y, w, h, /*red, green, blue,*/ size }) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
+        // this.r = red;
+        // this.g = green;
+        // this.b = blue;
         this.size = size;
     }
 
@@ -116,5 +119,4 @@ class House {
         ellipse(this.x + 465, this.y - 225, this.size);
         pop();
     }
-
 }

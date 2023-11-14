@@ -7,9 +7,10 @@
 
 "use strict";
 
-let synth;
-let notes = [`F2`, `G2`, `F2`, `C3`, `C3`, `F2`, `Eb3`, `C3`];  // F-minor
-let currentNote = 0;
+// the synth for the 3 notes
+let synth1;
+let synth2;
+let synth3;
 
 let barkSFX;
 
@@ -22,8 +23,6 @@ let house;
 let house2;
 let house3;
 
-//let street;
-
 let state = `title`; // Can be: title, simulation, note
 
 // preload() creates the images I wish to put in my program
@@ -35,9 +34,12 @@ function preload() {
 function setup() {
     createCanvas(1400, 600);
 
-    synth = new p5.PolySynth();
-
     userStartAudio();
+
+    // create new synth for each circle
+    synth1 = new p5.PolySynth();
+    synth2 = new p5.PolySynth();
+    synth3 = new p5.PolySynth();
 
     // Create the player inside the main script
     player = new Player({
@@ -82,6 +84,9 @@ function setup() {
         y: 500,
         w: 50,
         h: 80,
+        // red: 113,
+        // green: 61,
+        // blue: 244,
         size: 8
     });
 
@@ -90,6 +95,9 @@ function setup() {
         y: 500,
         w: 50,
         h: 80,
+        // red: 43,
+        // green: 165,
+        // blue: 79,
         size: 8
     });
 
@@ -98,10 +106,11 @@ function setup() {
         y: 500,
         w: 50,
         h: 80,
+        // red: 28,
+        // green: 123,
+        // blue: 138,
         size: 8
     });
-
-    //street = new Street(500, 300, 1000, 150);
 }
 
 // draw() displays all the different states and their functions
@@ -155,7 +164,6 @@ function draw() {
         push();
         creature.move(player);
         creature.checkSides();
-        // creature.bounce();
         creature.display();
         pop();
 
@@ -174,10 +182,6 @@ function draw() {
         house2.checkHouse(player);
         house2.displayThirdHouse();
         pop();
-
-        // push();
-        // street.display();
-        // pop();
     }
 }
 
@@ -208,18 +212,31 @@ function checkNote() {
     pop();
 }
 
-function playRandomNote() {
-    let note = notes[currentNote];
-    synth.play(note, 1, 0, 0.1);
-
-    currentNote = currentNote + 1;
-    if (currentNote === notes.length) {
-        currentNote = 0;
-    }
-}
-
 function mousePressed() {
     // setInterval(playRandomNote, 150);
+
+    // look at distance between mouse and center of house
+    let housedist = dist(mouseX, mouseY, house.x, house.y);
+    // if mouse is inside house
+    if (housedist < house.size / 2) {
+        synth1.play('G2', 0.5, 0, 1.5); // play: the note G2 at volume 0.1, right away (0) for 1.5 seconds
+    }
+
+
+    // look at distance between mouse and center of house2
+    let house2dist = dist(mouseX, mouseY, house2.x, house2.y);
+    // if mouse is inside house2
+    if (house2dist < house2.size / 2) {
+        synth2.play(`C4`, .5, 0, 1);
+    }
+
+    // look at distance between mouse and center of house3
+    let house3dist = dist(mouseX, mouseY, house3.x, house3.y);
+    // if mouse is inside house3
+    if (house3dist < house3.size / 2) {
+        synth3.play(`G3`, .5, 0, 1);
+    }
+
 
     // Making the player2 bark when pressed on
     let i = dist(mouseX, mouseY, player2.x, player2.y);
@@ -227,11 +244,6 @@ function mousePressed() {
         barkSFX.play();
     }
 
-    // Making the house play music when pressed on
-    let d = dist(mouseX, mouseY, house.x, house.y);
-    if (d < house.w / 2) {
-        playRandomNote();
-    }
 }
 
 function keyPressed() {
