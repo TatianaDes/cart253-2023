@@ -18,7 +18,7 @@ let house;
 let house2;
 let house3;
 
-let state = `title`; // Can be: title, simulation, note
+let state = `title`; // Can be: title, level1, note....
 
 // preload() creates the images I wish to put in my program
 function preload() {
