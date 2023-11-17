@@ -7,6 +7,8 @@
 
 "use strict";
 
+let currentState;
+
 let barkSFX;
 
 let player;
@@ -18,7 +20,7 @@ let house;
 let house2;
 let house3;
 
-let state = `title`; // Can be: title, simulation, note
+// let state = `title`; // Can be: title, level1, note1, note2....
 
 // preload() creates the images I wish to put in my program
 function preload() {
@@ -29,36 +31,43 @@ function preload() {
 function setup() {
     createCanvas(1350, 600);
 
+    currentState = new Title();
+
+    // Text settings
+    textSize(32);
+    textAlign(CENTER, CENTER);
+
+    // Allows audio to start
     userStartAudio();
 
     // Create the player inside the main script
-    player = new Player({
-        x: 60,
-        y: 300,
-        w: 30,
-        h: 80,
-        red: 243,
-        green: 156,
-        blue: 25,
-        leftKey: LEFT_ARROW,
-        rightKey: RIGHT_ARROW,
-        upKey: UP_ARROW,
-        downKey: DOWN_ARROW
-    });
+    // player = new Player({
+    //     x: 60,
+    //     y: 300,
+    //     w: 30,
+    //     h: 80,
+    //     red: 243,
+    //     green: 156,
+    //     blue: 25,
+    //     leftKey: LEFT_ARROW,
+    //     rightKey: RIGHT_ARROW,
+    //     upKey: UP_ARROW,
+    //     downKey: DOWN_ARROW
+    // });
 
-    player2 = new Player({
-        x: 90,
-        y: 380,
-        w: 50,
-        h: 25,
-        red: 109,
-        green: 82,
-        blue: 34,
-        leftKey: 65,
-        rightKey: 68,
-        upKey: 87,
-        downKey: 83,
-    });
+    // player2 = new Player({
+    //     x: 90,
+    //     y: 380,
+    //     w: 50,
+    //     h: 25,
+    //     red: 109,
+    //     green: 82,
+    //     blue: 34,
+    //     leftKey: 65,
+    //     rightKey: 68,
+    //     upKey: 87,
+    //     downKey: 83,
+    // });
 
     // Create creature in the main script
     creature = new Creature({
@@ -78,7 +87,6 @@ function setup() {
         green: 61,
         blue: 244,
         doorKnobSize: 8,
-        // note: "G4"
     });
 
     house2 = new House({
@@ -90,7 +98,6 @@ function setup() {
         green: 165,
         blue: 79,
         doorKnobSize: 8,
-        // note: "C5"
     });
 
     house3 = new House({
@@ -102,42 +109,47 @@ function setup() {
         green: 123,
         blue: 138,
         doorKnobSize: 8,
-        // note: "F4"
     });
 }
 
 // draw() displays all the different states and their functions
 function draw() {
-    // Setting up all the different states
-    if (state === `title`) {
-        title();
-    }
-    else if (state === `simulation`) {
-        simulation();
-    }
-    else if (state === `note`) {
-        checkNote();
-    }
-}
-function title() {
-    // Title state
-    push();
-    background(15, 29, 60);
-    textSize(60);
-    fill(241, 239, 91);
-    textAlign(CENTER, CENTER);
-    text(`Longing`, width / 2, height / 2);
-    textSize(20);
-    fill(102, 107, 131);
-    text(`(Press Any Key to Start)`, width / 2, 350);
-    textSize(15);
-    fill(255);
-    text(`Use the left and right arrow keys and WASD to move and try to catch the creature, and click around to discover.`, 955, 570);
-    pop();
-}
 
-function simulation() {
-    // Simulation state
+    currentState.draw();
+
+    // // Setting up all the different states
+    // if (state === `title`) {
+    //     title();
+    // }
+    // else if (state === `level1`) {
+    //     level1();
+    // }
+    // else if (state === `note1`) {
+    //     checkNote1();
+    // }
+    // // else if (state === `note2`) {
+    // //     checkNote2();
+    // // }
+}
+// function title() {
+//     // Title state
+//     push();
+//     background(15, 29, 60);
+//     textSize(60);
+//     fill(241, 239, 91);
+//     textAlign(CENTER, CENTER);
+//     text(`Longing`, width / 2, height / 2);
+//     textSize(20);
+//     fill(102, 107, 131);
+//     text(`(Press Any Key to Start)`, width / 2, 350);
+//     textSize(15);
+//     fill(255);
+//     text(`Use the left and right arrow keys and WASD to move and try to catch the creature, and click around to discover.`, 955, 570);
+//     pop();
+// }
+
+function level1() {
+    // level1 state
     background(186, 239, 158);
 
     checkEndings();
@@ -147,10 +159,12 @@ function simulation() {
     house.display();
     pop();
 
+    // Draws the house2 with all its functions
     push();
     house2.display();
     pop();
 
+    // Draws the house3 with all its functions
     push();
     house3.display();
     pop();
@@ -161,6 +175,7 @@ function simulation() {
     player.display();
     pop();
 
+    // Draws the player2 with all its functions
     push();
     player2.move();
     player2.display();
@@ -174,17 +189,8 @@ function simulation() {
     pop();
 }
 
-// Checks if the player touches the creature and triggers the `note` state
-function checkEndings() {
-    let d = dist(player2.x, player2.y, creature.x, creature.y);
-    if (d < player2.size / 2 + creature.size / 2) {
-        state = `note`;
-    }
-}
-
-
-function checkNote() {
-    // Note state
+function checkNote1() {
+    // Note1 state
     push();
     background(236, 204, 74);
     textSize(32);
@@ -201,9 +207,34 @@ function checkNote() {
     pop();
 }
 
-function mousePressed() {
-    // setInterval(playRandomNote, 150);
+// function level2() {
+//     // level2 state
+//     background(186, 239, 158);
 
+//     // Draws the player with all its functions
+//     push();
+//     player.move();
+//     player.display();
+//     pop();
+
+//     // Draws the player2 with all its functions
+//     push();
+//     player2.move();
+//     player2.display();
+//     pop();
+// }
+
+// Checks if the player touches the creature and triggers the `note` states
+function checkEndings() {
+    let d = dist(player2.x, player2.y, creature.x, creature.y);
+    if (d < player2.size / 2 + creature.size / 2) {
+        state = `note1`;
+    }
+}
+
+function mousePressed() {
+
+    // Making everything mousePressed() in the House class be called
     house.mousePressed();
     house2.mousePressed();
     house3.mousePressed();
@@ -214,22 +245,23 @@ function mousePressed() {
     if (i < player2.w / 2) {
         barkSFX.play();
     }
-
 }
 
 function keyPressed() {
-    // Moves player with pressed keys
-    player.keyPressed(keyCode);
-    player2.keyPressed(keyCode);
+    //     // Moves player with pressed keys
+    //     player.keyPressed(keyCode);
+    //     player2.keyPressed(keyCode);
 
-    // When pressing the mouse button, changes the title screen
-    if (state === `title`) {
-        state = `simulation`;
-    }
-}
+    currentState.keyPressed();
 
-function keyReleased() {
-    // Stops player with keys released
-    player.keyReleased(keyCode);
-    player2.keyReleased(keyCode);
+    //     // // When pressing the mouse button, changes the title screen
+    //     // if (state === `title`) {
+    //     //     state = `level1`;
+    //     // }
+    // }
+
+    // function keyReleased() {
+    //     // Stops player with keys released
+    //     player.keyReleased(keyCode);
+    //     player2.keyReleased(keyCode);
 }

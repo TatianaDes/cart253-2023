@@ -27,8 +27,11 @@ class Title {
         pop();
     }
 
+    mousePressed() {
+
+    }
+
     keyPressed() {
         currentState = new Level1();
     }
 }
-
