@@ -41,33 +41,33 @@ function setup() {
     userStartAudio();
 
     // Create the player inside the main script
-    player = new Player({
-        x: 60,
-        y: 300,
-        w: 30,
-        h: 80,
-        red: 243,
-        green: 156,
-        blue: 25,
-        leftKey: LEFT_ARROW,
-        rightKey: RIGHT_ARROW,
-        upKey: UP_ARROW,
-        downKey: DOWN_ARROW
-    });
+    // player = new Player({
+    //     x: 60,
+    //     y: 300,
+    //     w: 30,
+    //     h: 80,
+    //     red: 243,
+    //     green: 156,
+    //     blue: 25,
+    //     leftKey: LEFT_ARROW,
+    //     rightKey: RIGHT_ARROW,
+    //     upKey: UP_ARROW,
+    //     downKey: DOWN_ARROW
+    // });
 
-    player2 = new Player({
-        x: 90,
-        y: 380,
-        w: 50,
-        h: 25,
-        red: 109,
-        green: 82,
-        blue: 34,
-        leftKey: 65,
-        rightKey: 68,
-        upKey: 87,
-        downKey: 83,
-    });
+    // player2 = new Player({
+    //     x: 90,
+    //     y: 380,
+    //     w: 50,
+    //     h: 25,
+    //     red: 109,
+    //     green: 82,
+    //     blue: 34,
+    //     leftKey: 65,
+    //     rightKey: 68,
+    //     upKey: 87,
+    //     downKey: 83,
+    // });
 
     // Create creature in the main script
     creature = new Creature({

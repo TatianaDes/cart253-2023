@@ -1,12 +1,23 @@
 class Level1 {
 
     // Creating dimensions of the player
-    constructor({ x, y, w, h, red, green, blue, leftKey, rightKey, upKey, downKey }) {
+    constructor(/*{ x, y, w, h, red, green, blue, leftKey, rightKey, upKey, downKey }*/) {
         this.player = {
-            x: x,
-            y: y,
-            w: w,
-            h: h,
+            // x: x,
+            // y: y,
+            // w: w,
+            // h: h,
+            x: 60,
+            y: 300,
+            w: 30,
+            h: 80,
+            red: 243,
+            green: 156,
+            blue: 25,
+            leftKey: LEFT_ARROW,
+            rightKey: RIGHT_ARROW,
+            upKey: UP_ARROW,
+            downKey: DOWN_ARROW,
             size: 40,
 
             speed: 5,
@@ -15,14 +26,14 @@ class Level1 {
             ax: 0,
             ay: 0,
 
-            r: red,
-            g: green,
-            b: blue,
+            // r: red,
+            // g: green,
+            // b: blue,
 
-            leftKey: leftKey,
-            rightKey: rightKey,
-            upKey: upKey,
-            downKey: downKey
+            // leftKey: leftKey,
+            // rightKey: rightKey,
+            // upKey: upKey,
+            // downKey: downKey
         }
     }
 
