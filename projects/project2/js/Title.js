@@ -34,4 +34,8 @@ class Title {
     keyPressed() {
         currentState = new Level1();
     }
+
+    keyReleased() {
+
+    }
 }

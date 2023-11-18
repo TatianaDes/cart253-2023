@@ -1,13 +1,14 @@
 class Level2 {
+
     constructor() {
         this.player = new Player({
             x: 60,
             y: 300,
             w: 30,
             h: 80,
-            red: 243,
-            green: 156,
-            blue: 25,
+            red: 233,
+            green: 98,
+            blue: 0,
             leftKey: LEFT_ARROW,
             rightKey: RIGHT_ARROW,
             upKey: UP_ARROW,
@@ -18,14 +19,41 @@ class Level2 {
             y: 380,
             w: 50,
             h: 25,
-            red: 109,
-            green: 82,
-            blue: 34,
+            red: 96,
+            green: 57,
+            blue: 28,
             leftKey: 65,
             rightKey: 68,
             upKey: 87,
             downKey: 83,
         });
+
+        // Our garden
+        this.flower = new Flower({
+            // An array to store the individual flowers
+            flowers: [],
+            // How many flowers in the garden
+            numFlowers: 30,
+            // How many flowers have died
+            flowerDeath: 0,
+        });
+
+        // Create our flowers by counting up to the number of the flowers
+        for (let i = 0; i < this.flower.numFlowers; i++) {
+            x = random(0, width);
+            y = random(0, height / 2);
+            size = random(50, 80);
+            stemLength = random(50, 100);
+            petalColor = {
+                r: random(100, 255),
+                g: random(100, 255),
+                b: random(100, 255)
+            }
+            // Create a new flower
+            this.flower = new Flower(x, y, size, stemLength, petalColor);
+            // Add the flower to the array of flowers
+            this.flowers.push(this.flower);
+        }
     }
 
     // Displays the objects
@@ -43,6 +71,15 @@ class Level2 {
         this.player2.move();
         this.player2.display();
         pop();
+
+        // Loop through all the flowers in the array and display them
+        for (let i = 0; i < this.flowers.length; i++) {
+            this.flower = this.flowers[i];
+            if (this.flower.alive) {
+                this.flower.shrink();
+                this.flower.display();
+            }
+        }
     }
 
     mousePressed() {

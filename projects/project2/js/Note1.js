@@ -30,4 +30,8 @@ class Note1 {
     keyPressed() {
         currentState = new Level2();
     }
+
+    keyReleased() {
+
+    }
 }
