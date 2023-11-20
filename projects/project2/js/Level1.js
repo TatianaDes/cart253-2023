@@ -112,7 +112,6 @@ class Level1 {
     checkEndings() {
         let d = dist(this.player2.x, this.player2.y, this.creature.x, this.creature.y);
         if (d < this.player2.size / 2 + this.creature.size / 2) {
-            // this is not an actual class yet.
             currentState = new Note1();
         }
     }

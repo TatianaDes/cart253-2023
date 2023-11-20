@@ -62,8 +62,8 @@ class Level2 {
             let flower = this.flowers[i];
             if (flower.alive) {
                 flower.shrink();
-                flower.pollinate();
                 this.player.tryToPollinate(flower);
+                this.player2.tryToPollinate(flower);
                 flower.display();
             }
         }

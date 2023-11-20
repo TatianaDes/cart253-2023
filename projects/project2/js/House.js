@@ -22,7 +22,6 @@ class House {
         // Displaying the walls
         push();
         noStroke();
-        // fill(113, 61, 244);
         fill(this.r, this.g, this.b);
         rectMode(CENTER);
         rect(this.x, this.y - 23.5, this.w + 80, this.h + 50);
@@ -31,7 +30,6 @@ class House {
         // Displaying the door frame
         push();
         noStroke();
-        // fill(65, 13, 197);
         fill(this.r - 50, this.g - 50, this.b - 50);
         rectMode(CENTER);
         rect(this.x, this.y - 3, this.w + 10, this.h + 7);
@@ -40,7 +38,6 @@ class House {
         // Displaying the door
         push();
         noStroke();
-        // fill(131, 112, 244);
         fill(this.r + 50, this.g + 50, this.b + 50);
         rectMode(CENTER);
         rect(this.x, this.y + 1, this.w, this.h);
