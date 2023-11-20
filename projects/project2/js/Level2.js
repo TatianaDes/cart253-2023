@@ -28,32 +28,29 @@ class Level2 {
             downKey: 83,
         });
 
-        // Our garden
-        this.flower = new Flower({
-            // An array to store the individual flowers
-            flowers: [],
-            // How many flowers in the garden
-            numFlowers: 30,
-            // How many flowers have died
-            flowerDeath: 0,
-        });
+        // // An array to store the individual flowers
+        // this.flowers = [];
+        // // How many flowers in the garden
+        // this.numFlowers = 30;
+        // // How many flowers have died
+        // this.flowerDeath = 0;
 
-        // Create our flowers by counting up to the number of the flowers
-        for (let i = 0; i < this.flower.numFlowers; i++) {
-            x = random(0, width);
-            y = random(0, height / 2);
-            size = random(50, 80);
-            stemLength = random(50, 100);
-            petalColor = {
-                r: random(100, 255),
-                g: random(100, 255),
-                b: random(100, 255)
-            }
-            // Create a new flower
-            this.flower = new Flower(x, y, size, stemLength, petalColor);
-            // Add the flower to the array of flowers
-            this.flowers.push(this.flower);
-        }
+        // // Create our flowers by counting up to the number of the flowers
+        // for (let i = 0; i < this.flower.numFlowers; i++) {
+        //     this.x = random(0, width);
+        //     this.y = random(0, height / 2);
+        //     this.size = random(50, 80);
+        //     this.stemLength = random(50, 100);
+        //     this.petalColor = {
+        //         r: random(100, 255),
+        //         g: random(100, 255),
+        //         b: random(100, 255)
+        //     }
+        // // Create a new flower
+        // this.flower = new Flower(x, y, size, stemLength, petalColor);
+        // // Add the flower to the array of flowers
+        // this.flowers.push(this.flower);
+        // }
     }
 
     // Displays the objects
@@ -72,14 +69,14 @@ class Level2 {
         this.player2.display();
         pop();
 
-        // Loop through all the flowers in the array and display them
-        for (let i = 0; i < this.flowers.length; i++) {
-            this.flower = this.flowers[i];
-            if (this.flower.alive) {
-                this.flower.shrink();
-                this.flower.display();
-            }
-        }
+        // // Loop through all the flowers in the array and display them
+        // for (let i = 0; i < this.flowers.length; i++) {
+        //     this.flower = this.flowers[i];
+        //     if (this.flower.alive) {
+        //         this.flower.shrink();
+        //         this.flower.display();
+        //     }
+        // }
     }
 
     mousePressed() {
