@@ -1,4 +1,4 @@
-class Level2 {
+class Level3 {
 
     constructor() {
         this.player = new Player({
@@ -6,9 +6,9 @@ class Level2 {
             y: 300,
             w: 30,
             h: 80,
-            red: 233,
-            green: 98,
-            blue: 0,
+            red: 192,
+            green: 121,
+            blue: 37,
             leftKey: LEFT_ARROW,
             rightKey: RIGHT_ARROW,
             upKey: UP_ARROW,
@@ -19,9 +19,9 @@ class Level2 {
             y: 380,
             w: 50,
             h: 25,
-            red: 96,
-            green: 57,
-            blue: 28,
+            red: 79,
+            green: 59,
+            blue: 36,
             leftKey: 65,
             rightKey: 68,
             upKey: 87,
@@ -31,7 +31,7 @@ class Level2 {
 
     // Displays the objects
     draw() {
-        background(116, 191, 70);
+        background(99, 135, 56);
 
         this.checkEndings(this.flowers);
 
