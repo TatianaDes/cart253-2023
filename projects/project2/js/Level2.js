@@ -62,6 +62,7 @@ class Level2 {
             this.flower = this.flowers[i];
             if (this.flower.alive) {
                 this.flower.shrink();
+                this.flower.pollinate();
                 this.flower.display();
             }
         }
