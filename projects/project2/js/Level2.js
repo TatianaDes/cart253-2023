@@ -59,11 +59,12 @@ class Level2 {
 
         // Loop through all the flowers in the array and display them
         for (let i = 0; i < this.flowers.length; i++) {
-            this.flower = this.flowers[i];
-            if (this.flower.alive) {
-                this.flower.shrink();
-                this.flower.pollinate();
-                this.flower.display();
+            let flower = this.flowers[i];
+            if (flower.alive) {
+                flower.shrink();
+                flower.pollinate();
+                this.player.tryToPollinate(flower);
+                flower.display();
             }
         }
 
@@ -71,7 +72,6 @@ class Level2 {
         push();
         this.player.move();
         this.player.display();
-        this.player.tryToPollinate(this.flower);
         pop();
 
         // Draws the player2 with all its functions
@@ -80,6 +80,14 @@ class Level2 {
         this.player2.display();
         pop();
     }
+
+    // checkEndings() {
+    //     let d = dist(this.player2.x, this.player2.y, this.creature.x, this.creature.y);
+    //     if (d < this.player2.size / 2 + this.creature.size / 2) {
+    //         // this is not an actual class yet.
+    //         currentState = new Note2();
+    //     }
+    // }
 
     mousePressed() {
 
