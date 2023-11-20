@@ -57,6 +57,8 @@ class Level2 {
     draw() {
         background(116, 191, 70);
 
+        this.checkEndings(this.flowers);
+
         // Loop through all the flowers in the array and display them
         for (let i = 0; i < this.flowers.length; i++) {
             let flower = this.flowers[i];
@@ -81,13 +83,21 @@ class Level2 {
         pop();
     }
 
-    // checkEndings() {
-    //     let d = dist(this.player2.x, this.player2.y, this.creature.x, this.creature.y);
-    //     if (d < this.player2.size / 2 + this.creature.size / 2) {
-    //         // this is not an actual class yet.
-    //         currentState = new Note2();
-    //     }
-    // }
+    checkEndings() {
+        // Checks if all the flowers have died, then `flowers` state occurs
+        this.allFlowersDead = true;
+        for (let i = 0; i < this.flowers.length; i++) {
+            if (this.flowers[i].alive) {
+                this.allFlowersDead = false;
+                break;
+            }
+        }
+
+        // Checks if all flowers are actually dead and starts the ending
+        if (this.allFlowersDead) {
+            currentState = new Note2();
+        }
+    }
 
     mousePressed() {
 
