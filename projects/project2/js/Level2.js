@@ -57,18 +57,6 @@ class Level2 {
     draw() {
         background(116, 191, 70);
 
-        // Draws the player with all its functions
-        push();
-        this.player.move();
-        this.player.display();
-        pop();
-
-        // Draws the player2 with all its functions
-        push();
-        this.player2.move();
-        this.player2.display();
-        pop();
-
         // Loop through all the flowers in the array and display them
         for (let i = 0; i < this.flowers.length; i++) {
             this.flower = this.flowers[i];
@@ -77,6 +65,19 @@ class Level2 {
                 this.flower.display();
             }
         }
+
+        // Draws the player with all its functions
+        push();
+        this.player.move();
+        this.player.display();
+        this.player.tryToPollinate(this.flower);
+        pop();
+
+        // Draws the player2 with all its functions
+        push();
+        this.player2.move();
+        this.player2.display();
+        pop();
     }
 
     mousePressed() {

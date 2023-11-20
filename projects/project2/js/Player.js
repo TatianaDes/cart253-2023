@@ -24,6 +24,14 @@ class Player {
         this.downKey = downKey;
     }
 
+    // Making the player able to pollinate the flowers
+    tryToPollinate(flower) {
+        let d = dist(this.x, this.y, flower.x, flower.y);
+        if (d < this.size / 2 + flower.size / 2 + flower.petalThickness) {
+            flower.pollinate();
+        }
+    }
+
     // Gives movement to the player
     move() {
         this.x += this.vx;
