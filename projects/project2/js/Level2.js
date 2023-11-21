@@ -32,24 +32,22 @@ class Level2 {
         this.flowers = [];
         // How many flowers in the garden
         this.numFlowers = 30;
-        // How many flowers have died
-        this.flowerDeath = 0;
 
         // Create our flowers by counting up to the number of the flowers
         for (let i = 0; i < this.numFlowers; i++) {
-            this.x = random(0, width);
-            this.y = random(0, height);
-            this.size = random(50, 80);
-            this.stemLength = random(50, 100);
-            this.petalColor = {
+            let x = random(0, width);
+            let y = random(0, height);
+            let size = random(50, 80);
+            let stemLength = random(50, 100);
+            let petalColor = {
                 r: random(100, 255),
                 g: random(100, 255),
                 b: random(100, 255)
             }
             // Create a new flower
-            this.flower = new Flower(this.x, this.y, this.size, this.stemLength, this.petalColor);
+            let flower = new Flower(x, y, size, stemLength, petalColor);
             // Add the flower to the array of flowers
-            this.flowers.push(this.flower);
+            this.flowers.push(flower);
         }
     }
 

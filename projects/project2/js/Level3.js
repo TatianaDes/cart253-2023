@@ -27,13 +27,42 @@ class Level3 {
             upKey: 87,
             downKey: 83,
         });
+
+        // An array to store the individual flowers
+        this.foods = [];
+        // How many flowers in the garden
+        this.numFoods = 4;
+
+        // Create our flowers by counting up to the number of the flowers
+        for (let i = 0; i < this.numFoods; i++) {
+            let x = random(0, width);
+            let y = random(0, height);
+            let size = random(30, 50);
+            let red = random(100, 255);
+            let green = random(100, 255);
+            let blue = random(100, 255);
+
+            // Create a new flower
+            let food = new Food(x, y, size, red, green, blue);
+            // Add the flower to the array of flowers
+            this.foods.push(food);
+
+        }
     }
 
     // Displays the objects
     draw() {
+
         background(99, 135, 56);
 
-        this.checkEndings(this.flowers);
+        this.checkEndings(this.foods);
+
+        // Loop through all the flowers in the array and display them
+        for (let i = 0; i < this.foods.length; i++) {
+            this.foods[i].display();
+            this.foods[i].checkFood(this.player);
+            this.foods[i].checkFood(this.player2);
+        }
 
         // Draws the player with all its functions
         push();
@@ -46,10 +75,23 @@ class Level3 {
         this.player2.move();
         this.player2.display();
         pop();
+
     }
 
     checkEndings() {
+        // Checks if all the flowers have died, then `flowers` state occurs
+        this.allFoodEaten = false;
+        for (let i = 0; i < this.foods.length; i++) {
+            if (this.foods[i].eaten) {
+                this.allFoodEaten = true;
+                break;
+            }
+        }
 
+        // Checks if all flowers are actually dead and starts the ending
+        if (this.allFoodEaten) {
+            currentState = new Note3();
+        }
     }
 
     mousePressed() {
@@ -65,5 +107,4 @@ class Level3 {
         this.player.keyReleased(keyCode);
         this.player2.keyReleased(keyCode);
     }
-
 }
