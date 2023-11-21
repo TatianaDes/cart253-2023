@@ -27,7 +27,7 @@ class Flower {
 
     // Makes the flowers shrink as time passes
     shrink() {
-        let shrinkage = random(0, 0.1);
+        let shrinkage = random(0, 0.2);
         this.size = this.size - shrinkage;
         this.petalThickness = this.petalThickness - shrinkage / 10;
 
@@ -60,5 +60,17 @@ class Flower {
         stroke(this.petalColor.r, this.petalColor.g, this.petalColor.b);
         ellipse(this.x, this.y, this.size);
         pop();
+    }
+
+    mousePressed() {
+
+    }
+
+    keyPressed() {
+
+    }
+
+    keyReleased() {
+
     }
 }
