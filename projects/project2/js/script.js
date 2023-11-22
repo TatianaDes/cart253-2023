@@ -9,18 +9,19 @@
 
 let currentState;
 
-// let barkSFX;
+let barkSFX;
+
 
 // preload() creates the images I wish to put in my program
 function preload() {
-    // barkSFX = loadSound(`assets/sounds/bark.wav`);
+    barkSFX = loadSound(`assets/sounds/bark.wav`);
 }
 
 // setup() creates the canvas and the new classes
 function setup() {
     createCanvas(1350, 600);
 
-    currentState = new Note2();
+    currentState = new Title();
 
     // Text settings
     textSize(32);
@@ -37,11 +38,7 @@ function draw() {
 }
 
 function mousePressed() {
-    // // Making the player2 bark when pressed on
-    // let i = dist(mouseX, mouseY, player2.x, player2.y);
-    // if (i < player2.w / 2) {
-    //     barkSFX.play();
-    // }
+    currentState.mousePressed();
 }
 
 function keyPressed() {

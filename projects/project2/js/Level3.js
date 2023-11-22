@@ -80,10 +80,10 @@ class Level3 {
 
     checkEndings() {
         // Checks if all the flowers have died, then `flowers` state occurs
-        this.allFoodEaten = false;
+        this.allFoodEaten = true;
         for (let i = 0; i < this.foods.length; i++) {
-            if (this.foods[i].eaten) {
-                this.allFoodEaten = true;
+            if (!this.foods[i].eaten) {
+                this.allFoodEaten = false;
                 break;
             }
         }
@@ -95,7 +95,11 @@ class Level3 {
     }
 
     mousePressed() {
-
+        // Making the player2 bark when pressed on
+        let i = dist(mouseX, mouseY, this.player2.x, this.player2.y);
+        if (i < this.player2.w / 2) {
+            barkSFX.play();
+        }
     }
 
     keyPressed(keyCode) {

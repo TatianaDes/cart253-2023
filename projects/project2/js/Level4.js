@@ -1,4 +1,4 @@
-class Level1 {
+class Level4 {
 
     // Creating dimensions of the objects
     constructor() {
@@ -7,9 +7,9 @@ class Level1 {
             y: 300,
             w: 30,
             h: 80,
-            red: 243,
-            green: 156,
-            blue: 25,
+            red: 168,
+            green: 107,
+            blue: 28,
             leftKey: LEFT_ARROW,
             rightKey: RIGHT_ARROW,
             upKey: UP_ARROW,
@@ -20,8 +20,8 @@ class Level1 {
             y: 380,
             w: 50,
             h: 25,
-            red: 109,
-            green: 82,
+            red: 53,
+            green: 44,
             blue: 34,
             leftKey: 65,
             rightKey: 68,
@@ -34,9 +34,9 @@ class Level1 {
             y: 500,
             w: 50,
             h: 80,
-            red: 113,
-            green: 61,
-            blue: 244,
+            red: 44,
+            green: 25,
+            blue: 88,
             doorKnobSize: 8,
         });
         this.house2 = new House({
@@ -44,9 +44,9 @@ class Level1 {
             y: 150,
             w: 50,
             h: 80,
-            red: 43,
-            green: 165,
-            blue: 79,
+            red: 36,
+            green: 124,
+            blue: 62,
             doorKnobSize: 8,
         });
         this.house3 = new House({
@@ -54,23 +54,17 @@ class Level1 {
             y: 300,
             w: 50,
             h: 80,
-            red: 28,
-            green: 123,
-            blue: 138,
+            red: 20,
+            green: 88,
+            blue: 98,
             doorKnobSize: 8,
-        });
-        this.creature = new Creature({
-            x: 1000,
-            y: 100,
-            w: 30,
-            h: 60
         });
     }
 
 
     // Displays the objects
     draw() {
-        background(186, 239, 158);
+        background(187, 195, 64);
 
         this.checkEndings(this.player2, this.creature);
 
@@ -100,20 +94,10 @@ class Level1 {
         this.player2.move();
         this.player2.display();
         pop();
-
-        // Draws the creature with all its functions
-        push();
-        this.creature.move(this.player);
-        this.creature.checkSides();
-        this.creature.display();
-        pop();
     }
 
     checkEndings() {
-        let d = dist(this.player2.x, this.player2.y, this.creature.x, this.creature.y);
-        if (d < this.player2.size / 2 + this.creature.size / 2) {
-            currentState = new Note1();
-        }
+
     }
 
     mousePressed() {

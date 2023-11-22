@@ -98,7 +98,11 @@ class Level2 {
     }
 
     mousePressed() {
-
+        // Making the player2 bark when pressed on
+        let i = dist(mouseX, mouseY, this.player2.x, this.player2.y);
+        if (i < this.player2.w / 2) {
+            barkSFX.play();
+        }
     }
 
     keyPressed(keyCode) {
