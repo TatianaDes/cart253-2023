@@ -59,6 +59,49 @@ class Level4 {
             blue: 98,
             doorKnobSize: 8,
         });
+
+        // An array to store the individual flowers
+        this.flowers = [];
+        // How many flowers in the garden
+        this.numFlowers = 30;
+
+        // Create our flowers by counting up to the number of the flowers
+        for (let i = 0; i < this.numFlowers; i++) {
+            let x = random(0, width);
+            let y = random(0, height);
+            let size = random(50, 80);
+            let stemLength = random(50, 100);
+            let petalColor = {
+                r: random(100, 255),
+                g: random(100, 255),
+                b: random(100, 255)
+            }
+            // Create a new flower
+            let flower = new Flower(x, y, size, stemLength, petalColor);
+            // Add the flower to the array of flowers
+            this.flowers.push(flower);
+        }
+
+        // An array to store the individual flowers
+        this.foods = [];
+        // How many flowers in the garden
+        this.numFoods = 4;
+
+        // Create our flowers by counting up to the number of the flowers
+        for (let i = 0; i < this.numFoods; i++) {
+            let x = random(0, width);
+            let y = random(0, height);
+            let size = random(30, 50);
+            let red = random(100, 255);
+            let green = random(100, 255);
+            let blue = random(100, 255);
+
+            // Create a new flower
+            let food = new Food(x, y, size, red, green, blue);
+            // Add the flower to the array of flowers
+            this.foods.push(food);
+
+        }
     }
 
 
@@ -66,7 +109,7 @@ class Level4 {
     draw() {
         background(187, 195, 64);
 
-        this.checkEndings(this.player2, this.creature);
+        this.checkEndings(this.player, this.foods);
 
         // Draws the house with all its functions
         push();
@@ -83,6 +126,22 @@ class Level4 {
         this.house3.display();
         pop();
 
+        // Loop through all the flowers in the array and display them
+        for (let i = 0; i < this.flowers.length; i++) {
+            let flower = this.flowers[i];
+            if (flower.alive) {
+                flower.shrink();
+                flower.display();
+            }
+        }
+
+        // Loop through all the flowers in the array and display them
+        for (let i = 0; i < this.foods.length; i++) {
+            this.foods[i].display();
+            this.foods[i].checkFood(this.player);
+            this.foods[i].checkFood(this.player2);
+        }
+
         // Draws the player with all its functions
         push();
         this.player.move();
@@ -97,7 +156,19 @@ class Level4 {
     }
 
     checkEndings() {
+        // Checks if all the flowers have died, then `flowers` state occurs
+        this.allFoodEaten = true;
+        for (let i = 0; i < this.foods.length; i++) {
+            if (!this.foods[i].eaten) {
+                this.allFoodEaten = false;
+                break;
+            }
+        }
 
+        // Checks if all flowers are actually dead and starts the ending
+        if (this.allFoodEaten) {
+            // currentState = new Note5();
+        }
     }
 
     mousePressed() {
