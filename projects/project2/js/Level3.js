@@ -38,9 +38,9 @@ class Level3 {
             let x = random(0, width);
             let y = random(0, height);
             let size = random(30, 50);
-            let red = random(100, 255);
-            let green = random(100, 255);
-            let blue = random(100, 255);
+            let red = random(50, 150);
+            let green = random(50, 150);
+            let blue = random(50, 150);
 
             // Create a new flower
             let food = new Food(x, y, size, red, green, blue);

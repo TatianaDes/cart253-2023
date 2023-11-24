@@ -21,7 +21,7 @@ function preload() {
 function setup() {
     createCanvas(1350, 600);
 
-    currentState = new Note3();
+    currentState = new Title();
 
     // Text settings
     textSize(32);

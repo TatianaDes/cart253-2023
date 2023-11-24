@@ -69,12 +69,12 @@ class Level4 {
         for (let i = 0; i < this.numFlowers; i++) {
             let x = random(0, width);
             let y = random(0, height);
-            let size = random(50, 80);
+            let size = random(30, 50);
             let stemLength = random(50, 100);
             let petalColor = {
-                r: random(100, 255),
-                g: random(100, 255),
-                b: random(100, 255)
+                r: random(154, 170),
+                g: random(84, 140),
+                b: random(45, 56)
             }
             // Create a new flower
             let flower = new Flower(x, y, size, stemLength, petalColor);
@@ -91,10 +91,10 @@ class Level4 {
         for (let i = 0; i < this.numFoods; i++) {
             let x = random(0, width);
             let y = random(0, height);
-            let size = random(30, 50);
-            let red = random(100, 255);
-            let green = random(100, 255);
-            let blue = random(100, 255);
+            let size = random(20, 40);
+            let red = random(89, 120);
+            let green = random(8, 49);
+            let blue = random(8, 49);
 
             // Create a new flower
             let food = new Food(x, y, size, red, green, blue);
@@ -145,7 +145,6 @@ class Level4 {
         for (let i = 0; i < this.foods.length; i++) {
             this.foods[i].display();
             this.foods[i].checkFood(this.player);
-            this.foods[i].checkFood(this.player2);
         }
 
         // Draws the player with all its functions

@@ -40,9 +40,9 @@ class Level2 {
             let size = random(50, 80);
             let stemLength = random(50, 100);
             let petalColor = {
-                r: random(100, 255),
-                g: random(100, 255),
-                b: random(100, 255)
+                r: random(50, 150),
+                g: random(50, 150),
+                b: random(50, 150)
             }
             // Create a new flower
             let flower = new Flower(x, y, size, stemLength, petalColor);

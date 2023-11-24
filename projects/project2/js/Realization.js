@@ -19,7 +19,7 @@ class Realization {
     // Gives movement to the creature
     move(player) {
         // Make the creature scared of the player
-        let a = dist(player.x, player.y, this.x, this.y);
+        dist(player.x, player.y, this.x, this.y);
         // if (a < player.size / 2 + this.size / 2) {
         if (player.x < this.x) {
             this.ax = -this.acceleration;
@@ -34,7 +34,6 @@ class Realization {
         else {
             this.ay = this.acceleration;
         }
-        // }
 
         // Allows for movement with acceleration and velocity to make the movement stay at a certain speed
         this.vx = this.vx + this.ax;

@@ -5,7 +5,7 @@ class Note5 {
     }
 
     draw() {
-        background(236, 204, 74);
+        background(106, 142, 218);
 
         this.displayNote5();
     }
@@ -17,7 +17,7 @@ class Note5 {
         textAlign(LEFT, CENTER);
         text(this.Note5String, width / 80, height / 2);
         textSize(20);
-        fill(102, 107, 131);
+        fill(49, 52, 68);
         textAlign(CENTER, CENTER);
         text(this.Note5String2, width / 2, 570);
         pop();

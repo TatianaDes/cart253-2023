@@ -5,7 +5,7 @@ class Note4 {
     }
 
     draw() {
-        background(236, 204, 74);
+        background(151, 113, 56);
 
         this.displayNote4();
     }
