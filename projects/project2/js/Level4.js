@@ -63,7 +63,7 @@ class Level4 {
         // An array to store the individual flowers
         this.flowers = [];
         // How many flowers in the garden
-        this.numFlowers = 30;
+        this.numFlowers = 10;
 
         // Create our flowers by counting up to the number of the flowers
         for (let i = 0; i < this.numFlowers; i++) {
