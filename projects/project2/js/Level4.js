@@ -100,8 +100,14 @@ class Level4 {
             let food = new Food(x, y, size, red, green, blue);
             // Add the flower to the array of flowers
             this.foods.push(food);
-
         }
+
+        this.realization = new Realization({
+            x: 1000,
+            y: 100,
+            w: 60,
+            h: 100
+        });
     }
 
 
@@ -109,7 +115,7 @@ class Level4 {
     draw() {
         background(187, 195, 64);
 
-        this.checkEndings(this.player, this.foods);
+        this.checkEndings(this.player, this.realization, this.foods);
 
         // Draws the house with all its functions
         push();
@@ -153,9 +159,21 @@ class Level4 {
         this.player2.move();
         this.player2.display();
         pop();
+
+        // Draws the creature with all its functions
+        push();
+        this.realization.move(this.player);
+        this.realization.checkSides();
+        this.realization.display();
+        pop();
     }
 
     checkEndings() {
+        let d = dist(this.player.x, this.player.y, this.realization.x, this.realization.y);
+        if (d < this.player.size / 2 + this.realization.size / 2) {
+            currentState = new Note4();
+        }
+
         // Checks if all the flowers have died, then `flowers` state occurs
         this.allFoodEaten = true;
         for (let i = 0; i < this.foods.length; i++) {
@@ -167,7 +185,7 @@ class Level4 {
 
         // Checks if all flowers are actually dead and starts the ending
         if (this.allFoodEaten) {
-            // currentState = new Note5();
+            currentState = new Note5();
         }
     }
 

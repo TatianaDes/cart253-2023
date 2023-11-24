@@ -22,17 +22,17 @@ class Realization {
         let a = dist(player.x, player.y, this.x, this.y);
         // if (a < player.size / 2 + this.size / 2) {
         if (player.x < this.x) {
-            this.ax = this.acceleration;
+            this.ax = -this.acceleration;
         }
         else {
-            this.ax = -this.acceleration;
+            this.ax = this.acceleration;
         }
 
         if (player.y < this.y) {
-            this.ay = this.acceleration;
+            this.ay = -this.acceleration;
         }
         else {
-            this.ay = -this.acceleration;
+            this.ay = this.acceleration;
         }
         // }
 
@@ -58,9 +58,8 @@ class Realization {
     display() {
         push();
         noStroke();
-        fill(20, 36, 74);
-        rectMode(CENTER);
-        rect(this.x, this.y, this.w, this.h);
+        fill(153, 22, 22);
+        ellipse(this.x, this.y, this.w, this.h);
         pop();
     }
 }
