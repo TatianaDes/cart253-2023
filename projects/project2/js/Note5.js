@@ -1,6 +1,6 @@
 class Note5 {
     constructor() {
-        this.Note5String = "Dear Evelyn,\n\n I know I hurt you that day, I do not know what I was thinking.\n My feelings were so mixed up, and he was there, and you were there\n and I could not understand what my feelings were trying to tell me.\n I did not want this to happen, I want to be with you, truly.\n I took some time to think about my feelings\n and I want to be with you. You are who I want.\n I am going to call him today to clear it up with him.\n\n Sincerely,\n Her ";
+        this.Note5String = "Dear Her,\n\n Why do I still long for you, after everything that you have done.\n You made me feel like nothing, nothing at all.\n Even when I gave you so many chances, each time he treated you wrong, you crawled back to me,\n and then each time he was treated you right,\n you left me. I am not a toy, I do not deserve to be played with. And you never cared to understand that.\n I am trying to move on and all you have ever done is stay in the past and hope that I do too.\n We no longer have a reason to keep this,\n whatever it is, going. You hurt me countless times and I never got a single, I am sorry.\n I do not deserve this. I truly do hope you have a wonderful future,\n I hope you treat him well and that you care about yourself the way I cared about you, unconditionally.\n Please do take care of yourself for me.\n Goodbye Mara.\n\n Sincerely,\n Evelyn ";
         this.Note5String2 = "(Press Any Key to Go Back to the Title)";
     }
 
@@ -12,7 +12,7 @@ class Note5 {
 
     displayNote5() {
         push();
-        textSize(32);
+        textSize(27);
         fill(0);
         textAlign(LEFT, CENTER);
         text(this.Note5String, width / 80, height / 2);
