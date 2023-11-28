@@ -24,11 +24,11 @@ class Note5 {
     }
 
     mousePressed() {
-        currentState = new Title();
+
     }
 
     keyPressed() {
-
+        currentState = new Title();
     }
 
     keyReleased() {
