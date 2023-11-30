@@ -161,7 +161,7 @@ class Level4 {
 
         // Draws the creature with all its functions
         push();
-        this.realization.move(this.player);
+        this.realization.move(this.player, this.player2);
         this.realization.checkSides();
         this.realization.display();
         pop();

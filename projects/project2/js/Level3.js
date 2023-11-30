@@ -9,10 +9,10 @@ class Level3 {
             red: 192,
             green: 121,
             blue: 37,
-            leftKey: LEFT_ARROW,
-            rightKey: RIGHT_ARROW,
-            upKey: UP_ARROW,
-            downKey: DOWN_ARROW
+            leftKey: UP_ARROW,
+            rightKey: DOWN_ARROW,
+            upKey: RIGHT_ARROW,
+            downKey: LEFT_ARROW
         });
         this.player2 = new Player({
             x: 90,

@@ -17,28 +17,48 @@ class Realization {
     }
 
     // Gives movement to the creature
-    move(player) {
-        // Make the creature scared of the player
-        dist(player.x, player.y, this.x, this.y);
-        // if (a < player.size / 2 + this.size / 2) {
-        if (player.x < this.x) {
-            this.ax = -this.acceleration;
+    move(player, player2) {
+        let player2Distance = dist(player2.x, player2.y, this.x, this.y);
+        let player2Acceleration = map(player2Distance, 0, 400, 0, this.acceleration);
+        if (player2.x < this.x) {
+            this.ax += player2Acceleration;
         }
         else {
-            this.ax = this.acceleration;
+            this.ax -= player2Acceleration;
         }
 
-        if (player.y < this.y) {
-            this.ay = -this.acceleration;
+        if (player2.y < this.y) {
+            this.ay += player2Acceleration;
         }
         else {
-            this.ay = this.acceleration;
+            this.ay -= player2Acceleration;
         }
+
+        let playerDistance = dist(player.x, player.y, this.x, this.y);
+        let playerAcceleration = map(playerDistance, 0, 400, -this.acceleration, 0);
+        if (player2.x < this.x) {
+            this.ax += playerAcceleration;
+        }
+        else {
+            this.ax -= playerAcceleration;
+        }
+
+        if (player2.y < this.y) {
+            this.ay += playerAcceleration;
+        }
+        else {
+            this.ay -= playerAcceleration;
+        }
+
+
+        this.ax = constrain(this.ax, -this.acceleration, this.acceleration);
+        this.ay = constrain(this.ay, -this.acceleration, this.acceleration);
+
+        this.vx += this.ax;
+        this.vy += this.ay;
 
         // Allows for movement with acceleration and velocity to make the movement stay at a certain speed
-        this.vx = this.vx + this.ax;
         this.vx = constrain(this.vx, -this.maxSpeed, this.maxSpeed);
-        this.vy = this.vy + this.ay;
         this.vy = constrain(this.vy, -this.maxSpeed, this.maxSpeed);
 
         // Allows the creature to move
@@ -60,5 +80,17 @@ class Realization {
         fill(153, 22, 22);
         ellipse(this.x, this.y, this.w, this.h);
         pop();
+    }
+
+    mousePressed() {
+
+    }
+
+    keyPressed() {
+
+    }
+
+    keyReleased() {
+
     }
 }
