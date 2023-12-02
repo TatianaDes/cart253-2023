@@ -9,10 +9,10 @@ class Level3 {
             red: 192,
             green: 121,
             blue: 37,
-            leftKey: UP_ARROW,
-            rightKey: DOWN_ARROW,
-            upKey: RIGHT_ARROW,
-            downKey: LEFT_ARROW
+            leftKey: LEFT_ARROW,
+            rightKey: RIGHT_ARROW,
+            upKey: UP_ARROW,
+            downKey: DOWN_ARROW
         });
         this.player2 = new Player({
             x: 90,
@@ -38,8 +38,8 @@ class Level3 {
             let x = random(0, width);
             let y = random(0, height);
             let size = random(30, 50);
-            let red = random(50, 150);
-            let green = random(50, 150);
+            let red = random(90, 120);
+            let green = random(60, 150);
             let blue = random(50, 150);
 
             // Create a new flower
@@ -48,6 +48,25 @@ class Level3 {
             this.foods.push(food);
 
         }
+
+        // The strangers
+        this.strangers = [];
+        this.strangerSize = 50;
+
+        for (let i = 0; i < this.strangerSize; i++) {
+            let x = random(0, width);
+            let y = random(0, height);
+            let red = random(50, 70);
+            let green = random(80, 150);
+            let blue = random(40, 80);
+
+            // let note = random(this.notes);
+            let stranger = new Stranger(x, y, red, green, blue /*note*/);
+            this.strangers.push(stranger);
+        }
+
+        // // F-minor
+        // this.notes = [`F3`, `G3`, `Ab4`, `Bb4`, `C4`, `Db4`, `Eb4`, `F4`];
     }
 
     // Displays the objects
@@ -76,6 +95,12 @@ class Level3 {
         this.player2.display();
         pop();
 
+        for (let i = 0; i < this.strangers.length; i++) {
+            this.strangers[i].move();
+            // this.strangers[i].bounce();
+            this.strangers[i].display();
+        }
+
     }
 
     checkEndings() {
@@ -94,12 +119,16 @@ class Level3 {
         }
     }
 
+
+
     mousePressed() {
         // Making the player2 bark when pressed on
         let i = dist(mouseX, mouseY, this.player2.x, this.player2.y);
         if (i < this.player2.w / 2) {
             barkSFX.play();
         }
+
+        // this.createStranger(mouseX, mouseY);
     }
 
     keyPressed(keyCode) {

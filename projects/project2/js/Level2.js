@@ -9,10 +9,10 @@ class Level2 {
             red: 233,
             green: 98,
             blue: 0,
-            leftKey: LEFT_ARROW,
-            rightKey: RIGHT_ARROW,
-            upKey: UP_ARROW,
-            downKey: DOWN_ARROW
+            leftKey: UP_ARROW,
+            rightKey: DOWN_ARROW,
+            upKey: LEFT_ARROW,
+            downKey: RIGHT_ARROW
         });
         this.player2 = new Player({
             x: 90,
@@ -22,10 +22,10 @@ class Level2 {
             red: 96,
             green: 57,
             blue: 28,
-            leftKey: 65,
-            rightKey: 68,
-            upKey: 87,
-            downKey: 83,
+            leftKey: 83,
+            rightKey: 87,
+            upKey: 68,
+            downKey: 65
         });
 
         // An array to store the individual flowers
