@@ -49,6 +49,9 @@ class Level3 {
 
         }
 
+        // // F-minor
+        // this.notes = [`F3`, `G3`, `Ab4`, `Bb4`, `C4`, `Db4`, `Eb4`, `F4`];
+
         // The strangers
         this.strangers = [];
         this.strangerSize = 50;
@@ -59,14 +62,11 @@ class Level3 {
             let red = random(50, 70);
             let green = random(80, 150);
             let blue = random(40, 80);
-
             // let note = random(this.notes);
-            let stranger = new Stranger(x, y, red, green, blue /*note*/);
+
+            let stranger = new Stranger(x, y, red, green, blue, /*note*/);
             this.strangers.push(stranger);
         }
-
-        // // F-minor
-        // this.notes = [`F3`, `G3`, `Ab4`, `Bb4`, `C4`, `Db4`, `Eb4`, `F4`];
     }
 
     // Displays the objects

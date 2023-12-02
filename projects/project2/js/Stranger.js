@@ -1,6 +1,6 @@
 class Stranger {
 
-    constructor(x, y, red, green, blue /*note*/) {
+    constructor(x, y, red, green, blue, /*note*/) {
         this.x = x;
         this.y = y;
         this.size = 50;
@@ -35,6 +35,9 @@ class Stranger {
 
         this.x = constrain(this.x, 0, width);
         this.y = constrain(this.y, 0, height);
+
+        // this.x += this.vx;
+        // this.y += this.vy;
 
         // // Update frequency
         // let d = dist(this.x, this.y, width / 2, height / 2);
