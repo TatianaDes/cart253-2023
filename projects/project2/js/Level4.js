@@ -2,6 +2,7 @@ class Level4 {
 
     // Creating dimensions of the objects
     constructor() {
+        // Calling all the variables from the classes
         this.player = new Player({
             x: 60,
             y: 300,
@@ -82,12 +83,12 @@ class Level4 {
             this.flowers.push(flower);
         }
 
-        // An array to store the individual flowers
+        // An array to store the individual food
         this.foods = [];
-        // How many flowers in the garden
+        // How much food there is
         this.numFoods = 4;
 
-        // Create our flowers by counting up to the number of the flowers
+        // Create our food by counting up to the number of the food
         for (let i = 0; i < this.numFoods; i++) {
             let x = random(0, width);
             let y = random(0, height);
@@ -96,12 +97,13 @@ class Level4 {
             let green = random(8, 49);
             let blue = random(8, 49);
 
-            // Create a new flower
+            // Create a new food
             let food = new Food(x, y, size, red, green, blue);
-            // Add the flower to the array of flowers
+            // Add the food to the array of food
             this.foods.push(food);
         }
 
+        // Create the realization class and its variables
         this.realization = new Realization({
             x: 1000,
             y: 100,
@@ -110,11 +112,11 @@ class Level4 {
         });
     }
 
-
-    // Displays the objects
+    // draw() displays the background and calls the functions that need to be drawn
     draw() {
         background(187, 195, 64);
 
+        // Draws the checkEndings function for the player, realization, and food
         this.checkEndings(this.player, this.realization, this.foods);
 
         // Draws the house with all its functions
@@ -141,7 +143,7 @@ class Level4 {
             }
         }
 
-        // Loop through all the flowers in the array and display them
+        // Loop through all the food in the array and display them
         for (let i = 0; i < this.foods.length; i++) {
             this.foods[i].display();
             this.foods[i].checkFood(this.player);
@@ -159,7 +161,7 @@ class Level4 {
         this.player2.display();
         pop();
 
-        // Draws the creature with all its functions
+        // Draws realization with all its functions
         push();
         this.realization.move(this.player, this.player2);
         this.realization.checkSides();
@@ -167,13 +169,15 @@ class Level4 {
         pop();
     }
 
+    // Creates the checkEnding function and what it does
     checkEndings() {
+        // Checks the distance between realization and the player and when overlaped "Note4" state occurs
         let d = dist(this.player.x, this.player.y, this.realization.x, this.realization.y);
         if (d < this.player.size / 2 + this.realization.size / 2) {
             currentState = new Note4();
         }
 
-        // Checks if all the flowers have died, then `flowers` state occurs
+        // Checks if all the food is eaten, then `Note5` state occurs
         this.allFoodEaten = true;
         for (let i = 0; i < this.foods.length; i++) {
             if (!this.foods[i].eaten) {
@@ -182,12 +186,13 @@ class Level4 {
             }
         }
 
-        // Checks if all flowers are actually dead and starts the ending
+        // Checks if all food is actually eaten and starts the ending
         if (this.allFoodEaten) {
             currentState = new Note5();
         }
     }
 
+    // Calls the mousePressed function to work
     mousePressed() {
         // Making the player2 bark when pressed on
         let i = dist(mouseX, mouseY, this.player2.x, this.player2.y);
@@ -201,12 +206,16 @@ class Level4 {
 
     }
 
+    // Calls the keyPressed function to work
     keyPressed(keyCode) {
+        // Allows the keycodes for both players to work
         this.player.keyPressed(keyCode);
         this.player2.keyPressed(keyCode);
     }
 
+    // Calls the keyReleased function to work
     keyReleased(keyCode) {
+        // Allows the keycodes for both players to work
         this.player.keyReleased(keyCode);
         this.player2.keyReleased(keyCode);
     }

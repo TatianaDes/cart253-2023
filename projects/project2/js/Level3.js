@@ -1,6 +1,8 @@
 class Level3 {
 
+    // Creating dimensions of the objects
     constructor() {
+        // Calling all the variables from the classes
         this.player = new Player({
             x: 60,
             y: 300,
@@ -28,12 +30,12 @@ class Level3 {
             downKey: 83,
         });
 
-        // An array to store the individual flowers
+        // An array to store the individual food
         this.foods = [];
-        // How many flowers in the garden
+        // How much food there is
         this.numFoods = 4;
 
-        // Create our flowers by counting up to the number of the flowers
+        // Create our food by counting up to the number of the food
         for (let i = 0; i < this.numFoods; i++) {
             let x = random(0, width);
             let y = random(0, height);
@@ -42,41 +44,39 @@ class Level3 {
             let green = random(60, 150);
             let blue = random(50, 150);
 
-            // Create a new flower
+            // Create a new food
             let food = new Food(x, y, size, red, green, blue);
-            // Add the flower to the array of flowers
+            // Add the food to the array of foods
             this.foods.push(food);
 
         }
 
-        // // F-minor
-        // this.notes = [`F3`, `G3`, `Ab4`, `Bb4`, `C4`, `Db4`, `Eb4`, `F4`];
-
-        // The strangers
+        // Creating the stranger array and size
         this.strangers = [];
         this.strangerSize = 50;
 
+        // Creating the stranger array with all its variables
         for (let i = 0; i < this.strangerSize; i++) {
             let x = random(0, width);
             let y = random(0, height);
             let red = random(50, 70);
             let green = random(80, 150);
             let blue = random(40, 80);
-            // let note = random(this.notes);
 
-            let stranger = new Stranger(x, y, red, green, blue, /*note*/);
+            // Calling the Stranger class
+            let stranger = new Stranger(x, y, red, green, blue);
             this.strangers.push(stranger);
         }
     }
 
-    // Displays the objects
+    // draw() displays the background and calls the functions that need to be drawn
     draw() {
-
         background(99, 135, 56);
 
+        // Draws the checkEndings function for the food
         this.checkEndings(this.foods);
 
-        // Loop through all the flowers in the array and display them
+        // Loop through all the food in the array and display them
         for (let i = 0; i < this.foods.length; i++) {
             this.foods[i].display();
             this.foods[i].checkFood(this.player);
@@ -95,6 +95,7 @@ class Level3 {
         this.player2.display();
         pop();
 
+        // Draws the stranger array with all its functions
         for (let i = 0; i < this.strangers.length; i++) {
             this.strangers[i].move();
             // this.strangers[i].bounce();
@@ -103,8 +104,9 @@ class Level3 {
 
     }
 
+    // Creates the checkEnding function and what it does
     checkEndings() {
-        // Checks if all the flowers have died, then `flowers` state occurs
+        // Checks if all the food is eaten, then `Note3` state occurs
         this.allFoodEaten = true;
         for (let i = 0; i < this.foods.length; i++) {
             if (!this.foods[i].eaten) {
@@ -113,30 +115,31 @@ class Level3 {
             }
         }
 
-        // Checks if all flowers are actually dead and starts the ending
+        // Checks if all food is actually eaten and starts the ending
         if (this.allFoodEaten) {
             currentState = new Note3();
         }
     }
 
-
-
+    // Calls the mousePressed function to work
     mousePressed() {
         // Making the player2 bark when pressed on
         let i = dist(mouseX, mouseY, this.player2.x, this.player2.y);
         if (i < this.player2.w / 2) {
             barkSFX.play();
         }
-
-        // this.createStranger(mouseX, mouseY);
     }
 
+    // Calls the keyPressed function to work
     keyPressed(keyCode) {
+        // Allows the keycodes for both players to work
         this.player.keyPressed(keyCode);
         this.player2.keyPressed(keyCode);
     }
 
+    // Calls the keyReleased function to work
     keyReleased(keyCode) {
+        // Allows the keycodes for both players to work
         this.player.keyReleased(keyCode);
         this.player2.keyReleased(keyCode);
     }

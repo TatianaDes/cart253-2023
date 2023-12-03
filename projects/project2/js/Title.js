@@ -1,17 +1,22 @@
 class Title {
 
+    // Creating a title with all its variables
     constructor() {
+        // Adding word strings to the title screen
         this.titleString = "Longing";
         this.titleString2 = "(Press Any Key to Start)";
         this.titleString3 = "Use the left and right arrow keys and WASD to move, and try to get all 5 notes.";
     }
 
+    // draw() displays the background and calls the functions that need to be drawn 
     draw() {
         background(15, 29, 60);
 
+        // Calls the displayTitle function
         this.displayTitle();
     }
 
+    // Displaying the title and placing everything
     displayTitle() {
         push();
         textSize(60);
@@ -27,14 +32,18 @@ class Title {
         pop();
     }
 
+    // Calls the mousePressed function to work
     mousePressed() {
 
     }
 
+    // Calls the keyPressed function to work
     keyPressed() {
+        // Changes state to Level1 when any key is pressed
         currentState = new Level1();
     }
 
+    // Calls the keyReleased function to work
     keyReleased() {
 
     }

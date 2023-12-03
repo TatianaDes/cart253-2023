@@ -1,7 +1,8 @@
 class House {
 
     // Creating dimensions of the house
-    constructor({ x, y, w, h, red, green, blue, doorKnobSize, /*note*/ }) {
+    constructor({ x, y, w, h, red, green, blue, doorKnobSize }) {
+        // Creating all the variables for the class
         this.x = x;
         this.y = y;
         this.w = w;
@@ -10,7 +11,6 @@ class House {
         this.g = green;
         this.b = blue;
         this.doorKnobSize = doorKnobSize;
-        // this.note = note;
         this.notes = [`F4`, `C5`, `F3`, `F4`, `F4`, `A5`, `C4`, `C5`];
         this.interval;
 
@@ -54,13 +54,6 @@ class House {
     }
 
     mousePressed() {
-        // if (mouseX > this.x - this.w / 2 &&
-        //     mouseX < this.x + this.w / 2 &&
-        //     mouseY > this.y - this.h / 2 &&
-        //     mouseY < this.y + this.h / 2) {
-        //     this.synth.play(this.note, 1, 0, 1.5); // play: the note G2 at volume 0.1, right away (0) for 1.5 seconds
-        // }
-
         if (mouseX > this.x - this.w / 2 &&
             mouseX < this.x + this.w / 2 &&
             mouseY > this.y - this.h / 2 &&
@@ -68,10 +61,6 @@ class House {
             if (this.interval === undefined) {
                 this.interval = setInterval(this.playRandomNote.bind(this), 500);
             }
-            // else {
-            //     clearInterval(this.interval);
-            //     this.interval = undefined;
-            // }
         }
     }
 
@@ -84,5 +73,15 @@ class House {
             this.interval = undefined;
             this.notesPlayed = 0;
         }
+    }
+
+    // Calls the keyPressed function to work
+    keyPressed() {
+
+    }
+
+    // Calls the keyReleased function to work
+    keyReleased() {
+
     }
 }

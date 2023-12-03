@@ -1,6 +1,8 @@
 class Food {
-    // Creating the dogFood object for all the dog food
+
+    // Creating dimensions of food
     constructor(x, y, size, red, green, blue) {
+        // Creating all the variables for the class
         this.x = x;
         this.y = y;
         this.size = size;
@@ -10,6 +12,7 @@ class Food {
         this.eaten = false;
     };
 
+    // Displays the food
     display() {
         // Check if the food is still available to be eaten
         if (!this.eaten) {
@@ -32,14 +35,17 @@ class Food {
         }
     }
 
+    // Calls the mousePressed function to work
     mousePressed() {
 
     }
 
+    // Calls the keyPressed function to work
     keyPressed() {
 
     }
 
+    // Calls the keyReleased function to work
     keyReleased() {
 
     }

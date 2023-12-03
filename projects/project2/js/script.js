@@ -7,8 +7,10 @@
 
 "use strict";
 
+// Stating the currentState variable
 let currentState;
 
+// Stating the barkSFX variable
 let barkSFX;
 
 
@@ -21,7 +23,8 @@ function preload() {
 function setup() {
     createCanvas(1350, 600);
 
-    currentState = new Level3();
+    // Stating what class should be called when starting the program
+    currentState = new Level4();
 
     // Text settings
     textSize(32);
@@ -34,17 +37,24 @@ function setup() {
 // draw() displays all the different states and their functions
 function draw() {
 
+    // Drawing the current state
     currentState.draw();
 }
 
+// Calls the mousePressed function to work
 function mousePressed() {
+    // Allows all mousePressed functions to work in the program
     currentState.mousePressed();
 }
 
+// Calls the keyPressed function to work
 function keyPressed() {
+    // Allows all keyPressed functions to work in the program
     currentState.keyPressed(keyCode);
 }
 
+// Calls the keyReleased function to work
 function keyReleased() {
+    // Allows all keyReleased functions to work in the program
     currentState.keyReleased(keyCode);
 }

@@ -1,6 +1,8 @@
 class Level2 {
 
+    // Creating dimensions of the objects
     constructor() {
+        // Calling all the variables from the classes
         this.player = new Player({
             x: 60,
             y: 300,
@@ -51,10 +53,11 @@ class Level2 {
         }
     }
 
-    // Displays the objects
+    // draw() displays the background and calls the functions that need to be drawn 
     draw() {
         background(116, 191, 70);
 
+        // Draws the checkEndings function for the flowers
         this.checkEndings(this.flowers);
 
         // Loop through all the flowers in the array and display them
@@ -81,6 +84,7 @@ class Level2 {
         pop();
     }
 
+    // Creates the checkEnding function and what it does
     checkEndings() {
         // Checks if all the flowers have died, then `flowers` state occurs
         this.allFlowersDead = true;
@@ -97,6 +101,7 @@ class Level2 {
         }
     }
 
+    // Calls the mousePressed function to work
     mousePressed() {
         // Making the player2 bark when pressed on
         let i = dist(mouseX, mouseY, this.player2.x, this.player2.y);
@@ -105,12 +110,16 @@ class Level2 {
         }
     }
 
+    // Calls the keyPressed function to work
     keyPressed(keyCode) {
+        // Allows the keycodes for both players to work
         this.player.keyPressed(keyCode);
         this.player2.keyPressed(keyCode);
     }
 
+    // Calls the keyReleased function to work
     keyReleased(keyCode) {
+        // Allows the keycodes for both players to work
         this.player.keyReleased(keyCode);
         this.player2.keyReleased(keyCode);
     }

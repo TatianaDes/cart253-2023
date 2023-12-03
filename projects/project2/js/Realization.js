@@ -1,7 +1,8 @@
 class Realization {
 
-    // Creating dimensions of the creature
+    // Creating dimensions of realization
     constructor({ x, y, w, h }) {
+        // Creating all the variables for the class
         this.x = x;
         this.y = y;
         this.w = w;
@@ -17,7 +18,7 @@ class Realization {
         this.ay = 0;
     }
 
-    // Gives movement to the creature
+    // Gives movement to realization
     move(player, player2) {
         // Main insight: calculate the player-based accelerations
         // first, and only apply them afterwards. That allows for
@@ -105,7 +106,7 @@ class Realization {
         this.y = constrain(this.y, 0, height);
     }
 
-    // Displays the creature
+    // Displays the realization
     display() {
         push();
         noStroke();
@@ -114,14 +115,17 @@ class Realization {
         pop();
     }
 
+    // Calls the mousePressed function to work
     mousePressed() {
 
     }
 
+    // Calls the keyPressed function to work
     keyPressed() {
 
     }
 
+    // Calls the keyReleased function to work
     keyReleased() {
 
     }

@@ -1,5 +1,6 @@
 class Flower {
 
+    // Creating dimensions of flower
     constructor(x, y, size, stemLength, petalColor) {
         // Position and size information
         this.x = x;
@@ -62,14 +63,17 @@ class Flower {
         pop();
     }
 
+    // Calls the mousePressed function to work
     mousePressed() {
 
     }
 
+    // Calls the keyPressed function to work
     keyPressed() {
 
     }
 
+    // Calls the keyReleased function to work
     keyReleased() {
 
     }

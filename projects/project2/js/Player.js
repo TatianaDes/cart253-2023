@@ -2,6 +2,7 @@ class Player {
 
     // Creating dimensions of the player
     constructor({ x, y, w, h, red, green, blue, leftKey, rightKey, upKey, downKey }) {
+        // Creating all the variables for the class
         this.x = x;
         this.y = y;
         this.w = w;
@@ -46,6 +47,11 @@ class Player {
         rectMode(CENTER);
         rect(this.x, this.y, this.w, this.h);
         pop();
+    }
+
+    // Calls the mousePressed function to work
+    mousePressed() {
+
     }
 
     // Starts the player when the arrow keys are pressed
