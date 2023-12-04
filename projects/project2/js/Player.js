@@ -1,3 +1,5 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class Player {
 
     // Creating dimensions of the player
@@ -25,6 +27,7 @@ class Player {
         this.downKey = downKey;
     }
 
+    //Credit to Pippin Barr for the video from the activity "7.5. Object-Oriented Programming activity" for showing me the code for making an object or player able to pollinate or grow something when passed over.
     // Making the player able to pollinate the flowers
     tryToPollinate(flower) {
         let d = dist(this.x, this.y, flower.x, flower.y);
@@ -54,6 +57,7 @@ class Player {
 
     }
 
+    //Credit to Pippin Barr for the video " 5.6. Keyboard input" for showing me the code for how to make users move with the arrow keys and WASD keys.
     // Starts the player when the arrow keys are pressed
     keyPressed(keyCode) {
         if (keyCode === this.leftKey) {

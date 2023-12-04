@@ -1,3 +1,5 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class Creature {
 
     // Creating dimensions of the creature
@@ -18,12 +20,10 @@ class Creature {
         this.ay = 0;
     }
 
+    //Credit to Pippin Barr for the explaining to me this code that he wrote and showing me how to make the creature only move due to proximity and based on when player is in proximity. 
+    //Credit to Pippin Barr for the video " 4.7. Movement," for the creature to run away from the player. 
     // Gives movement to the creature
     move(player) {
-        // Main insight: calculate the player-based accelerations
-        // first, and only apply them afterwards. That allows for
-        // the idea that they might contribute zero acceleration (if out
-        // of range for instance)
 
         // Assume no acceleration
         let playerAcceleration = {

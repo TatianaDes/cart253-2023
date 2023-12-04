@@ -1,3 +1,5 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class Stranger {
 
     // Creating dimensions of stranger
@@ -14,6 +16,7 @@ class Stranger {
         this.vy = random(-this.speed, this.speed);
     }
 
+    //Credit to Pippin Barr for the video "7.2. Introducing arrays" for showing me how to make the movement for the stranger.
     // Gives movement to stranger
     move() {
         let change = random(0, 1);

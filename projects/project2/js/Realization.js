@@ -1,3 +1,5 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class Realization {
 
     // Creating dimensions of realization
@@ -9,8 +11,8 @@ class Realization {
         this.h = h;
         this.size = 40;
 
-        this.acceleration = 1;
-        this.maxAcceleration = 2;
+        this.acceleration = 3;
+        this.maxAcceleration = 4;
         this.maxSpeed = 3;
         this.vx = 0;
         this.vy = 0;
@@ -18,12 +20,10 @@ class Realization {
         this.ay = 0;
     }
 
+    //Credit to Pippin Barr for the explaining to me this code that he wrote and showing me how to make realization only move due to proximity and based on which character is in proximity. 
+    //Credit to Pippin Barr for the video " 4.7. Movement," for realization to follow player and run away from player2. 
     // Gives movement to realization
     move(player, player2) {
-        // Main insight: calculate the player-based accelerations
-        // first, and only apply them afterwards. That allows for
-        // the idea that they might contribute zero acceleration (if out
-        // of range for instance)
 
         // Assume no acceleration
         let player2Acceleration = {

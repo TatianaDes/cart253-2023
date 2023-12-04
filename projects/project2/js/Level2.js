@@ -1,3 +1,5 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class Level2 {
 
     // Creating dimensions of the objects
@@ -16,6 +18,7 @@ class Level2 {
             upKey: LEFT_ARROW,
             downKey: RIGHT_ARROW
         });
+        //Credit to Pippin Barr for showing me how to make a second player using the same Player class.
         this.player2 = new Player({
             x: 90,
             y: 380,
@@ -30,6 +33,7 @@ class Level2 {
             downKey: 65
         });
 
+        //Credit to  Mathilde Davan for showing me how to add arrays into my classes
         // An array to store the individual flowers
         this.flowers = [];
         // How many flowers in the garden
@@ -84,6 +88,7 @@ class Level2 {
         pop();
     }
 
+    //Credit to Pippin Barr for showing us how to make an ending when all the flowers die for the exercise "Juggle Garden." 
     // Creates the checkEnding function and what it does
     checkEndings() {
         // Checks if all the flowers have died, then `flowers` state occurs
@@ -101,6 +106,8 @@ class Level2 {
         }
     }
 
+    //Credit to Pippin Barr and Mathilde Davan for helping me with how to add sound effects to my code.
+    //Credit to Pippin Barr for the video "10.1. Reintroducing p5.sound," for the dog barking sound effect. 
     // Calls the mousePressed function to work
     mousePressed() {
         // Making the player2 bark when pressed on

@@ -1,5 +1,8 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class House {
 
+    //Credit to Pippin Barr for the video "10.3. p5.PolySynth" for showing me the code for making an array of notes that are played.
     // Creating dimensions of the house
     constructor({ x, y, w, h, red, green, blue, doorKnobSize }) {
         // Creating all the variables for the class
@@ -14,6 +17,7 @@ class House {
         this.notes = [`F4`, `C5`, `F3`, `F4`, `F4`, `A5`, `C4`, `C5`];
         this.interval;
 
+        //Credit to Mathilde Davan for showing me how to make the notes only play 10 times before stopping.
         this.synth = new p5.PolySynth();
         this.notesPlayed = 0;
         this.songLength = 10;
@@ -53,6 +57,7 @@ class House {
         pop();
     }
 
+    //Credit to Pippin Barr for showing me how to allow the notes to actually play in a class by adding the ".bind(this)" to class the interval again.
     mousePressed() {
         if (mouseX > this.x - this.w / 2 &&
             mouseX < this.x + this.w / 2 &&

@@ -1,3 +1,5 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class Level4 {
 
     // Creating dimensions of the objects
@@ -16,6 +18,7 @@ class Level4 {
             upKey: UP_ARROW,
             downKey: DOWN_ARROW
         });
+        //Credit to Pippin Barr for showing me how to make a second player using the same Player class.
         this.player2 = new Player({
             x: 90,
             y: 380,
@@ -30,6 +33,7 @@ class Level4 {
             downKey: 83,
         });
 
+        //Credit to Pippin Barr for showing me how to make multiple houses using the same House class.
         this.house = new House({
             x: 700,
             y: 500,
@@ -61,6 +65,7 @@ class Level4 {
             doorKnobSize: 8,
         });
 
+        //Credit to  Mathilde Davan for showing me how to add arrays into my classes
         // An array to store the individual flowers
         this.flowers = [];
         // How many flowers in the garden
@@ -169,6 +174,7 @@ class Level4 {
         pop();
     }
 
+    // Credit to Pippin Barr for the video of the activity, "5.8. Looking for Love" to see how this code is done.
     // Creates the checkEnding function and what it does
     checkEndings() {
         // Checks the distance between realization and the player and when overlaped "Note4" state occurs
@@ -177,6 +183,7 @@ class Level4 {
             currentState = new Note4();
         }
 
+        //Credit to Pippin Barr for showing us how to make an ending when all the flowers die for the exercise "Juggle Garden," but I used it for a food array instead.
         // Checks if all the food is eaten, then `Note5` state occurs
         this.allFoodEaten = true;
         for (let i = 0; i < this.foods.length; i++) {
@@ -192,6 +199,8 @@ class Level4 {
         }
     }
 
+    //Credit to Pippin Barr and Mathilde Davan for helping me with how to add sound effects to my code and make notes able to be played.
+    //Credit to Pippin Barr for the video "10.1. Reintroducing p5.sound," for the dog barking sound effect. 
     // Calls the mousePressed function to work
     mousePressed() {
         // Making the player2 bark when pressed on

@@ -1,3 +1,5 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class Food {
 
     // Creating dimensions of food
@@ -25,6 +27,7 @@ class Food {
         }
     }
 
+    //Credit to Pippin Barr for the video of the activity, " 7.4. Debugging activity" for showing me how to make the food be eaten when the player comes into contact with the food.
     // Checks if the user overlaps the food object and eats it if so
     checkFood(player) {
         if (!this.eaten) {

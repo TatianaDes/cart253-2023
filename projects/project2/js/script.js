@@ -2,7 +2,9 @@
  * Longing
  * Tatiana Désormeaux
  * 
- * Adding elements of sound to Project 2 "Longing"
+ * A program about longing for love from someone that does not reciprocate the same feelings.
+ * 
+ * //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
  */
 
 "use strict";
@@ -23,6 +25,7 @@ function preload() {
 function setup() {
     createCanvas(1350, 600);
 
+    // Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
     // Stating what class should be called when starting the program
     currentState = new Title();
 

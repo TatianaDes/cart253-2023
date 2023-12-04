@@ -1,3 +1,5 @@
+//Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
+//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
 class Level1 {
 
     // Creating dimensions of the objects
@@ -16,6 +18,7 @@ class Level1 {
             upKey: UP_ARROW,
             downKey: DOWN_ARROW
         });
+        //Credit to Pippin Barr for showing me how to make a second player using the same Player class.
         this.player2 = new Player({
             x: 90,
             y: 380,
@@ -30,6 +33,7 @@ class Level1 {
             downKey: 83,
         });
 
+        //Credit to Pippin Barr for showing me how to make multiple houses using the same House class.
         this.house = new House({
             x: 700,
             y: 500,
@@ -111,6 +115,7 @@ class Level1 {
         pop();
     }
 
+    // Credit to Pippin Barr for the video of the activity, "5.8. Looking for Love" to see how this code is done.
     // Creates the checkEnding function and what it does
     checkEndings() {
         let d = dist(this.player2.x, this.player2.y, this.creature.x, this.creature.y);
@@ -119,6 +124,8 @@ class Level1 {
         }
     }
 
+    //Credit to Pippin Barr and Mathilde Davan for helping me with how to add sound effects to my code and make notes able to be played.
+    //Credit to Pippin Barr for the video "10.1. Reintroducing p5.sound," for the dog barking sound effect. 
     // Calls the mousePressed function to work
     mousePressed() {
         // Making the player2 bark when pressed on
