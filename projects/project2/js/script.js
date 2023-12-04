@@ -24,7 +24,7 @@ function setup() {
     createCanvas(1350, 600);
 
     // Stating what class should be called when starting the program
-    currentState = new Level4();
+    currentState = new Title();
 
     // Text settings
     textSize(32);

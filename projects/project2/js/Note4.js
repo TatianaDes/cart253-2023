@@ -37,7 +37,7 @@ class Note4 {
     // Calls the keyPressed function to work
     keyPressed() {
         // Changes state to Title when any key is pressed
-        currentState = new Title();
+        currentState = new Level4();
     }
 
     // Calls the keyReleased function to work
