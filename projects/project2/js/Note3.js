@@ -20,17 +20,17 @@ class Note3 {
     // Displaying the Note3 and placing everything
     displayNote3() {
         push();
-        textSize(32);
+        textSize(34);
         fill(0);
         textAlign(LEFT, CENTER);
-        textFont('Cormorant');
+        textFont('Homemade Apple');
         text(this.Note3String, width / 80, height / 2);
         pop();
         push();
         textSize(20);
         fill(102, 107, 131);
         textAlign(CENTER, CENTER);
-        textFont('Caveat');
+        textFont('Cormorant');
         text(this.Note3String2, width / 2, 570);
         pop();
     }

@@ -31,7 +31,7 @@ class Title {
         textSize(20);
         fill(102, 107, 131);
         textAlign(CENTER, CENTER);
-        textFont('Caveat');
+        textFont('Milonga');
         text(this.titleString2, width / 2, 350);
         textSize(15);
         fill(255);

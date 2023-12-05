@@ -5,7 +5,7 @@ class Note1 {
     // Creating a Note1 with all its variables
     constructor() {
         // Adding word strings to the Note1 screen
-        this.Note1String = "Dear Evelyn,\n\n I remember the first time you held me in your arms.\n I remember looking up at you as you held me, I remember the warmth, and feeling at peace.\n I felt happy, for the first time I knew I felt happy.\n I remember looking up as you stared down at me while holding me, you looked so beautiful.\n That was a really great day.\n Wasn't it?\n\n Sincerely,\n Her";
+        this.Note1String = "Dear Evelyn,\n\n I remember the first time you held me in your arms.\n I remember looking up at you as you held me,\n I remember the warmth, and feeling at peace.\n I felt happy, for the first time I knew I felt happy.\n I remember looking up as you stared down at me while holding me,\n you looked so beautiful.\n That was a really great day.\n Wasn't it?\n\n Sincerely,\n Her";
         this.Note1String2 = "(Press Any Key to Go to Level 2)";
     }
 
@@ -20,17 +20,17 @@ class Note1 {
     // Displaying the Note1 and placing everything
     displayNote1() {
         push();
-        textSize(40);
+        textSize(33);
         fill(0);
         textAlign(LEFT, CENTER);
-        textFont('Cormorant');
+        textFont('Homemade Apple');
         text(this.Note1String, width / 80, height / 2);
         pop();
         push();
         textSize(20);
         fill(102, 107, 131);
         textAlign(CENTER, CENTER);
-        textFont('Caveat');
+        textFont('Cormorant');
         text(this.Note1String2, width / 2, 570);
         pop();
     }
