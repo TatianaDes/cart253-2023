@@ -20,13 +20,17 @@ class Note2 {
     // Displaying the Note2 and placing everything
     displayNote2() {
         push();
-        textSize(32);
+        textSize(40);
         fill(0);
         textAlign(LEFT, CENTER);
+        textFont('Cormorant');
         text(this.Note2String, width / 80, height / 2);
+        pop();
+        push();
         textSize(20);
         fill(102, 107, 131);
         textAlign(CENTER, CENTER);
+        textFont('Caveat');
         text(this.Note2String2, width / 2, 570);
         pop();
     }

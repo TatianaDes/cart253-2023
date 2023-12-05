@@ -23,10 +23,14 @@ class Note4 {
         textSize(32);
         fill(0);
         textAlign(LEFT, CENTER);
+        textFont('Cormorant');
         text(this.Note4String, width / 80, height / 2);
+        pop();
+        push();
         textSize(20);
         fill(102, 107, 131);
         textAlign(CENTER, CENTER);
+        textFont('Caveat');
         text(this.Note4String2, width / 2, 570);
         pop();
     }

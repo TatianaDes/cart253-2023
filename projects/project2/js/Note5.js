@@ -23,10 +23,14 @@ class Note5 {
         textSize(27);
         fill(0);
         textAlign(LEFT, CENTER);
+        textFont('Cormorant');
         text(this.Note5String, width / 80, height / 2);
+        pop();
+        push();
         textSize(20);
         fill(49, 52, 68);
         textAlign(CENTER, CENTER);
+        textFont('Caveat');
         text(this.Note5String2, width / 2, 570);
         pop();
     }

@@ -24,9 +24,14 @@ class Title {
         textSize(60);
         fill(241, 239, 91);
         textAlign(CENTER, CENTER);
+        textFont('Cormorant');
         text(this.titleString, width / 2, height / 2);
+        pop();
+        push();
         textSize(20);
         fill(102, 107, 131);
+        textAlign(CENTER, CENTER);
+        textFont('Caveat');
         text(this.titleString2, width / 2, 350);
         textSize(15);
         fill(255);
