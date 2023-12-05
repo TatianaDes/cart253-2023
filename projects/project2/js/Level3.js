@@ -5,6 +5,7 @@ class Level3 {
     // Creating dimensions of the objects
     constructor() {
         // Calling all the variables from the classes
+        // Creating the variables from the Player class
         this.player = new Player({
             x: 60,
             y: 300,
@@ -19,6 +20,7 @@ class Level3 {
             downKey: DOWN_ARROW
         });
         //Credit to Pippin Barr for showing me how to make a second player using the same Player class.
+        // Creating the variables from the Player class for the second player
         this.player2 = new Player({
             x: 90,
             y: 380,

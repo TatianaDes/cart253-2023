@@ -5,6 +5,7 @@ class Level4 {
     // Creating dimensions of the objects
     constructor() {
         // Calling all the variables from the classes
+        // Creating the variables from the Player class
         this.player = new Player({
             x: 60,
             y: 300,
@@ -19,6 +20,7 @@ class Level4 {
             downKey: DOWN_ARROW
         });
         //Credit to Pippin Barr for showing me how to make a second player using the same Player class.
+        // Creating the variables from the Player class for the second player
         this.player2 = new Player({
             x: 90,
             y: 380,
@@ -34,6 +36,7 @@ class Level4 {
         });
 
         //Credit to Pippin Barr for showing me how to make multiple houses using the same House class.
+        // Creating the variables from the House class
         this.house = new House({
             x: 700,
             y: 500,
@@ -44,6 +47,7 @@ class Level4 {
             blue: 88,
             doorKnobSize: 8,
         });
+        // Creating the variables from the House class to make the second house
         this.house2 = new House({
             x: 200,
             y: 150,
@@ -54,6 +58,7 @@ class Level4 {
             blue: 62,
             doorKnobSize: 8,
         });
+        // Creating the variables from the House class to make the third house
         this.house3 = new House({
             x: 1200,
             y: 300,
