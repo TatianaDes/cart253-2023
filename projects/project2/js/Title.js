@@ -24,6 +24,8 @@ class Title {
         textSize(60);
         fill(241, 239, 91);
         textAlign(CENTER, CENTER);
+        // Font from Google Fonts
+        // p5js.org for how to add fonts to p5
         textFont('Cormorant');
         text(this.titleString, width / 2, height / 2);
         pop();
@@ -31,11 +33,13 @@ class Title {
         textSize(20);
         fill(102, 107, 131);
         textAlign(CENTER, CENTER);
+        // Font from Google Fonts
+        // p5js.org for how to add fonts to p5
         textFont('Cormorant');
         text(this.titleString2, width / 2, 350);
         textSize(18);
         fill(255);
-        text(this.titleString3, 1065, 570);
+        text(this.titleString3, 1050, 570);
         pop();
     }
 

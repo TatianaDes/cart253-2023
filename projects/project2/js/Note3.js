@@ -23,6 +23,8 @@ class Note3 {
         textSize(34);
         fill(0);
         textAlign(LEFT, CENTER);
+        // Font from Google Fonts
+        // p5js.org for how to add fonts to p5
         textFont('Homemade Apple');
         text(this.Note3String, width / 80, height / 2);
         pop();
@@ -30,6 +32,8 @@ class Note3 {
         textSize(20);
         fill(102, 107, 131);
         textAlign(CENTER, CENTER);
+        // Font from Google Fonts
+        // p5js.org for how to add fonts to p5
         textFont('Cormorant');
         text(this.Note3String2, width / 2, 570);
         pop();
