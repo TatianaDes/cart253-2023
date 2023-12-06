@@ -1,5 +1,5 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Level3 {
 
     // Creating dimensions of the objects
@@ -35,7 +35,7 @@ class Level3 {
             downKey: 83,
         });
 
-        //Credit to  Mathilde Davan for showing me how to add arrays into my classes
+        //Credit to Mathilde Davan for showing me how to add arrays into my classes
         // An array to store the individual food
         this.foods = [];
         // How much food there is

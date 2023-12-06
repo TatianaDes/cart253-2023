@@ -1,12 +1,12 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Note5 {
 
     // Creating dimensions of the objects
     constructor() {
         // Adding word strings to the Note5 screen
-        this.Note5String = "Dear Her,\n\n Why do I still long for you, after everything that you have done.\n You made me feel like nothing, nothing at all.\n Even when I gave you so many chances, each time he treated you wrong,\n you crawled back to me,\n and then each time he treated you right, you left me.\n I am not a toy, I do not deserve to be played with.\n And you never cared to understand that.\n I am trying to move on and all you have ever done is stay in the past\n and hope that I do too. We no longer have a reason to keep this going,\n whatever it is. You hurt me countless times and I never got a single,\n I am sorry.\n I do not deserve this. I truly do hope you have a wonderful future,\n I hope you treat him well and that you care about yourself the way I cared about you,\n unconditionally.\n Please do take care of yourself for me.\n Goodbye Mara.\n\n Sincerely,\n Evelyn ";
-        this.Note5String2 = "(Press Any Key to Go Back to the Title)";
+        this.Note5String = `Dear Her,\n\n Why do I still long for you, after everything that you have done.\n You made me feel like nothing, nothing at all.\n Even when I gave you so many chances, each time he treated you wrong,\n you crawled back to me,\n and then each time he treated you right, you left me.\n I am not a toy, I do not deserve to be played with.\n And you never cared to understand that.\n I am trying to move on and all you have ever done is stay in the past\n and hope that I do too. We no longer have a reason to keep this going,\n whatever it is. You hurt me countless times and I never got a single\n "I am sorry."\n I do not deserve this. I truly do hope you have a wonderful future,\n I hope you treat him well and that you care about yourself the way I cared about you,\n unconditionally.\n Please do take care of yourself for me.\n Goodbye Mara.\n\n Sincerely,\n Evelyn`;
+        this.Note5String2 = `(Press Any Key to Go Back to the Title)`;
     }
 
     // draw() displays the background and calls the functions that need to be drawn 

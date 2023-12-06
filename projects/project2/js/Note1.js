@@ -1,12 +1,12 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Note1 {
 
     // Creating a Note1 with all its variables
     constructor() {
         // Adding word strings to the Note1 screen
-        this.Note1String = "Dear Evelyn,\n\n I remember the first time you held me in your arms.\n I remember looking up at you as you held me,\n I remember the warmth, and feeling at peace.\n I felt happy, for the first time I knew I felt happy.\n I remember looking up as you stared down at me while holding me,\n you looked so beautiful.\n That was a really great day.\n Wasn't it?\n\n Sincerely,\n Her";
-        this.Note1String2 = "(Press Any Key to Go to Level 2)";
+        this.Note1String = `Dear Evelyn,\n\n I remember the first time you held me in your arms.\n I remember looking up at you as you held me,\n I remember the warmth, and feeling at peace.\n I felt happy, for the first time I knew I felt happy.\n I remember looking up as you stared down at me while holding me,\n you looked so beautiful.\n That was a really great day.\n Wasn't it?\n\n Sincerely,\n Her`;
+        this.Note1String2 = `(Press Any Key to Go to Level 2)`;
     }
 
     // draw() displays the background and calls the functions that need to be drawn 

@@ -1,10 +1,10 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class House {
 
     //Credit to Pippin Barr for the video "10.3. p5.PolySynth" for showing me the code for making an array of notes that are played.
     // Creating dimensions of the house
-    constructor({ x, y, w, h, red, green, blue, doorKnobSize }) {
+    constructor({ x, y, w, h, red, green, blue, doorKnobSize, notes }) {
         // Creating all the variables for the class
         this.x = x;
         this.y = y;
@@ -14,7 +14,7 @@ class House {
         this.g = green;
         this.b = blue;
         this.doorKnobSize = doorKnobSize;
-        this.notes = [`F4`, `C5`, `F3`, `F4`, `F4`, `A5`, `C4`, `C5`];
+        this.notes = notes;
         this.interval;
 
         //Credit to Mathilde Davan for showing me how to make the notes only play 10 times before stopping.
@@ -57,8 +57,10 @@ class House {
         pop();
     }
 
-    //Credit to Pippin Barr for showing me how to allow the notes to actually play in a class by adding the ".bind(this)" to class the interval again.
+    //Credit to Pippin Barr for showing me how to allow the notes to actually play in a class by adding the ".bind(this)" to call the interval again.
+    // Calls the mousePressed function to work
     mousePressed() {
+        // Allows the house to be pressed anywhere for the music to start playing and calls the playRandomNote() function
         if (mouseX > this.x - this.w / 2 &&
             mouseX < this.x + this.w / 2 &&
             mouseY > this.y - this.h / 2 &&
@@ -69,6 +71,7 @@ class House {
         }
     }
 
+    // Calls all the variables to play the notes and make them play at random
     playRandomNote() {
         let note = random(this.notes);
         this.synth.play(note, 1, 0, 1);

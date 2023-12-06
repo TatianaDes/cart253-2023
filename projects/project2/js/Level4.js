@@ -1,5 +1,5 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Level4 {
 
     // Creating dimensions of the objects
@@ -46,6 +46,7 @@ class Level4 {
             green: 25,
             blue: 88,
             doorKnobSize: 8,
+            notes: [`F4`, `A4`, `C4`, `E4`, `F4`, `A4`, `C4`, `E4`],
         });
         // Creating the variables from the House class to make the second house
         this.house2 = new House({
@@ -57,6 +58,7 @@ class Level4 {
             green: 124,
             blue: 62,
             doorKnobSize: 8,
+            notes: [`Fb4`, `Ab4`, `Cb4`, `Eb4`, `Fb4`, `Ab4`, `Cb4`, `Eb4`],
         });
         // Creating the variables from the House class to make the third house
         this.house3 = new House({
@@ -68,9 +70,10 @@ class Level4 {
             green: 88,
             blue: 98,
             doorKnobSize: 8,
+            notes: [`Fb4`, `A4`, `Cb4`, `E4`, `F4`, `Ab4`, `C4`, `Eb4`],
         });
 
-        //Credit to  Mathilde Davan for showing me how to add arrays into my classes
+        //Credit to Mathilde Davan for showing me how to add arrays into my classes
         // An array to store the individual flowers
         this.flowers = [];
         // How many flowers in the garden
@@ -179,7 +182,7 @@ class Level4 {
         pop();
     }
 
-    // Credit to Pippin Barr for the video of the activity, "5.8. Looking for Love" to see how this code is done.
+    // Credit to Pippin Barr for the video from the activity, "5.8. Looking for Love" to see how this code is done.
     // Creates the checkEnding function and what it does
     checkEndings() {
         // Checks the distance between realization and the player and when overlaped "Note4" state occurs

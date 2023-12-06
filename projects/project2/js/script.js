@@ -25,7 +25,7 @@ function preload() {
 function setup() {
     createCanvas(1350, 600);
 
-    // Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+    // Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
     // Stating what class should be called when starting the program
     currentState = new Title();
 

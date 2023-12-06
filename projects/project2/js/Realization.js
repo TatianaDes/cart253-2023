@@ -1,5 +1,5 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Realization {
 
     // Creating dimensions of realization
@@ -20,7 +20,7 @@ class Realization {
         this.ay = 0;
     }
 
-    //Credit to Pippin Barr for the explaining to me this code that he wrote and showing me how to make realization only move due to proximity and based on which character is in proximity. 
+    //Credit to Pippin Barr for the explaining to me this code that he wrote and showing me how to make realization only move due to proximity and based on which player is in proximity. 
     //Credit to Pippin Barr for the video " 4.7. Movement," for realization to follow player and run away from player2. 
     // Gives movement to realization
     move(player, player2) {
@@ -95,18 +95,18 @@ class Realization {
         if (abs(this.vx) < 0.1) this.vx = 0;
         if (abs(this.vy) < 0.1) this.vy = 0;
 
-        // Allows the creature to move
+        // Allows realization to move
         this.x = this.x + this.vx;
         this.y = this.y + this.vy;
     }
 
-    // Constrains the creature from the borders of the canvas
+    // Constrains realization from the borders of the canvas
     checkSides() {
         this.x = constrain(this.x, 0, width);
         this.y = constrain(this.y, 0, height);
     }
 
-    // Displays the realization
+    // Displays realization
     display() {
         push();
         noStroke();

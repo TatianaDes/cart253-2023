@@ -1,5 +1,5 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Level1 {
 
     // Creating dimensions of the objects
@@ -46,6 +46,7 @@ class Level1 {
             green: 61,
             blue: 244,
             doorKnobSize: 8,
+            notes: [`F4`, `C5`, `F3`, `F4`, `F4`, `A5`, `C4`, `C5`]
         });
         // Creating the variables from the House class to make the second house
         this.house2 = new House({
@@ -57,6 +58,7 @@ class Level1 {
             green: 165,
             blue: 79,
             doorKnobSize: 8,
+            notes: [`F4`, `C4`, `F4`, `F3`, `F3`, `A4`, `C5`, `C4`]
         });
         // Creating the variables from the House class to make the third house
         this.house3 = new House({
@@ -68,6 +70,7 @@ class Level1 {
             green: 123,
             blue: 138,
             doorKnobSize: 8,
+            notes: [`F4`, `C5`, `F4`, `F5`, `F4`, `A3`, `C4`, `C5`]
         });
         // Creating the variables from the Creature class
         this.creature = new Creature({
@@ -121,7 +124,7 @@ class Level1 {
         pop();
     }
 
-    // Credit to Pippin Barr for the video of the activity, "5.8. Looking for Love" to see how this code is done.
+    // Credit to Pippin Barr for the video from the activity, "5.8. Looking for Love" to see how this code is done.
     // Creates the checkEnding function and what it does
     checkEndings() {
         let d = dist(this.player2.x, this.player2.y, this.creature.x, this.creature.y);

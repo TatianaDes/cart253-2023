@@ -1,5 +1,5 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Level2 {
 
     // Creating dimensions of the objects
@@ -93,7 +93,7 @@ class Level2 {
     //Credit to Pippin Barr for showing us how to make an ending when all the flowers die for the exercise "Juggle Garden." 
     // Creates the checkEnding function and what it does
     checkEndings() {
-        // Checks if all the flowers have died, then `flowers` state occurs
+        // Checks if all the flowers have died, then `Note2` state occurs
         this.allFlowersDead = true;
         for (let i = 0; i < this.flowers.length; i++) {
             if (this.flowers[i].alive) {

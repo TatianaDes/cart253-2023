@@ -1,12 +1,12 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Note3 {
 
     // Creating dimensions of the objects
     constructor() {
         // Adding word strings to the Note3 screen
-        this.Note3String = "Dear Evelyn,\n\n I know I hurt you that day, I do not know what I was thinking.\n My feelings were so mixed up, and he was there, and you were there\n and I could not understand what my feelings were trying to tell me.\n I did not want this to happen, I want to be with you, truly.\n I took some time to think about my feelings\n and I want to be with you. You are who I want.\n I am going to call him today to clear it up with him.\n\n Sincerely,\n Her ";
-        this.Note3String2 = "(Press Any Key to Go to Level 4)";
+        this.Note3String = `Dear Evelyn,\n\n I know I hurt you that day, I do not know what I was thinking.\n My feelings were so mixed up, and he was there, and you were there\n and I could not understand what my feelings were trying to tell me.\n I did not want this to happen, I want to be with you, truly.\n I took some time to think about my feelings\n and I want to be with you. You are who I want.\n I am going to call him today to clear it up with him.\n\n Sincerely,\n Her`;
+        this.Note3String2 = `(Press Any Key to Go to Level 4)`;
     }
 
     // draw() displays the background and calls the functions that need to be drawn 

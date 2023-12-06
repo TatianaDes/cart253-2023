@@ -1,5 +1,5 @@
 //Credit to my Professor, Pippin Barr, and TA, Mathilde Davan, for helping me with all the code that I have written step by step as I was struggling.
-//Credit to Pippin Barr for introducing the vignette code to me and me following along his guidelines.
+//Credit to Pippin Barr for introducing the vignette code to me and following along his guidelines.
 class Flower {
 
     //Credit to Pippin Barr for the video from the activity "7.5. Object-Oriented Programming activity" for showing me all the code for how to make flowers and make them able to grow and shrink.
