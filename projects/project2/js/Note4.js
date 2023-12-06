@@ -6,7 +6,7 @@ class Note4 {
     constructor() {
         // Adding word strings to the Note4 screen
         this.Note4String = `Dear Evelyn,\n\n I know after all this it is wrong for me to write to you.\n All the pain I caused you, all because of my feelings for him.\n I know I lied to you and I know when you treated me so right,\n I treated you the worst I could. You deserve better.\n You deserve someone who will love you\n and who will see you the way I see you.\n As someone who is kind, intelligent and so unbelievably caring.\n I really do love you, you know,\n I love you as much as I can love anyone,\n but it is never enough.\n I do miss you and care about you,\n and I always will reserve part of my heart for you.\n\n Sincerely,\n Her`;
-        this.Note4String2 = `(Press Any Key to Go Back to the Title)`;
+        this.Note4String2 = `(Press the Space Bar to Go Back to the Level4)`;
     }
 
     // draw() displays the background and calls the functions that need to be drawn 
@@ -46,8 +46,11 @@ class Note4 {
 
     // Calls the keyPressed function to work
     keyPressed() {
-        // Changes state to Level4 when any key is pressed
-        currentState = new Level4();
+        // Credit to Pippin Bar for the video "5.6. Keyboard input" for teaching me how to use keycodes.
+        if (keyCode === 32) {
+            // Changes state to Level4 when any key is pressed
+            currentState = new Level4();
+        }
     }
 
     // Calls the keyReleased function to work

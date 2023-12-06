@@ -6,7 +6,7 @@ class Title {
     constructor() {
         // Adding word strings to the title screen
         this.titleString = `Longing`;
-        this.titleString2 = `(Press Any Key to Start)`;
+        this.titleString2 = `(Press the Space Bar to Start)`;
         this.titleString3 = `Use the left and right arrow keys and WASD to move, and try to get all 5 notes.`;
     }
 
@@ -50,8 +50,11 @@ class Title {
 
     // Calls the keyPressed function to work
     keyPressed() {
-        // Changes state to Level1 when any key is pressed
-        currentState = new Level1();
+        // Credit to Pippin Bar for the video "5.6. Keyboard input" for teaching me how to use keycodes.
+        if (keyCode === 32) {
+            // Changes state to Level1 when any key is pressed
+            currentState = new Level1();
+        }
     }
 
     // Calls the keyReleased function to work
